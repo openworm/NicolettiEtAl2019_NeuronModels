@@ -1,0 +1,519 @@
+#
+
+#====================== AWC simulation ==========================
+
+# potassium,calcium, leakge ad sodium reversal potentials
+par ek=-80,eca=60,eleak=-80,ena=30
+
+#===============================================================================================================
+
+
+#                               VOLTAGE-GATED POTASSIUM CHANNELS 
+
+
+
+# ==============================================================================================================
+
+#==================== SHL-1 CHANNELS ===========================================================================
+#conductance in nS
+par gshal=2.9
+par shalsfhit=18
+
+# activation
+par vashal=11.2,kashal=14.1,kishal=8.3,vishal=-33.1
+par ptmshal1=13.8,ptmshal2=-17.5165,ptmshal3=12.9213,ptmshal4=-3.7082,ptmshal5=6.4876,ptmshal6=1.8849
+
+
+minf_shal=1/(1+exp(-(v-vashal+shalsfhit)/(kashal)))
+tm_shal=(ptmshal1/(exp(-(v-ptmshal2)/ptmshal3)+exp((v-ptmshal4)/ptmshal5))+ptmshal6)*cshal
+
+#inactivation
+par pthfshal1=539.1584, pthfshal2=-28.1990, pthfshal3=4.9199, pthfshal4=27.2811
+par pthsshal1=8422 pthsshal2=-37.7391 pthsshal3=6.3785 pthsshal4=118.8983,cshal=0.1
+
+hinf_shal=1/(1+exp((v-vishal+shalsfhit)/(kishal)))
+ths_shal=(pthsshal1/(1+exp((v-pthsshal2)/pthsshal3))+pthsshal4)*cshal
+thf_shal=(pthfshal1/(1+exp((v-pthfshal2)/pthfshal3))+pthfshal4)*cshal
+
+
+
+m_shal'=(minf_shal-m_shal)/tm_shal
+hf_shal'=(hinf_shal-hf_shal)/thf_shal
+hs_shal'=(hinf_shal-hs_shal)/ths_shal
+
+init m_shal=0,hf_shal=1,hs_shal=1
+
+Ishal=gshal*(m_shal^3)*(0.7*hf_shal+0.3*hs_shal)*(v-ek)
+
+#====================  KVS-1 CHANNELS ======================================================================================================================
+par gkvs1=0.8
+
+
+par skvs1=30,
+
+# activation
+par va_kvs1=57.1,ka_kvs1=25,
+par p1tmkvs1=30.0000, p2tmkvs1=18.1232, p3tmkvs1=-20.0000, p4tmkvs1=1.000
+
+minf_kvs1=1/(1+exp(-(v-va_kvs1+skvs1)/ka_kvs1))
+tm_kvs1=(p1tmkvs1/(1+exp(-(v-p2tmkvs1)/p3tmkvs1))+p4tmkvs1)/10
+
+#inactivation
+par vi_kvs1=47.3,ki_kvs1=11.1
+par p1thkvs1=88.4715, p2thkvs1=50.00, p3thkvs1=-15, p4thkvs1=53.4060, cthkvs1=0.1
+
+hinf_kvs1=1/(1+exp((v-vi_kvs1+skvs1)/(ki_kvs1)))
+th_kvs1=(p1thkvs1/(1+exp(-(v-p2thkvs1)/p3thkvs1))+p4thkvs1)*cthkvs1
+
+
+#equations
+m_kvs1'=(minf_kvs1-m_kvs1)/tm_kvs1
+h_kvs1'=(hinf_kvs1-h_kvs1)/th_kvs1
+
+init h_kvs1=1,m_kvs1=0
+
+I_kvs1=gkvs1*m_kvs1*h_kvs1*(v-ek)
+
+
+#=================== SHK1 CHANNELS ==============================================================================
+
+#conductance
+par gshak=0.1
+
+#activation
+par vashak=20.4,kashak=7.7
+par ptmshak1=26.571450568169027 ,ptmshak2=-33.741611800716130,ptmshak3=15.757936311607475 
+par ptmshak4=15.364937728953288,ptmshak5=1.990037272604829 ,shiftV05=0
+
+minf_shak=1/(1+exp(-(v-vashak+shiftV05)/kashak))
+tm_shak=ptmshak1/(exp(-(v-(ptmshak2+shiftV05))/ptmshak4)+exp((v-(ptmshak2+shiftV05))/ptmshak3))+ptmshak5
+
+#inactivation
+par kishak=5.8,vishak=-6.95
+par pthshak=1400
+
+hinf_shak=1/(1+exp((v-vishak+shiftV05)/kishak))
+th_shak=pthshak
+
+m_shak'=(minf_shak-m_shak)/tm_shak
+h_shak'=(hinf_shak-h_shak)/th_shak
+
+init m_shak=0,h_shak=1
+
+I_shak=gshak*m_shak*h_shak*(v-ek)
+
+
+#===================== KQT3 CHANNELS ======================================================================================================================
+
+#conductance
+par gkqt3=0.55
+
+#activation
+par va_kqt3=-12.6726,ka_kqt3=15.8008
+par ckqt3=0.1
+
+par p1tmskqt3=5503,p2tmskqt3=5345.4,p3tmskqt3=-0.02827,p4tmskqt3=-23.9,p5tmskqt3=4590.6,p6tmskqt3=-0.0357,p7tmskqt3=14.15
+par p1tmfkqt3=395.3,p2tmfkqt3=38.1,p3tmfkqt3=33.59,constkqt3=10
+
+minf_kqt3=1/(1+exp(-(v-va_kqt3+constkqt3)/ka_kqt3))
+tmf_kqt3=(p1tmfkqt3/(1+((v+p2tmfkqt3)/p3tmfkqt3)^2))*ckqt3
+tms_kqt3=(p1tmskqt3-p2tmskqt3/(1+10^(p3tmskqt3*(p4tmskqt3-v)))-p5tmskqt3/(1+10^(p6tmskqt3*(v+p7tmskqt3))))*ckqt3
+
+
+# w 
+par w1=0.49,w2=0.51,w3=1.084,w4=28.78
+par tw1=5.44,tw2=29.2,tw3=48.09,tw4=48.83
+winf_kqt3=w1+(w2/(1+exp((v+w3)/w4)))
+tw_kqt3=(tw1+(tw2/(1+((v+tw3)/tw4)^2)))*ckqt3
+
+# s
+par sq1=0.34,sq2=0.66,sq3=45.3,sq4=12.3,tsq1=5000
+sinf_kqt3=sq1+(sq2/(1+exp((v+sq3)/sq4)))
+ts_kqt3=tsq1*ckqt3
+
+
+
+#equations
+mf_kqt3'=(minf_kqt3-mf_kqt3)/tmf_kqt3
+ms_kqt3'=(minf_kqt3-ms_kqt3)/tms_kqt3
+w_kqt3'=(winf_kqt3-w_kqt3)/tw_kqt3
+s_kqt3'=(sinf_kqt3-s_kqt3)/ts_kqt3
+
+init mf_kqt3=0,ms_kqt3=0
+
+
+I_kqt3=gkqt3*(0.3*mf_kqt3+0.7*ms_kqt3)*w_kqt3*s_kqt3*(v-ek)
+
+#===================== EGL-2 CHANNELS ========================================================================================================================
+#conductance
+par gegl2=0.85
+
+#activation
+par va_egl2=-6.8594,ka_egl2=14.9131,stmegl2=0,cegl2=0.5
+par p1tmegl2=16.7800,p2tmegl2=-122.5682,p3tmegl2=13.7976,p4tmegl2=8.0969,fegl2=1
+
+minf_egl2=1/(1+exp(-(v-va_egl2+stmegl2)/(ka_egl2*fegl2)))
+tm_egl2=((p1tmegl2/(1+exp((v-p2tmegl2+stmegl2)/p3tmegl2)))+p4tmegl2)*cegl2
+
+#equations
+m_egl2'=(minf_egl2-m_egl2)/tm_egl2
+
+init m_egl2=0
+
+I_egl2=gegl2*m_egl2*(v-ek)
+
+#======================= IRK CHANNELS =================================================================================
+
+par gkir=0.65
+
+#activation
+par va_kir=-52, ka_kir=13 
+par p1tmkir=17.0752,p2tmkir=-17.8258, p3tmkir=20.3154, p4tmkir=-43.4414, p5tmkir=11.1691, p6tmkir=3.8329
+
+minf_kir=1/(1+exp((v-va_kir+30)/ka_kir))
+tm_kir=p1tmkir/(exp(-(v-p2tmkir)/p3tmkir)+exp((v-p4tmkir)/p5tmkir))+p6tmkir
+
+#equations
+m_kir'=(minf_kir-m_kir)/tm_kir
+
+I_kir=gkir*m_kir*(v-ek)
+
+
+#=========================================================================================================================
+
+
+#                                      CALCIUM CHANNELS 
+
+
+#=========================================================================================================================
+
+
+#===============  CCA-1 channels ==================================================================================================
+#conductance
+par gcca1=0.7
+
+par  va_cca1=-42.65,ka_cca1=1.7,sscca1=15
+par stmcca1=30,sthcca1=15,sshcca1=15,constmcca1=0.5
+par fcca=1.4,f2cca1=1.15,f3ca=1.7,f4ca=1.1
+par p1tmcca1=40,p2tmcca1=-62.5393,p3tmcca1=-12.4758,p4tmcca1=0.6947
+
+minf_cca1=1/(1+exp(-(v-va_cca1+sscca1)/(ka_cca1*fcca)))
+tm_cca1=((p1tmcca1/(1+exp(-(v-p2tmcca1+stmcca1)/(p3tmcca1*f3ca))))+p4tmcca1)*constmcca1
+
+par vi_cca1=-58,ki_cca1=7,consthcca1=0.08
+par p1thcca1=280,p2thcca1=-60.7312,p3thcca1=8.5224,p4thcca1=19.7456
+
+hinf_cca1=1/(1+exp((v-vi_cca1+sshcca1)/(ki_cca1*f2cca1)))
+th_cca1=((p1thcca1/(1+exp((v-p2thcca1+sthcca1)/(p3thcca1*f4ca))))+p4thcca1)*consthcca1
+
+# equations
+m_cca1'=(minf_cca1-m_cca1)/tm_cca1
+h_cca1'=(hinf_cca1-h_cca1)/th_cca1
+
+init m_cca1=0,h_cca1=1
+
+I_cca1=gcca1*m_cca1^2*h_cca1*(v-eca)
+aux Icca1=I_cca1
+
+
+#=================== UNC-2 CHANNELS ======================================================================================= 
+#conductance
+par gunc2=1
+
+#activation
+par va_unc2=-12.17,ka_unc2=3.97,stm2=25
+par p1tmunc2=1.4969,p2tmunc2=-8.1761,p3tmunc2=9.0753,p4tmunc2=15.3456,p5tmunc2=0.1029
+par shiftmunc2=30,constmunc2=3
+
+minf_unc2=1/(1+exp(-(v-va_unc2+stm2)/(ka_unc2)))
+tm_unc2=(p1tmunc2/(exp(-(v-p2tmunc2+shiftmunc2)/(p3tmunc2))+exp((v-p2tmunc2+shiftmunc2)/(p4tmunc2)))+p5tmunc2)*constmunc2
+
+#inactivation
+par vi_unc2=-52.47,ki_unc2=5.6,sth2=25
+par p1thunc2=83.8037, p2thunc2=52.8997,p3thunc2=3.4557,p4thunc2=72.0995,p5thunc2=23.9009,p6thunc2=3.5903
+par consthunc2=1.7, shifthunc2=30
+
+
+hinf_unc2=1/(1+exp((v-vi_unc2+sth2)/(ki_unc2)))
+th_unc2=(p1thunc2/(1+exp((v-p2thunc2+shifthunc2)/(p3thunc2)))+p4thunc2/(1+exp(-(v-p5thunc2+shifthunc2)/(p6thunc2))))*consthunc2
+
+# equations
+m_unc2'=(minf_unc2-m_unc2)/tm_unc2
+h_unc2'=(hinf_unc2-h_unc2)/th_unc2
+
+init m_unc2=0,h_unc2=1
+
+I_unc2=gunc2*m_unc2*h_unc2*(v-eca)
+
+#alpha and beta for slo1 ans slo2 channels 
+alpha=minf_unc2/tm_unc2
+beta=(1/tm_unc2)-alpha
+
+aux Iunc2=I_unc2
+
+#================== EGL-19 CHANNELS ===========================================================================================
+#conductance
+par gegl19=1.55
+
+#activation
+par va_egl19=5.6, ka_egl19=7.50,stm19=10,sth19=10
+par pdg1=2.3359,pdg2=2.9324,pdg3=5.2357,pdg4=6.0,pdg5=1.8739,pdg6=1.3930,pdg7=30.0,stau19=10
+
+minf_egl19=1/(1+exp(-(v-va_egl19+stm19)/ka_egl19))
+tm_egl19=(pdg1+(pdg2*exp(-(v-pdg3+stau19)^2/(pdg4)^2))+(pdg5*exp(-(v-pdg6+stau19)^2/(pdg7)^2)))
+
+#inactivation
+par p1hegl19=1.4314,p2hegl19=24.8573,p3hegl19=11.9541,p4hegl19=0.1427,p5hegl19=5.9589,p6hegl19=-10.5428,p7hegl19=8.0552,p8hegl19=0.6038
+par pds1=0.4,pds2=0.55,pds3=81.1179,pds4=-22.9723,pds5=5,pds6=43.0937,pds7=0.9,pds8=40.4885,pds9=28.7251,pds10=3.7125,pds11=0,shiftdps=10
+
+hinf_egl19=((p1hegl19/(1+exp(-(v-p2hegl19+sth19)/p3hegl19))+p4hegl19)*(p5hegl19/(1+exp((v-p6hegl19+sth19)/p7hegl19))+p8hegl19))
+ths_egl19=pds1*(((pds2*pds3)/(1+exp((v-pds4+shiftdps)/pds5)))+pds6+((pds7*pds8)/(1+exp((v-pds9+shiftdps)/pds10)))+pds11)
+
+# equations
+m_egl19'=(minf_egl19-m_egl19)/tm_egl19
+hs_egl19'=(hinf_egl19-hs_egl19)/ths_egl19
+
+init m_egl19=0,hs_egl19=1
+
+I_egl19=gegl19*m_egl19*hs_egl19*(v-eca)
+
+# alpha and beta for slo1 and slo2  channels
+alpha1=minf_egl19/tm_egl19
+beta1=(1/tm_egl19)-alpha1
+
+aux Iegl19=I_egl19
+aux hinf_egl19=hinf_egl19
+
+#======================================================================================================================================
+
+
+#                                      CALCIUM-REGULATED POTASSIUM CHANNELS 
+
+
+#======================================================================================================================================
+
+
+#================== Ca nanodomain calculation (Only for SLO1 and SLO2)=================================================================
+
+# r: nanodomain radius
+# d: diffusion coefficient
+# F: Faraday constant C/mol
+# kb:
+# b:
+# gsc: conductance of calcium channels
+
+par r=13e-9,d=250e-12,F=96485,kb=500e6,b=30e-6,backgr=0.05,gsc=40e-12
+
+cao_nano=(((abs(gsc*(v-eca)*1e-3)/(8*pi*r*d*F))*exp(-r/sqrt(d/(kb*b))))*1e6*1e-3 )+backgr
+cac_nano=backgr
+
+#================= SLO1 CHANNELS  ====================================================================================================
+# no clustering 1:1  stoichiometry with EGL-19 and UNC-2 channels 
+
+# activation 
+# (parameters from genetic algorithm)
+par wom=3.152961,wyx=0.012643,kyx=34.338784,nyx=0.000100
+par wop=0.156217,wxy=-0.027527,kxy=55.726816,nxy=1.299198
+
+kcm=wom*exp(-wyx*v)*(1/(1+((cac_nano)/kyx)^nyx))
+kom=wom*exp(-wyx*v)*(1/(1+((cao_nano)/kyx)^nyx))
+kop=wop*exp(-wxy*v)*(1/(1+(kxy/(cao_nano))^nxy))
+kcp=0
+
+# SLO1-UNC2 COMPLEX
+
+#conductance 
+par gbk=0.11
+
+minf_bk=(m_unc2*kop*(alpha+beta+kcm))/((kop+kom)*(kcm+alpha)+(beta*kcm))
+tm_bkunc2=((alpha+beta+kcm)/((kop+kom)*(kcm+alpha)+(beta*kcm)))
+
+mbk'=(minf_bk-mbk)/tm_bkunc2
+init mbk=0
+
+I_bk=gbk*mbk*h_unc2*(v-ek)
+
+# SLO1-EGL19 COMPLEX
+
+#conductance
+par gslo1=0.11
+
+#activation
+# same activation parameters of SLO1-UNC2 complex
+
+kcm2=wom*exp(-wyx*v)*(1/(1+((cac_nano)/kyx)^nyx))
+kom2=wom*exp(-wyx*v)*(1/(1+((cao_nano)/kyx)^nyx))
+kop2=wop*exp(-wxy*v)*(1/(1+(kxy/(cao_nano))^nxy))
+kcp2=0
+
+minf_slo1=(m_egl19*kop*(alpha1+beta1+kcm2))/((kop2+kom2)*(kcm2+alpha1)+(beta1*kcm2))
+tm_slo1=((alpha1+beta1+kcm2)/((kop2+kom2)*(kcm2+alpha1)+(beta1*kcm2)))
+
+mslo1'=(minf_slo1-mslo1)/tm_slo1
+
+init mslo1=0
+
+I_slo1=gslo1*mslo1*hs_egl19*(v-ek)
+
+#================ SLO-2 CHANNELS =============================================================================================
+# no clustering, 1:1 stoichiometry with EGL-19 and UNC-2
+
+
+# activation
+# parameters from genetic algorithm
+
+par wom1=0.896395,wyx1=0.019405,kyx1=3294.553404,nyx1=0.000010
+par wop1=0.026719,wxy1=-0.024123,kxy1=93.449423,nxy1=1.835067
+
+kcm1=wom1*exp(-wyx1*v)*(1/(1+(cac_nano/kyx1)^nyx1))
+kom1=wom1*exp(-wyx1*v)*(1/(1+((cao_nano)/kyx1)^nyx1))
+kop1=wop1*exp(-wxy1*v)*(1/(1+(kxy1/(cao_nano))^nxy1))
+kcp1=0
+
+
+# SLO2- EGL19 COMPLEX 
+
+#conductance
+
+par gbk2=0.1
+
+minf_bk2=(m_egl19*kop1*(alpha1+beta1+kcm1))/((kop1+kom1)*(kcm1+alpha1)+(beta1*kcm1))
+tm_bkegl19=((alpha1+beta1+kcm1)/((kop1+kom1)*(kcm1+alpha1)+(beta1*kcm1)))
+
+mbk2'=(minf_bk2-mbk2)/tm_bkegl19
+
+init mbk2=0
+
+I_bk2=gbk2*mbk2*hs_egl19*(v-ek)
+
+
+# SLO2-UNC2 COMPLEX
+
+#conductance
+par gslo2=0.1
+
+kcm3=wom1*exp(-wyx1*v)*(1/(1+(cac_nano/kyx1)^nyx1))
+kom3=wom1*exp(-wyx1*v)*(1/(1+((cao_nano)/kyx1)^nyx1))
+kop3=wop1*exp(-wxy1*v)*(1/(1+(kxy1/(cao_nano))^nxy1))
+kcp3=0
+
+minf_slo2=(m_unc2*kop3*(alpha+beta+kcm3))/((kop3+kom3)*(kcm3+alpha)+(beta*kcm3))
+tm_slo2=((alpha+beta+kcm3)/((kop3+kom3)*(kcm3+alpha)+(beta*kcm3)))
+
+mslo2'=(minf_slo2-mslo2)/tm_slo2
+
+
+
+I_slo2=gslo2*mslo2*h_unc2*(v-ek)
+
+#================================= Intracellular calcium calculation =========================================================
+# fd: Faraday constant in C/mmol
+
+par fd=96.485,fca=0.001,t_ca=50,rcell=1
+I_ca=I_unc2+I_egl19+I_cca1
+aux I_ca=I_ca
+
+# RMD total volume in um^3 (from Neuromorpho)
+par vol=31.16
+
+
+alpha_ca=1/(2*vol*fd)
+
+J_ca1=fca*alpha_ca*I_ca
+aux J_ca1=J_ca1
+
+backgr2=0.05e-3
+
+rs=if(I_ca<0)then(-fca*(alpha_ca*I_ca)-((ca_intra1-backgr2)/t_ca))else((backgr2-ca_intra1)/t_ca)
+ca_intra1'=rs
+
+init ca_intra1=5e-05
+
+
+#============================= KCNL CHANNELS  ==================================================================================
+# Rinzel 
+
+#conductance
+par gca=0.06
+
+#activation
+par k_sk2=0.00033
+
+minf_sk=ca_intra1/(k_sk2+ca_intra1)
+t_sk=6.3
+
+#equations
+m_sk'=(minf_sk-m_sk)/t_sk
+
+init m_sk=0.13563
+
+
+I_sk=gca*m_sk*(v-ek)
+
+
+#==================================================================================================================================
+
+
+#                                      LEAKAGE CHANNELS 
+
+
+#===================================================================================================================================
+
+
+
+#================= LEAKAGE CURRENT =================================================================================================
+par gleak=0.27
+I_leak=gleak*(v-eleak)
+
+#================== Nca current ====================================================================================================
+par gnca=0.055
+I_nca=gnca*(v-ena)
+
+
+
+#===================================================================================================================================
+
+
+#                                                      SIMULATIONS
+
+
+#====================================================================================================================================
+
+
+# Total current
+
+I_tot=I_egl2+I_leak+I_kvs1+I_bk+I_kqt3+Ishal+I_egl19+I_unc2+I_bk2+I_sk+I_slo1+I_slo2+I_nca+I_kir+I_cca1+I_shak
+#I_egl2+I_leak+I_kvs1+I_bk+I_kqt3+Ishal+I_egl19+I_unc2+I_bk2+I_sk+I_slo1+I_slo2+I_nca+I_kir+I_cca1+I_shak
+aux Itot=I_tot
+																
+#===================== VOLTAGE CLAMP =================================================================================================
+
+# voltage clamp protocol
+
+#par vk=-70
+#v=if(t>ton)then(if(t<toff)then(vclamp)else(vk))else(vk)
+#par vclamp=10,ton=100,toff=2100
+
+### XPP SETTINGS
+#@ meth=stiff,trans=2095,total=2105,dt=0.01,maxstor=1000000,bound=100000000000000,atol=1e-8,tol=1e-8
+#@ xp=t,yp=Itot,xlo=0,xhi=2095,yhi=2105,ylo=-100
+#done
+
+#===================== CURRENT CLAMP =================================================================================================
+# ih: holding current
+# c: membrane capacitance pF
+
+par ih=0
+par c=3.1
+
+v'=(Istim-I_tot)/c
+init v=-70
+
+Istim=if(t>ton)then(if(t<toff)then(iclamp)else(ih))else(ih)
+par iclamp=10,ton=1000,toff=5000
+
+### XPP SETTINGS
+@ meth=stiff,trans=900,total=5100,dt=0.01,maxstor=1000000,bound=100000000000000,atol=1e-8,tol=1e-8
+@ xp=t,yp=v,xlo=200,xhi=6000,yhi=30,ylo=-100
+done
+
