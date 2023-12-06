@@ -55,8 +55,8 @@ par gshak=1.1
 
 #activation
 par vashak=20.4,kashak=7.7
-par ptmshak1=26.571450568169027 ,ptmshak2=-33.741611800716130,ptmshak3=15.757936311607475 
-par ptmshak4=15.364937728953288,ptmshak5=1.990037272604829 ,shiftV05=0
+par ptmshak1=26.571450568169027 ,ptmshak2=-33.741611800716130,ptmshak3=15.757936311607475
+par ptmshak4=15.364937728953288,ptmshak5=1.990037272604829,shiftV05=0
 
 minf_shak=1/(1+exp(-(v-vashak+shiftV05)/kashak))
 tm_shak=ptmshak1/(exp(-(v-(ptmshak2+shiftV05))/ptmshak4)+exp((v-(ptmshak2+shiftV05))/ptmshak3))+ptmshak5
@@ -105,7 +105,7 @@ I_egl36=gegl36*((a1*m1_egl36)+(a2*m2_egl36)+(a3*m3_egl36))*(v-ek)
 
 par gkir=0.2
 
-par va_kir=-52, ka_kir=13 
+par va_kir=-52,ka_kir=13
 par p1tmkir=17.0752,p2tmkir=-17.8258, p3tmkir=20.3154, p4tmkir=-43.4414, p5tmkir=11.1691, p6tmkir=3.8329
 
 minf_kir=1/(1+exp((v-va_kir+30)/ka_kir))

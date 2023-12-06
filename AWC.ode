@@ -49,10 +49,10 @@ Ishal=gshal*(m_shal^3)*(0.7*hf_shal+0.3*hs_shal)*(v-ek)
 par gkvs1=0.8
 
 
-par skvs1=30,
+par skvs1=30
 
 # activation
-par va_kvs1=57.1,ka_kvs1=25,
+par va_kvs1=57.1,ka_kvs1=25
 par p1tmkvs1=30.0000, p2tmkvs1=18.1232, p3tmkvs1=-20.0000, p4tmkvs1=1.000
 
 minf_kvs1=1/(1+exp(-(v-va_kvs1+skvs1)/ka_kvs1))
@@ -82,7 +82,7 @@ par gshak=0.1
 
 #activation
 par vashak=20.4,kashak=7.7
-par ptmshak1=26.571450568169027 ,ptmshak2=-33.741611800716130,ptmshak3=15.757936311607475 
+par ptmshak1=26.571450568169027 ,ptmshak2=-33.741611800716130,ptmshak3=15.757936311607475
 par ptmshak4=15.364937728953288,ptmshak5=1.990037272604829 ,shiftV05=0
 
 minf_shak=1/(1+exp(-(v-vashak+shiftV05)/kashak))
@@ -167,7 +167,7 @@ I_egl2=gegl2*m_egl2*(v-ek)
 par gkir=0.65
 
 #activation
-par va_kir=-52, ka_kir=13 
+par va_kir=-52, ka_kir=13
 par p1tmkir=17.0752,p2tmkir=-17.8258, p3tmkir=20.3154, p4tmkir=-43.4414, p5tmkir=11.1691, p6tmkir=3.8329
 
 minf_kir=1/(1+exp((v-va_kir+30)/ka_kir))
