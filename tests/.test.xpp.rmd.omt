@@ -1,0 +1,17 @@
+target: ../RMD.ode
+engine: XPP
+
+mep: .test.xpp.mep
+experiments:
+  rmd:
+    observables:
+      spike times:
+        file: 
+          path: ../output.dat
+          columns: [0,22]
+          scaling: [1, 1]
+        spike detection: 
+          method: threshold
+          threshold: -50
+        tolerance: 0.00
+

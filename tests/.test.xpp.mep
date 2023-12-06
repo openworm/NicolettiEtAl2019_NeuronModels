@@ -1,0 +1,10 @@
+system: Test XPP
+
+experiments:
+    rmd:
+        expected:
+            spike times: [313.47]
+    awc:
+        expected:
+            spike times: [1020.28]
+
