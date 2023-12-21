@@ -1,0 +1,149 @@
+<Lems>
+
+    <!-- 
+
+        This LEMS file has been automatically generated using PyNeuroML v1.1.10 (libNeuroML v0.5.8)
+
+     -->
+
+    <!-- Specify which component to run -->
+    <Target component="AWC" reportFile="report.txt"/>
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml"/>
+    <Include file="Networks.xml"/>
+    <Include file="Simulation.xml"/>
+
+    <Include file="AWC.model.xml"/>
+
+    <Simulation id="AWC" length="5100.0ms" step="0.1ms" target="XPP_model_0" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
+        <Display id="Exposures" title="Params" timeScale="1ms" xmin="-510.0" xmax="5610.0" ymin="-90" ymax="50">
+            <Line id="minf_shal" quantity="minf_shal" scale="1" color="#bf4e38" timeScale="1ms"/>
+            <Line id="tm_shal" quantity="tm_shal" scale="1" color="#12f543" timeScale="1ms"/>
+            <Line id="hinf_shal" quantity="hinf_shal" scale="1" color="#489fdf" timeScale="1ms"/>
+            <Line id="ths_shal" quantity="ths_shal" scale="1" color="#33d29b" timeScale="1ms"/>
+            <Line id="thf_shal" quantity="thf_shal" scale="1" color="#077f8a" timeScale="1ms"/>
+            <Line id="Ishal" quantity="Ishal" scale="1" color="#9537a6" timeScale="1ms"/>
+            <Line id="minf_kvs1" quantity="minf_kvs1" scale="1" color="#f2b4ba" timeScale="1ms"/>
+            <Line id="tm_kvs1" quantity="tm_kvs1" scale="1" color="#c0a827" timeScale="1ms"/>
+            <Line id="hinf_kvs1" quantity="hinf_kvs1" scale="1" color="#80e64f" timeScale="1ms"/>
+            <Line id="th_kvs1" quantity="th_kvs1" scale="1" color="#9e07b8" timeScale="1ms"/>
+            <Line id="I_kvs1" quantity="I_kvs1" scale="1" color="#c18b09" timeScale="1ms"/>
+            <Line id="minf_shak" quantity="minf_shak" scale="1" color="#67c7de" timeScale="1ms"/>
+            <Line id="tm_shak" quantity="tm_shak" scale="1" color="#077f34" timeScale="1ms"/>
+            <Line id="hinf_shak" quantity="hinf_shak" scale="1" color="#3febf4" timeScale="1ms"/>
+            <Line id="th_shak" quantity="th_shak" scale="1" color="#6fb1a4" timeScale="1ms"/>
+            <Line id="I_shak" quantity="I_shak" scale="1" color="#585671" timeScale="1ms"/>
+            <Line id="minf_kqt3" quantity="minf_kqt3" scale="1" color="#7b9d70" timeScale="1ms"/>
+            <Line id="tmf_kqt3" quantity="tmf_kqt3" scale="1" color="#ef65c5" timeScale="1ms"/>
+            <Line id="tms_kqt3" quantity="tms_kqt3" scale="1" color="#034288" timeScale="1ms"/>
+            <Line id="winf_kqt3" quantity="winf_kqt3" scale="1" color="#755d14" timeScale="1ms"/>
+            <Line id="tw_kqt3" quantity="tw_kqt3" scale="1" color="#cffd59" timeScale="1ms"/>
+            <Line id="sinf_kqt3" quantity="sinf_kqt3" scale="1" color="#430abe" timeScale="1ms"/>
+            <Line id="ts_kqt3" quantity="ts_kqt3" scale="1" color="#d5ba00" timeScale="1ms"/>
+            <Line id="I_kqt3" quantity="I_kqt3" scale="1" color="#4500f4" timeScale="1ms"/>
+            <Line id="minf_egl2" quantity="minf_egl2" scale="1" color="#3807a4" timeScale="1ms"/>
+            <Line id="tm_egl2" quantity="tm_egl2" scale="1" color="#34d8f2" timeScale="1ms"/>
+            <Line id="I_egl2" quantity="I_egl2" scale="1" color="#f557e4" timeScale="1ms"/>
+            <Line id="minf_kir" quantity="minf_kir" scale="1" color="#de3373" timeScale="1ms"/>
+            <Line id="tm_kir" quantity="tm_kir" scale="1" color="#1d521d" timeScale="1ms"/>
+            <Line id="I_kir" quantity="I_kir" scale="1" color="#b7e6fe" timeScale="1ms"/>
+            <Line id="minf_cca1" quantity="minf_cca1" scale="1" color="#4ea57a" timeScale="1ms"/>
+            <Line id="tm_cca1" quantity="tm_cca1" scale="1" color="#37affa" timeScale="1ms"/>
+            <Line id="hinf_cca1" quantity="hinf_cca1" scale="1" color="#3ae86f" timeScale="1ms"/>
+            <Line id="th_cca1" quantity="th_cca1" scale="1" color="#eb88bd" timeScale="1ms"/>
+            <Line id="I_cca1" quantity="I_cca1" scale="1" color="#c968e9" timeScale="1ms"/>
+            <Line id="aux Icca1" quantity="aux Icca1" scale="1" color="#d16aaa" timeScale="1ms"/>
+            <Line id="minf_unc2" quantity="minf_unc2" scale="1" color="#e5c95a" timeScale="1ms"/>
+            <Line id="tm_unc2" quantity="tm_unc2" scale="1" color="#d9cbb6" timeScale="1ms"/>
+            <Line id="hinf_unc2" quantity="hinf_unc2" scale="1" color="#ab2f0c" timeScale="1ms"/>
+            <Line id="th_unc2" quantity="th_unc2" scale="1" color="#c489c8" timeScale="1ms"/>
+            <Line id="I_unc2" quantity="I_unc2" scale="1" color="#dd096d" timeScale="1ms"/>
+            <Line id="alpha" quantity="alpha" scale="1" color="#5f990d" timeScale="1ms"/>
+            <Line id="beta" quantity="beta" scale="1" color="#7dbcf7" timeScale="1ms"/>
+            <Line id="aux Iunc2" quantity="aux Iunc2" scale="1" color="#54c007" timeScale="1ms"/>
+            <Line id="minf_egl19" quantity="minf_egl19" scale="1" color="#6e20b3" timeScale="1ms"/>
+            <Line id="tm_egl19" quantity="tm_egl19" scale="1" color="#21354a" timeScale="1ms"/>
+            <Line id="hinf_egl19" quantity="hinf_egl19" scale="1" color="#609451" timeScale="1ms"/>
+            <Line id="ths_egl19" quantity="ths_egl19" scale="1" color="#315ab6" timeScale="1ms"/>
+            <Line id="I_egl19" quantity="I_egl19" scale="1" color="#03245e" timeScale="1ms"/>
+            <Line id="alpha1" quantity="alpha1" scale="1" color="#8a846a" timeScale="1ms"/>
+            <Line id="beta1" quantity="beta1" scale="1" color="#66a094" timeScale="1ms"/>
+            <Line id="aux Iegl19" quantity="aux Iegl19" scale="1" color="#d87aa7" timeScale="1ms"/>
+            <Line id="aux hinf_egl19" quantity="aux hinf_egl19" scale="1" color="#d65725" timeScale="1ms"/>
+            <Line id="cao_nano" quantity="cao_nano" scale="1" color="#f4e524" timeScale="1ms"/>
+            <Line id="cac_nano" quantity="cac_nano" scale="1" color="#a77197" timeScale="1ms"/>
+            <Line id="kcm" quantity="kcm" scale="1" color="#bba441" timeScale="1ms"/>
+            <Line id="kom" quantity="kom" scale="1" color="#1b7b0c" timeScale="1ms"/>
+            <Line id="kop" quantity="kop" scale="1" color="#715423" timeScale="1ms"/>
+            <Line id="kcp" quantity="kcp" scale="1" color="#65d928" timeScale="1ms"/>
+            <Line id="minf_bk" quantity="minf_bk" scale="1" color="#e23eb2" timeScale="1ms"/>
+            <Line id="tm_bkunc2" quantity="tm_bkunc2" scale="1" color="#70e770" timeScale="1ms"/>
+            <Line id="I_bk" quantity="I_bk" scale="1" color="#f4c89d" timeScale="1ms"/>
+            <Line id="kcm2" quantity="kcm2" scale="1" color="#25913f" timeScale="1ms"/>
+            <Line id="kom2" quantity="kom2" scale="1" color="#06e932" timeScale="1ms"/>
+            <Line id="kop2" quantity="kop2" scale="1" color="#b58654" timeScale="1ms"/>
+            <Line id="kcp2" quantity="kcp2" scale="1" color="#223477" timeScale="1ms"/>
+            <Line id="minf_slo1" quantity="minf_slo1" scale="1" color="#f06e6b" timeScale="1ms"/>
+            <Line id="tm_slo1" quantity="tm_slo1" scale="1" color="#147e95" timeScale="1ms"/>
+            <Line id="I_slo1" quantity="I_slo1" scale="1" color="#c89bd1" timeScale="1ms"/>
+            <Line id="kcm1" quantity="kcm1" scale="1" color="#0d7e8e" timeScale="1ms"/>
+            <Line id="kom1" quantity="kom1" scale="1" color="#64ea10" timeScale="1ms"/>
+            <Line id="kop1" quantity="kop1" scale="1" color="#9051e0" timeScale="1ms"/>
+            <Line id="kcp1" quantity="kcp1" scale="1" color="#2b11d5" timeScale="1ms"/>
+            <Line id="minf_bk2" quantity="minf_bk2" scale="1" color="#64c4a2" timeScale="1ms"/>
+            <Line id="tm_bkegl19" quantity="tm_bkegl19" scale="1" color="#c49cdb" timeScale="1ms"/>
+            <Line id="I_bk2" quantity="I_bk2" scale="1" color="#9b4ae9" timeScale="1ms"/>
+            <Line id="kcm3" quantity="kcm3" scale="1" color="#c98473" timeScale="1ms"/>
+            <Line id="kom3" quantity="kom3" scale="1" color="#ae7506" timeScale="1ms"/>
+            <Line id="kop3" quantity="kop3" scale="1" color="#9f517a" timeScale="1ms"/>
+            <Line id="kcp3" quantity="kcp3" scale="1" color="#361f80" timeScale="1ms"/>
+            <Line id="minf_slo2" quantity="minf_slo2" scale="1" color="#f4899f" timeScale="1ms"/>
+            <Line id="tm_slo2" quantity="tm_slo2" scale="1" color="#4a9fdc" timeScale="1ms"/>
+            <Line id="I_slo2" quantity="I_slo2" scale="1" color="#5044e6" timeScale="1ms"/>
+            <Line id="I_ca" quantity="I_ca" scale="1" color="#5c1ab4" timeScale="1ms"/>
+            <Line id="aux I_ca" quantity="aux I_ca" scale="1" color="#f5fdc2" timeScale="1ms"/>
+            <Line id="alpha_ca" quantity="alpha_ca" scale="1" color="#59ed69" timeScale="1ms"/>
+            <Line id="J_ca1" quantity="J_ca1" scale="1" color="#ad2b99" timeScale="1ms"/>
+            <Line id="aux J_ca1" quantity="aux J_ca1" scale="1" color="#052a2b" timeScale="1ms"/>
+            <Line id="backgr2" quantity="backgr2" scale="1" color="#e64799" timeScale="1ms"/>
+            <Line id="minf_sk" quantity="minf_sk" scale="1" color="#acacfc" timeScale="1ms"/>
+            <Line id="t_sk" quantity="t_sk" scale="1" color="#2e9831" timeScale="1ms"/>
+            <Line id="I_sk" quantity="I_sk" scale="1" color="#d17cc0" timeScale="1ms"/>
+            <Line id="I_leak" quantity="I_leak" scale="1" color="#c24708" timeScale="1ms"/>
+            <Line id="I_nca" quantity="I_nca" scale="1" color="#b968f6" timeScale="1ms"/>
+            <Line id="I_tot" quantity="I_tot" scale="1" color="#85c631" timeScale="1ms"/>
+            <Line id="aux Itot" quantity="aux Itot" scale="1" color="#1bdb11" timeScale="1ms"/>
+            <Line id="rs" quantity="rs" scale="1" color="#de3e73" timeScale="1ms"/>
+            <Line id="Istim" quantity="Istim" scale="1" color="#8a6ec8" timeScale="1ms"/>
+            <Line id="m_shal" quantity="m_shal" scale="1" color="#6746d0" timeScale="1ms"/>
+            <Line id="hf_shal" quantity="hf_shal" scale="1" color="#3a6a27" timeScale="1ms"/>
+            <Line id="hs_shal" quantity="hs_shal" scale="1" color="#72485e" timeScale="1ms"/>
+            <Line id="m_kvs1" quantity="m_kvs1" scale="1" color="#3b6959" timeScale="1ms"/>
+            <Line id="h_kvs1" quantity="h_kvs1" scale="1" color="#f08f12" timeScale="1ms"/>
+            <Line id="m_shak" quantity="m_shak" scale="1" color="#993d4a" timeScale="1ms"/>
+            <Line id="h_shak" quantity="h_shak" scale="1" color="#e6c19b" timeScale="1ms"/>
+            <Line id="mf_kqt3" quantity="mf_kqt3" scale="1" color="#95f9bd" timeScale="1ms"/>
+            <Line id="ms_kqt3" quantity="ms_kqt3" scale="1" color="#edab04" timeScale="1ms"/>
+            <Line id="w_kqt3" quantity="w_kqt3" scale="1" color="#247046" timeScale="1ms"/>
+            <Line id="s_kqt3" quantity="s_kqt3" scale="1" color="#07ca41" timeScale="1ms"/>
+            <Line id="m_egl2" quantity="m_egl2" scale="1" color="#7d7616" timeScale="1ms"/>
+            <Line id="m_kir" quantity="m_kir" scale="1" color="#3dc0b6" timeScale="1ms"/>
+            <Line id="m_cca1" quantity="m_cca1" scale="1" color="#65fcc2" timeScale="1ms"/>
+            <Line id="h_cca1" quantity="h_cca1" scale="1" color="#cf77c4" timeScale="1ms"/>
+            <Line id="m_unc2" quantity="m_unc2" scale="1" color="#593d45" timeScale="1ms"/>
+            <Line id="h_unc2" quantity="h_unc2" scale="1" color="#38a81a" timeScale="1ms"/>
+            <Line id="m_egl19" quantity="m_egl19" scale="1" color="#24d917" timeScale="1ms"/>
+            <Line id="hs_egl19" quantity="hs_egl19" scale="1" color="#676ee4" timeScale="1ms"/>
+            <Line id="mbk" quantity="mbk" scale="1" color="#513441" timeScale="1ms"/>
+            <Line id="mslo1" quantity="mslo1" scale="1" color="#6f9e68" timeScale="1ms"/>
+            <Line id="mbk2" quantity="mbk2" scale="1" color="#95dda7" timeScale="1ms"/>
+            <Line id="mslo2" quantity="mslo2" scale="1" color="#a6793e" timeScale="1ms"/>
+            <Line id="ca_intra1" quantity="ca_intra1" scale="1" color="#f1d1b5" timeScale="1ms"/>
+            <Line id="m_sk" quantity="m_sk" scale="1" color="#461451" timeScale="1ms"/>
+            <Line id="v" quantity="v" scale="1" color="#b16681" timeScale="1ms"/>
+        </Display>
+
+    </Simulation>
+
+</Lems>

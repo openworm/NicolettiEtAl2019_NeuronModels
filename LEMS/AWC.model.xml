@@ -1,0 +1,534 @@
+<?xml version="1.0" ?>
+<Lems xmlns="http://www.neuroml.org/lems/0.7.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/lems/0.7.6 https://raw.githubusercontent.com/LEMS/LEMS/development/Schemas/LEMS/LEMS_v0.7.6.xsd">
+  <ComponentType name="XPP_model" description="">
+    <Parameter name="pi" dimension="none"/>
+    <Parameter name="ek" dimension="none"/>
+    <Parameter name="eca" dimension="none"/>
+    <Parameter name="eleak" dimension="none"/>
+    <Parameter name="ena" dimension="none"/>
+    <Parameter name="gshal" dimension="none"/>
+    <Parameter name="shalsfhit" dimension="none"/>
+    <Parameter name="vashal" dimension="none"/>
+    <Parameter name="kashal" dimension="none"/>
+    <Parameter name="kishal" dimension="none"/>
+    <Parameter name="vishal" dimension="none"/>
+    <Parameter name="ptmshal1" dimension="none"/>
+    <Parameter name="ptmshal2" dimension="none"/>
+    <Parameter name="ptmshal3" dimension="none"/>
+    <Parameter name="ptmshal4" dimension="none"/>
+    <Parameter name="ptmshal5" dimension="none"/>
+    <Parameter name="ptmshal6" dimension="none"/>
+    <Parameter name="pthfshal1" dimension="none"/>
+    <Parameter name="pthfshal2" dimension="none"/>
+    <Parameter name="pthfshal3" dimension="none"/>
+    <Parameter name="pthfshal4" dimension="none"/>
+    <Parameter name="pthsshal1" dimension="none"/>
+    <Parameter name="pthsshal2" dimension="none"/>
+    <Parameter name="pthsshal3" dimension="none"/>
+    <Parameter name="pthsshal4" dimension="none"/>
+    <Parameter name="cshal" dimension="none"/>
+    <Parameter name="gkvs1" dimension="none"/>
+    <Parameter name="skvs1" dimension="none"/>
+    <Parameter name="va_kvs1" dimension="none"/>
+    <Parameter name="ka_kvs1" dimension="none"/>
+    <Parameter name="p1tmkvs1" dimension="none"/>
+    <Parameter name="p2tmkvs1" dimension="none"/>
+    <Parameter name="p3tmkvs1" dimension="none"/>
+    <Parameter name="p4tmkvs1" dimension="none"/>
+    <Parameter name="vi_kvs1" dimension="none"/>
+    <Parameter name="ki_kvs1" dimension="none"/>
+    <Parameter name="p1thkvs1" dimension="none"/>
+    <Parameter name="p2thkvs1" dimension="none"/>
+    <Parameter name="p3thkvs1" dimension="none"/>
+    <Parameter name="p4thkvs1" dimension="none"/>
+    <Parameter name="cthkvs1" dimension="none"/>
+    <Parameter name="gshak" dimension="none"/>
+    <Parameter name="vashak" dimension="none"/>
+    <Parameter name="kashak" dimension="none"/>
+    <Parameter name="ptmshak1" dimension="none"/>
+    <Parameter name="ptmshak2" dimension="none"/>
+    <Parameter name="ptmshak3" dimension="none"/>
+    <Parameter name="ptmshak4" dimension="none"/>
+    <Parameter name="ptmshak5" dimension="none"/>
+    <Parameter name="shiftV05" dimension="none"/>
+    <Parameter name="kishak" dimension="none"/>
+    <Parameter name="vishak" dimension="none"/>
+    <Parameter name="pthshak" dimension="none"/>
+    <Parameter name="gkqt3" dimension="none"/>
+    <Parameter name="va_kqt3" dimension="none"/>
+    <Parameter name="ka_kqt3" dimension="none"/>
+    <Parameter name="ckqt3" dimension="none"/>
+    <Parameter name="p1tmskqt3" dimension="none"/>
+    <Parameter name="p2tmskqt3" dimension="none"/>
+    <Parameter name="p3tmskqt3" dimension="none"/>
+    <Parameter name="p4tmskqt3" dimension="none"/>
+    <Parameter name="p5tmskqt3" dimension="none"/>
+    <Parameter name="p6tmskqt3" dimension="none"/>
+    <Parameter name="p7tmskqt3" dimension="none"/>
+    <Parameter name="p1tmfkqt3" dimension="none"/>
+    <Parameter name="p2tmfkqt3" dimension="none"/>
+    <Parameter name="p3tmfkqt3" dimension="none"/>
+    <Parameter name="constkqt3" dimension="none"/>
+    <Parameter name="w1" dimension="none"/>
+    <Parameter name="w2" dimension="none"/>
+    <Parameter name="w3" dimension="none"/>
+    <Parameter name="w4" dimension="none"/>
+    <Parameter name="tw1" dimension="none"/>
+    <Parameter name="tw2" dimension="none"/>
+    <Parameter name="tw3" dimension="none"/>
+    <Parameter name="tw4" dimension="none"/>
+    <Parameter name="sq1" dimension="none"/>
+    <Parameter name="sq2" dimension="none"/>
+    <Parameter name="sq3" dimension="none"/>
+    <Parameter name="sq4" dimension="none"/>
+    <Parameter name="tsq1" dimension="none"/>
+    <Parameter name="gegl2" dimension="none"/>
+    <Parameter name="va_egl2" dimension="none"/>
+    <Parameter name="ka_egl2" dimension="none"/>
+    <Parameter name="stmegl2" dimension="none"/>
+    <Parameter name="cegl2" dimension="none"/>
+    <Parameter name="p1tmegl2" dimension="none"/>
+    <Parameter name="p2tmegl2" dimension="none"/>
+    <Parameter name="p3tmegl2" dimension="none"/>
+    <Parameter name="p4tmegl2" dimension="none"/>
+    <Parameter name="fegl2" dimension="none"/>
+    <Parameter name="gkir" dimension="none"/>
+    <Parameter name="va_kir" dimension="none"/>
+    <Parameter name="ka_kir" dimension="none"/>
+    <Parameter name="p1tmkir" dimension="none"/>
+    <Parameter name="p2tmkir" dimension="none"/>
+    <Parameter name="p3tmkir" dimension="none"/>
+    <Parameter name="p4tmkir" dimension="none"/>
+    <Parameter name="p5tmkir" dimension="none"/>
+    <Parameter name="p6tmkir" dimension="none"/>
+    <Parameter name="gcca1" dimension="none"/>
+    <Parameter name="va_cca1" dimension="none"/>
+    <Parameter name="ka_cca1" dimension="none"/>
+    <Parameter name="sscca1" dimension="none"/>
+    <Parameter name="stmcca1" dimension="none"/>
+    <Parameter name="sthcca1" dimension="none"/>
+    <Parameter name="sshcca1" dimension="none"/>
+    <Parameter name="constmcca1" dimension="none"/>
+    <Parameter name="fcca" dimension="none"/>
+    <Parameter name="f2cca1" dimension="none"/>
+    <Parameter name="f3ca" dimension="none"/>
+    <Parameter name="f4ca" dimension="none"/>
+    <Parameter name="p1tmcca1" dimension="none"/>
+    <Parameter name="p2tmcca1" dimension="none"/>
+    <Parameter name="p3tmcca1" dimension="none"/>
+    <Parameter name="p4tmcca1" dimension="none"/>
+    <Parameter name="vi_cca1" dimension="none"/>
+    <Parameter name="ki_cca1" dimension="none"/>
+    <Parameter name="consthcca1" dimension="none"/>
+    <Parameter name="p1thcca1" dimension="none"/>
+    <Parameter name="p2thcca1" dimension="none"/>
+    <Parameter name="p3thcca1" dimension="none"/>
+    <Parameter name="p4thcca1" dimension="none"/>
+    <Parameter name="gunc2" dimension="none"/>
+    <Parameter name="va_unc2" dimension="none"/>
+    <Parameter name="ka_unc2" dimension="none"/>
+    <Parameter name="stm2" dimension="none"/>
+    <Parameter name="p1tmunc2" dimension="none"/>
+    <Parameter name="p2tmunc2" dimension="none"/>
+    <Parameter name="p3tmunc2" dimension="none"/>
+    <Parameter name="p4tmunc2" dimension="none"/>
+    <Parameter name="p5tmunc2" dimension="none"/>
+    <Parameter name="shiftmunc2" dimension="none"/>
+    <Parameter name="constmunc2" dimension="none"/>
+    <Parameter name="vi_unc2" dimension="none"/>
+    <Parameter name="ki_unc2" dimension="none"/>
+    <Parameter name="sth2" dimension="none"/>
+    <Parameter name="p1thunc2" dimension="none"/>
+    <Parameter name="p2thunc2" dimension="none"/>
+    <Parameter name="p3thunc2" dimension="none"/>
+    <Parameter name="p4thunc2" dimension="none"/>
+    <Parameter name="p5thunc2" dimension="none"/>
+    <Parameter name="p6thunc2" dimension="none"/>
+    <Parameter name="consthunc2" dimension="none"/>
+    <Parameter name="shifthunc2" dimension="none"/>
+    <Parameter name="gegl19" dimension="none"/>
+    <Parameter name="va_egl19" dimension="none"/>
+    <Parameter name="ka_egl19" dimension="none"/>
+    <Parameter name="stm19" dimension="none"/>
+    <Parameter name="sth19" dimension="none"/>
+    <Parameter name="pdg1" dimension="none"/>
+    <Parameter name="pdg2" dimension="none"/>
+    <Parameter name="pdg3" dimension="none"/>
+    <Parameter name="pdg4" dimension="none"/>
+    <Parameter name="pdg5" dimension="none"/>
+    <Parameter name="pdg6" dimension="none"/>
+    <Parameter name="pdg7" dimension="none"/>
+    <Parameter name="stau19" dimension="none"/>
+    <Parameter name="p1hegl19" dimension="none"/>
+    <Parameter name="p2hegl19" dimension="none"/>
+    <Parameter name="p3hegl19" dimension="none"/>
+    <Parameter name="p4hegl19" dimension="none"/>
+    <Parameter name="p5hegl19" dimension="none"/>
+    <Parameter name="p6hegl19" dimension="none"/>
+    <Parameter name="p7hegl19" dimension="none"/>
+    <Parameter name="p8hegl19" dimension="none"/>
+    <Parameter name="pds1" dimension="none"/>
+    <Parameter name="pds2" dimension="none"/>
+    <Parameter name="pds3" dimension="none"/>
+    <Parameter name="pds4" dimension="none"/>
+    <Parameter name="pds5" dimension="none"/>
+    <Parameter name="pds6" dimension="none"/>
+    <Parameter name="pds7" dimension="none"/>
+    <Parameter name="pds8" dimension="none"/>
+    <Parameter name="pds9" dimension="none"/>
+    <Parameter name="pds10" dimension="none"/>
+    <Parameter name="pds11" dimension="none"/>
+    <Parameter name="shiftdps" dimension="none"/>
+    <Parameter name="r" dimension="none"/>
+    <Parameter name="d" dimension="none"/>
+    <Parameter name="F" dimension="none"/>
+    <Parameter name="kb" dimension="none"/>
+    <Parameter name="b" dimension="none"/>
+    <Parameter name="backgr" dimension="none"/>
+    <Parameter name="gsc" dimension="none"/>
+    <Parameter name="wom" dimension="none"/>
+    <Parameter name="wyx" dimension="none"/>
+    <Parameter name="kyx" dimension="none"/>
+    <Parameter name="nyx" dimension="none"/>
+    <Parameter name="wop" dimension="none"/>
+    <Parameter name="wxy" dimension="none"/>
+    <Parameter name="kxy" dimension="none"/>
+    <Parameter name="nxy" dimension="none"/>
+    <Parameter name="gbk" dimension="none"/>
+    <Parameter name="gslo1" dimension="none"/>
+    <Parameter name="wom1" dimension="none"/>
+    <Parameter name="wyx1" dimension="none"/>
+    <Parameter name="kyx1" dimension="none"/>
+    <Parameter name="nyx1" dimension="none"/>
+    <Parameter name="wop1" dimension="none"/>
+    <Parameter name="wxy1" dimension="none"/>
+    <Parameter name="kxy1" dimension="none"/>
+    <Parameter name="nxy1" dimension="none"/>
+    <Parameter name="gbk2" dimension="none"/>
+    <Parameter name="gslo2" dimension="none"/>
+    <Parameter name="fd" dimension="none"/>
+    <Parameter name="fca" dimension="none"/>
+    <Parameter name="t_ca" dimension="none"/>
+    <Parameter name="rcell" dimension="none"/>
+    <Parameter name="vol" dimension="none"/>
+    <Parameter name="gca" dimension="none"/>
+    <Parameter name="k_sk2" dimension="none"/>
+    <Parameter name="gleak" dimension="none"/>
+    <Parameter name="gnca" dimension="none"/>
+    <Parameter name="ih" dimension="none"/>
+    <Parameter name="c" dimension="none"/>
+    <Parameter name="iclamp" dimension="none"/>
+    <Parameter name="ton" dimension="none"/>
+    <Parameter name="toff" dimension="none"/>
+    <Constant name="MSEC" value="1ms" dimension="time"/>
+    <Exposure name="xpp_time" dimension="none"/>
+    <Exposure name="minf_shal" dimension="none"/>
+    <Exposure name="tm_shal" dimension="none"/>
+    <Exposure name="hinf_shal" dimension="none"/>
+    <Exposure name="ths_shal" dimension="none"/>
+    <Exposure name="thf_shal" dimension="none"/>
+    <Exposure name="Ishal" dimension="none"/>
+    <Exposure name="minf_kvs1" dimension="none"/>
+    <Exposure name="tm_kvs1" dimension="none"/>
+    <Exposure name="hinf_kvs1" dimension="none"/>
+    <Exposure name="th_kvs1" dimension="none"/>
+    <Exposure name="I_kvs1" dimension="none"/>
+    <Exposure name="minf_shak" dimension="none"/>
+    <Exposure name="tm_shak" dimension="none"/>
+    <Exposure name="hinf_shak" dimension="none"/>
+    <Exposure name="th_shak" dimension="none"/>
+    <Exposure name="I_shak" dimension="none"/>
+    <Exposure name="minf_kqt3" dimension="none"/>
+    <Exposure name="tmf_kqt3" dimension="none"/>
+    <Exposure name="tms_kqt3" dimension="none"/>
+    <Exposure name="winf_kqt3" dimension="none"/>
+    <Exposure name="tw_kqt3" dimension="none"/>
+    <Exposure name="sinf_kqt3" dimension="none"/>
+    <Exposure name="ts_kqt3" dimension="none"/>
+    <Exposure name="I_kqt3" dimension="none"/>
+    <Exposure name="minf_egl2" dimension="none"/>
+    <Exposure name="tm_egl2" dimension="none"/>
+    <Exposure name="I_egl2" dimension="none"/>
+    <Exposure name="minf_kir" dimension="none"/>
+    <Exposure name="tm_kir" dimension="none"/>
+    <Exposure name="I_kir" dimension="none"/>
+    <Exposure name="minf_cca1" dimension="none"/>
+    <Exposure name="tm_cca1" dimension="none"/>
+    <Exposure name="hinf_cca1" dimension="none"/>
+    <Exposure name="th_cca1" dimension="none"/>
+    <Exposure name="I_cca1" dimension="none"/>
+    <Exposure name="aux Icca1" dimension="none"/>
+    <Exposure name="minf_unc2" dimension="none"/>
+    <Exposure name="tm_unc2" dimension="none"/>
+    <Exposure name="hinf_unc2" dimension="none"/>
+    <Exposure name="th_unc2" dimension="none"/>
+    <Exposure name="I_unc2" dimension="none"/>
+    <Exposure name="alpha" dimension="none"/>
+    <Exposure name="beta" dimension="none"/>
+    <Exposure name="aux Iunc2" dimension="none"/>
+    <Exposure name="minf_egl19" dimension="none"/>
+    <Exposure name="tm_egl19" dimension="none"/>
+    <Exposure name="hinf_egl19" dimension="none"/>
+    <Exposure name="ths_egl19" dimension="none"/>
+    <Exposure name="I_egl19" dimension="none"/>
+    <Exposure name="alpha1" dimension="none"/>
+    <Exposure name="beta1" dimension="none"/>
+    <Exposure name="aux Iegl19" dimension="none"/>
+    <Exposure name="aux hinf_egl19" dimension="none"/>
+    <Exposure name="cao_nano" dimension="none"/>
+    <Exposure name="cac_nano" dimension="none"/>
+    <Exposure name="kcm" dimension="none"/>
+    <Exposure name="kom" dimension="none"/>
+    <Exposure name="kop" dimension="none"/>
+    <Exposure name="kcp" dimension="none"/>
+    <Exposure name="minf_bk" dimension="none"/>
+    <Exposure name="tm_bkunc2" dimension="none"/>
+    <Exposure name="I_bk" dimension="none"/>
+    <Exposure name="kcm2" dimension="none"/>
+    <Exposure name="kom2" dimension="none"/>
+    <Exposure name="kop2" dimension="none"/>
+    <Exposure name="kcp2" dimension="none"/>
+    <Exposure name="minf_slo1" dimension="none"/>
+    <Exposure name="tm_slo1" dimension="none"/>
+    <Exposure name="I_slo1" dimension="none"/>
+    <Exposure name="kcm1" dimension="none"/>
+    <Exposure name="kom1" dimension="none"/>
+    <Exposure name="kop1" dimension="none"/>
+    <Exposure name="kcp1" dimension="none"/>
+    <Exposure name="minf_bk2" dimension="none"/>
+    <Exposure name="tm_bkegl19" dimension="none"/>
+    <Exposure name="I_bk2" dimension="none"/>
+    <Exposure name="kcm3" dimension="none"/>
+    <Exposure name="kom3" dimension="none"/>
+    <Exposure name="kop3" dimension="none"/>
+    <Exposure name="kcp3" dimension="none"/>
+    <Exposure name="minf_slo2" dimension="none"/>
+    <Exposure name="tm_slo2" dimension="none"/>
+    <Exposure name="I_slo2" dimension="none"/>
+    <Exposure name="I_ca" dimension="none"/>
+    <Exposure name="aux I_ca" dimension="none"/>
+    <Exposure name="alpha_ca" dimension="none"/>
+    <Exposure name="J_ca1" dimension="none"/>
+    <Exposure name="aux J_ca1" dimension="none"/>
+    <Exposure name="backgr2" dimension="none"/>
+    <Exposure name="minf_sk" dimension="none"/>
+    <Exposure name="t_sk" dimension="none"/>
+    <Exposure name="I_sk" dimension="none"/>
+    <Exposure name="I_leak" dimension="none"/>
+    <Exposure name="I_nca" dimension="none"/>
+    <Exposure name="I_tot" dimension="none"/>
+    <Exposure name="aux Itot" dimension="none"/>
+    <Exposure name="rs" dimension="none"/>
+    <Exposure name="Istim" dimension="none"/>
+    <Exposure name="m_shal" dimension="none"/>
+    <Exposure name="hf_shal" dimension="none"/>
+    <Exposure name="hs_shal" dimension="none"/>
+    <Exposure name="m_kvs1" dimension="none"/>
+    <Exposure name="h_kvs1" dimension="none"/>
+    <Exposure name="m_shak" dimension="none"/>
+    <Exposure name="h_shak" dimension="none"/>
+    <Exposure name="mf_kqt3" dimension="none"/>
+    <Exposure name="ms_kqt3" dimension="none"/>
+    <Exposure name="w_kqt3" dimension="none"/>
+    <Exposure name="s_kqt3" dimension="none"/>
+    <Exposure name="m_egl2" dimension="none"/>
+    <Exposure name="m_kir" dimension="none"/>
+    <Exposure name="m_cca1" dimension="none"/>
+    <Exposure name="h_cca1" dimension="none"/>
+    <Exposure name="m_unc2" dimension="none"/>
+    <Exposure name="h_unc2" dimension="none"/>
+    <Exposure name="m_egl19" dimension="none"/>
+    <Exposure name="hs_egl19" dimension="none"/>
+    <Exposure name="mbk" dimension="none"/>
+    <Exposure name="mslo1" dimension="none"/>
+    <Exposure name="mbk2" dimension="none"/>
+    <Exposure name="mslo2" dimension="none"/>
+    <Exposure name="ca_intra1" dimension="none"/>
+    <Exposure name="m_sk" dimension="none"/>
+    <Exposure name="v" dimension="none"/>
+    <Dynamics>
+      <StateVariable name="m_shal" dimension="none" exposure="m_shal"/>
+      <StateVariable name="hf_shal" dimension="none" exposure="hf_shal"/>
+      <StateVariable name="hs_shal" dimension="none" exposure="hs_shal"/>
+      <StateVariable name="m_kvs1" dimension="none" exposure="m_kvs1"/>
+      <StateVariable name="h_kvs1" dimension="none" exposure="h_kvs1"/>
+      <StateVariable name="m_shak" dimension="none" exposure="m_shak"/>
+      <StateVariable name="h_shak" dimension="none" exposure="h_shak"/>
+      <StateVariable name="mf_kqt3" dimension="none" exposure="mf_kqt3"/>
+      <StateVariable name="ms_kqt3" dimension="none" exposure="ms_kqt3"/>
+      <StateVariable name="w_kqt3" dimension="none" exposure="w_kqt3"/>
+      <StateVariable name="s_kqt3" dimension="none" exposure="s_kqt3"/>
+      <StateVariable name="m_egl2" dimension="none" exposure="m_egl2"/>
+      <StateVariable name="m_kir" dimension="none" exposure="m_kir"/>
+      <StateVariable name="m_cca1" dimension="none" exposure="m_cca1"/>
+      <StateVariable name="h_cca1" dimension="none" exposure="h_cca1"/>
+      <StateVariable name="m_unc2" dimension="none" exposure="m_unc2"/>
+      <StateVariable name="h_unc2" dimension="none" exposure="h_unc2"/>
+      <StateVariable name="m_egl19" dimension="none" exposure="m_egl19"/>
+      <StateVariable name="hs_egl19" dimension="none" exposure="hs_egl19"/>
+      <StateVariable name="mbk" dimension="none" exposure="mbk"/>
+      <StateVariable name="mslo1" dimension="none" exposure="mslo1"/>
+      <StateVariable name="mbk2" dimension="none" exposure="mbk2"/>
+      <StateVariable name="mslo2" dimension="none" exposure="mslo2"/>
+      <StateVariable name="ca_intra1" dimension="none" exposure="ca_intra1"/>
+      <StateVariable name="m_sk" dimension="none" exposure="m_sk"/>
+      <StateVariable name="v" dimension="none" exposure="v"/>
+      <DerivedVariable name="xpp_time" dimension="none" exposure="xpp_time" value="t/MSEC"/>
+      <DerivedVariable name="minf_shal" dimension="none" exposure="minf_shal" value="1/(1+exp(-(v-vashal+shalsfhit)/(kashal)))"/>
+      <DerivedVariable name="tm_shal" dimension="none" exposure="tm_shal" value="(ptmshal1/(exp(-(v-ptmshal2)/ptmshal3)+exp((v-ptmshal4)/ptmshal5))+ptmshal6)*cshal"/>
+      <DerivedVariable name="hinf_shal" dimension="none" exposure="hinf_shal" value="1/(1+exp((v-vishal+shalsfhit)/(kishal)))"/>
+      <DerivedVariable name="ths_shal" dimension="none" exposure="ths_shal" value="(pthsshal1/(1+exp((v-pthsshal2)/pthsshal3))+pthsshal4)*cshal"/>
+      <DerivedVariable name="thf_shal" dimension="none" exposure="thf_shal" value="(pthfshal1/(1+exp((v-pthfshal2)/pthfshal3))+pthfshal4)*cshal"/>
+      <DerivedVariable name="Ishal" dimension="none" exposure="Ishal" value="gshal*(m_shal^3)*(0.7*hf_shal+0.3*hs_shal)*(v-ek)"/>
+      <DerivedVariable name="minf_kvs1" dimension="none" exposure="minf_kvs1" value="1/(1+exp(-(v-va_kvs1+skvs1)/ka_kvs1))"/>
+      <DerivedVariable name="tm_kvs1" dimension="none" exposure="tm_kvs1" value="(p1tmkvs1/(1+exp(-(v-p2tmkvs1)/p3tmkvs1))+p4tmkvs1)/10"/>
+      <DerivedVariable name="hinf_kvs1" dimension="none" exposure="hinf_kvs1" value="1/(1+exp((v-vi_kvs1+skvs1)/(ki_kvs1)))"/>
+      <DerivedVariable name="th_kvs1" dimension="none" exposure="th_kvs1" value="(p1thkvs1/(1+exp(-(v-p2thkvs1)/p3thkvs1))+p4thkvs1)*cthkvs1"/>
+      <DerivedVariable name="I_kvs1" dimension="none" exposure="I_kvs1" value="gkvs1*m_kvs1*h_kvs1*(v-ek)"/>
+      <DerivedVariable name="minf_shak" dimension="none" exposure="minf_shak" value="1/(1+exp(-(v-vashak+shiftV05)/kashak))"/>
+      <DerivedVariable name="tm_shak" dimension="none" exposure="tm_shak" value="ptmshak1/(exp(-(v-(ptmshak2+shiftV05))/ptmshak4)+exp((v-(ptmshak2+shiftV05))/ptmshak3))+ptmshak5"/>
+      <DerivedVariable name="hinf_shak" dimension="none" exposure="hinf_shak" value="1/(1+exp((v-vishak+shiftV05)/kishak))"/>
+      <DerivedVariable name="th_shak" dimension="none" exposure="th_shak" value="pthshak"/>
+      <DerivedVariable name="I_shak" dimension="none" exposure="I_shak" value="gshak*m_shak*h_shak*(v-ek)"/>
+      <DerivedVariable name="minf_kqt3" dimension="none" exposure="minf_kqt3" value="1/(1+exp(-(v-va_kqt3+constkqt3)/ka_kqt3))"/>
+      <DerivedVariable name="tmf_kqt3" dimension="none" exposure="tmf_kqt3" value="(p1tmfkqt3/(1+((v+p2tmfkqt3)/p3tmfkqt3)^2))*ckqt3"/>
+      <DerivedVariable name="tms_kqt3" dimension="none" exposure="tms_kqt3" value="(p1tmskqt3-p2tmskqt3/(1+10^(p3tmskqt3*(p4tmskqt3-v)))-p5tmskqt3/(1+10^(p6tmskqt3*(v+p7tmskqt3))))*ckqt3"/>
+      <DerivedVariable name="winf_kqt3" dimension="none" exposure="winf_kqt3" value="w1+(w2/(1+exp((v+w3)/w4)))"/>
+      <DerivedVariable name="tw_kqt3" dimension="none" exposure="tw_kqt3" value="(tw1+(tw2/(1+((v+tw3)/tw4)^2)))*ckqt3"/>
+      <DerivedVariable name="sinf_kqt3" dimension="none" exposure="sinf_kqt3" value="sq1+(sq2/(1+exp((v+sq3)/sq4)))"/>
+      <DerivedVariable name="ts_kqt3" dimension="none" exposure="ts_kqt3" value="tsq1*ckqt3"/>
+      <DerivedVariable name="I_kqt3" dimension="none" exposure="I_kqt3" value="gkqt3*(0.3*mf_kqt3+0.7*ms_kqt3)*w_kqt3*s_kqt3*(v-ek)"/>
+      <DerivedVariable name="minf_egl2" dimension="none" exposure="minf_egl2" value="1/(1+exp(-(v-va_egl2+stmegl2)/(ka_egl2*fegl2)))"/>
+      <DerivedVariable name="tm_egl2" dimension="none" exposure="tm_egl2" value="((p1tmegl2/(1+exp((v-p2tmegl2+stmegl2)/p3tmegl2)))+p4tmegl2)*cegl2"/>
+      <DerivedVariable name="I_egl2" dimension="none" exposure="I_egl2" value="gegl2*m_egl2*(v-ek)"/>
+      <DerivedVariable name="minf_kir" dimension="none" exposure="minf_kir" value="1/(1+exp((v-va_kir+30)/ka_kir))"/>
+      <DerivedVariable name="tm_kir" dimension="none" exposure="tm_kir" value="p1tmkir/(exp(-(v-p2tmkir)/p3tmkir)+exp((v-p4tmkir)/p5tmkir))+p6tmkir"/>
+      <DerivedVariable name="I_kir" dimension="none" exposure="I_kir" value="gkir*m_kir*(v-ek)"/>
+      <DerivedVariable name="minf_cca1" dimension="none" exposure="minf_cca1" value="1/(1+exp(-(v-va_cca1+sscca1)/(ka_cca1*fcca)))"/>
+      <DerivedVariable name="tm_cca1" dimension="none" exposure="tm_cca1" value="((p1tmcca1/(1+exp(-(v-p2tmcca1+stmcca1)/(p3tmcca1*f3ca))))+p4tmcca1)*constmcca1"/>
+      <DerivedVariable name="hinf_cca1" dimension="none" exposure="hinf_cca1" value="1/(1+exp((v-vi_cca1+sshcca1)/(ki_cca1*f2cca1)))"/>
+      <DerivedVariable name="th_cca1" dimension="none" exposure="th_cca1" value="((p1thcca1/(1+exp((v-p2thcca1+sthcca1)/(p3thcca1*f4ca))))+p4thcca1)*consthcca1"/>
+      <DerivedVariable name="I_cca1" dimension="none" exposure="I_cca1" value="gcca1*m_cca1^2*h_cca1*(v-eca)"/>
+      <DerivedVariable name="aux Icca1" dimension="none" exposure="aux Icca1" value="I_cca1"/>
+      <DerivedVariable name="minf_unc2" dimension="none" exposure="minf_unc2" value="1/(1+exp(-(v-va_unc2+stm2)/(ka_unc2)))"/>
+      <DerivedVariable name="tm_unc2" dimension="none" exposure="tm_unc2" value="(p1tmunc2/(exp(-(v-p2tmunc2+shiftmunc2)/(p3tmunc2))+exp((v-p2tmunc2+shiftmunc2)/(p4tmunc2)))+p5tmunc2)*constmunc2"/>
+      <DerivedVariable name="hinf_unc2" dimension="none" exposure="hinf_unc2" value="1/(1+exp((v-vi_unc2+sth2)/(ki_unc2)))"/>
+      <DerivedVariable name="th_unc2" dimension="none" exposure="th_unc2" value="(p1thunc2/(1+exp((v-p2thunc2+shifthunc2)/(p3thunc2)))+p4thunc2/(1+exp(-(v-p5thunc2+shifthunc2)/(p6thunc2))))*consthunc2"/>
+      <DerivedVariable name="I_unc2" dimension="none" exposure="I_unc2" value="gunc2*m_unc2*h_unc2*(v-eca)"/>
+      <DerivedVariable name="alpha" dimension="none" exposure="alpha" value="minf_unc2/tm_unc2"/>
+      <DerivedVariable name="beta" dimension="none" exposure="beta" value="(1/tm_unc2)-alpha"/>
+      <DerivedVariable name="aux Iunc2" dimension="none" exposure="aux Iunc2" value="I_unc2"/>
+      <DerivedVariable name="minf_egl19" dimension="none" exposure="minf_egl19" value="1/(1+exp(-(v-va_egl19+stm19)/ka_egl19))"/>
+      <DerivedVariable name="tm_egl19" dimension="none" exposure="tm_egl19" value="(pdg1+(pdg2*exp(-(v-pdg3+stau19)^2/(pdg4)^2))+(pdg5*exp(-(v-pdg6+stau19)^2/(pdg7)^2)))"/>
+      <DerivedVariable name="hinf_egl19" dimension="none" exposure="hinf_egl19" value="((p1hegl19/(1+exp(-(v-p2hegl19+sth19)/p3hegl19))+p4hegl19)*(p5hegl19/(1+exp((v-p6hegl19+sth19)/p7hegl19))+p8hegl19))"/>
+      <DerivedVariable name="ths_egl19" dimension="none" exposure="ths_egl19" value="pds1*(((pds2*pds3)/(1+exp((v-pds4+shiftdps)/pds5)))+pds6+((pds7*pds8)/(1+exp((v-pds9+shiftdps)/pds10)))+pds11)"/>
+      <DerivedVariable name="I_egl19" dimension="none" exposure="I_egl19" value="gegl19*m_egl19*hs_egl19*(v-eca)"/>
+      <DerivedVariable name="alpha1" dimension="none" exposure="alpha1" value="minf_egl19/tm_egl19"/>
+      <DerivedVariable name="beta1" dimension="none" exposure="beta1" value="(1/tm_egl19)-alpha1"/>
+      <DerivedVariable name="aux Iegl19" dimension="none" exposure="aux Iegl19" value="I_egl19"/>
+      <DerivedVariable name="aux hinf_egl19" dimension="none" exposure="aux hinf_egl19" value="hinf_egl19"/>
+      <DerivedVariable name="cao_nano" dimension="none" exposure="cao_nano" value="(((abs(gsc*(v-eca)*1e-3)/(8*pi*r*d*F))*exp(-r/sqrt(d/(kb*b))))*1e6*1e-3 )+backgr"/>
+      <DerivedVariable name="cac_nano" dimension="none" exposure="cac_nano" value="backgr"/>
+      <DerivedVariable name="kcm" dimension="none" exposure="kcm" value="wom*exp(-wyx*v)*(1/(1+((cac_nano)/kyx)^nyx))"/>
+      <DerivedVariable name="kom" dimension="none" exposure="kom" value="wom*exp(-wyx*v)*(1/(1+((cao_nano)/kyx)^nyx))"/>
+      <DerivedVariable name="kop" dimension="none" exposure="kop" value="wop*exp(-wxy*v)*(1/(1+(kxy/(cao_nano))^nxy))"/>
+      <DerivedVariable name="kcp" dimension="none" exposure="kcp" value="0"/>
+      <DerivedVariable name="minf_bk" dimension="none" exposure="minf_bk" value="(m_unc2*kop*(alpha+beta+kcm))/((kop+kom)*(kcm+alpha)+(beta*kcm))"/>
+      <DerivedVariable name="tm_bkunc2" dimension="none" exposure="tm_bkunc2" value="((alpha+beta+kcm)/((kop+kom)*(kcm+alpha)+(beta*kcm)))"/>
+      <DerivedVariable name="I_bk" dimension="none" exposure="I_bk" value="gbk*mbk*h_unc2*(v-ek)"/>
+      <DerivedVariable name="kcm2" dimension="none" exposure="kcm2" value="wom*exp(-wyx*v)*(1/(1+((cac_nano)/kyx)^nyx))"/>
+      <DerivedVariable name="kom2" dimension="none" exposure="kom2" value="wom*exp(-wyx*v)*(1/(1+((cao_nano)/kyx)^nyx))"/>
+      <DerivedVariable name="kop2" dimension="none" exposure="kop2" value="wop*exp(-wxy*v)*(1/(1+(kxy/(cao_nano))^nxy))"/>
+      <DerivedVariable name="kcp2" dimension="none" exposure="kcp2" value="0"/>
+      <DerivedVariable name="minf_slo1" dimension="none" exposure="minf_slo1" value="(m_egl19*kop*(alpha1+beta1+kcm2))/((kop2+kom2)*(kcm2+alpha1)+(beta1*kcm2))"/>
+      <DerivedVariable name="tm_slo1" dimension="none" exposure="tm_slo1" value="((alpha1+beta1+kcm2)/((kop2+kom2)*(kcm2+alpha1)+(beta1*kcm2)))"/>
+      <DerivedVariable name="I_slo1" dimension="none" exposure="I_slo1" value="gslo1*mslo1*hs_egl19*(v-ek)"/>
+      <DerivedVariable name="kcm1" dimension="none" exposure="kcm1" value="wom1*exp(-wyx1*v)*(1/(1+(cac_nano/kyx1)^nyx1))"/>
+      <DerivedVariable name="kom1" dimension="none" exposure="kom1" value="wom1*exp(-wyx1*v)*(1/(1+((cao_nano)/kyx1)^nyx1))"/>
+      <DerivedVariable name="kop1" dimension="none" exposure="kop1" value="wop1*exp(-wxy1*v)*(1/(1+(kxy1/(cao_nano))^nxy1))"/>
+      <DerivedVariable name="kcp1" dimension="none" exposure="kcp1" value="0"/>
+      <DerivedVariable name="minf_bk2" dimension="none" exposure="minf_bk2" value="(m_egl19*kop1*(alpha1+beta1+kcm1))/((kop1+kom1)*(kcm1+alpha1)+(beta1*kcm1))"/>
+      <DerivedVariable name="tm_bkegl19" dimension="none" exposure="tm_bkegl19" value="((alpha1+beta1+kcm1)/((kop1+kom1)*(kcm1+alpha1)+(beta1*kcm1)))"/>
+      <DerivedVariable name="I_bk2" dimension="none" exposure="I_bk2" value="gbk2*mbk2*hs_egl19*(v-ek)"/>
+      <DerivedVariable name="kcm3" dimension="none" exposure="kcm3" value="wom1*exp(-wyx1*v)*(1/(1+(cac_nano/kyx1)^nyx1))"/>
+      <DerivedVariable name="kom3" dimension="none" exposure="kom3" value="wom1*exp(-wyx1*v)*(1/(1+((cao_nano)/kyx1)^nyx1))"/>
+      <DerivedVariable name="kop3" dimension="none" exposure="kop3" value="wop1*exp(-wxy1*v)*(1/(1+(kxy1/(cao_nano))^nxy1))"/>
+      <DerivedVariable name="kcp3" dimension="none" exposure="kcp3" value="0"/>
+      <DerivedVariable name="minf_slo2" dimension="none" exposure="minf_slo2" value="(m_unc2*kop3*(alpha+beta+kcm3))/((kop3+kom3)*(kcm3+alpha)+(beta*kcm3))"/>
+      <DerivedVariable name="tm_slo2" dimension="none" exposure="tm_slo2" value="((alpha+beta+kcm3)/((kop3+kom3)*(kcm3+alpha)+(beta*kcm3)))"/>
+      <DerivedVariable name="I_slo2" dimension="none" exposure="I_slo2" value="gslo2*mslo2*h_unc2*(v-ek)"/>
+      <DerivedVariable name="I_ca" dimension="none" exposure="I_ca" value="I_unc2+I_egl19+I_cca1"/>
+      <DerivedVariable name="aux I_ca" dimension="none" exposure="aux I_ca" value="I_ca"/>
+      <DerivedVariable name="alpha_ca" dimension="none" exposure="alpha_ca" value="1/(2*vol*fd)"/>
+      <DerivedVariable name="J_ca1" dimension="none" exposure="J_ca1" value="fca*alpha_ca*I_ca"/>
+      <DerivedVariable name="aux J_ca1" dimension="none" exposure="aux J_ca1" value="J_ca1"/>
+      <DerivedVariable name="backgr2" dimension="none" exposure="backgr2" value="0.05e-3"/>
+      <DerivedVariable name="minf_sk" dimension="none" exposure="minf_sk" value="ca_intra1/(k_sk2+ca_intra1)"/>
+      <DerivedVariable name="t_sk" dimension="none" exposure="t_sk" value="6.3"/>
+      <DerivedVariable name="I_sk" dimension="none" exposure="I_sk" value="gca*m_sk*(v-ek)"/>
+      <DerivedVariable name="I_leak" dimension="none" exposure="I_leak" value="gleak*(v-eleak)"/>
+      <DerivedVariable name="I_nca" dimension="none" exposure="I_nca" value="gnca*(v-ena)"/>
+      <DerivedVariable name="I_tot" dimension="none" exposure="I_tot" value="I_egl2+I_leak+I_kvs1+I_bk+I_kqt3+Ishal+I_egl19+I_unc2+I_bk2+I_sk+I_slo1+I_slo2+I_nca+I_kir+I_cca1+I_shak"/>
+      <DerivedVariable name="aux Itot" dimension="none" exposure="aux Itot" value="I_tot"/>
+      <ConditionalDerivedVariable name="rs" dimension="none" exposure="rs">
+        <Case condition="I_ca .lt. 0" value="I_ca*alpha_ca*(-fca) - (-backgr2 + ca_intra1)/t_ca"/>
+        <Case condition="I_ca .lt. 0" value="(backgr2 - ca_intra1)/t_ca"/>
+      </ConditionalDerivedVariable>
+      <ConditionalDerivedVariable name="Istim" dimension="none" exposure="Istim">
+        <Case condition="xpp_time .gt. ton" value="iclamp"/>
+        <Case condition="xpp_time .gt. ton" value="ih"/>
+      </ConditionalDerivedVariable>
+      <TimeDerivative variable="m_shal" value="((-m_shal + minf_shal)/tm_shal)/MSEC"/>
+      <TimeDerivative variable="hf_shal" value="((-hf_shal + hinf_shal)/thf_shal)/MSEC"/>
+      <TimeDerivative variable="hs_shal" value="((hinf_shal - hs_shal)/ths_shal)/MSEC"/>
+      <TimeDerivative variable="m_kvs1" value="((-m_kvs1 + minf_kvs1)/tm_kvs1)/MSEC"/>
+      <TimeDerivative variable="h_kvs1" value="((-h_kvs1 + hinf_kvs1)/th_kvs1)/MSEC"/>
+      <TimeDerivative variable="m_shak" value="((-m_shak + minf_shak)/tm_shak)/MSEC"/>
+      <TimeDerivative variable="h_shak" value="((-h_shak + hinf_shak)/th_shak)/MSEC"/>
+      <TimeDerivative variable="mf_kqt3" value="((-mf_kqt3 + minf_kqt3)/tmf_kqt3)/MSEC"/>
+      <TimeDerivative variable="ms_kqt3" value="((minf_kqt3 - ms_kqt3)/tms_kqt3)/MSEC"/>
+      <TimeDerivative variable="w_kqt3" value="((-w_kqt3 + winf_kqt3)/tw_kqt3)/MSEC"/>
+      <TimeDerivative variable="s_kqt3" value="((-s_kqt3 + sinf_kqt3)/ts_kqt3)/MSEC"/>
+      <TimeDerivative variable="m_egl2" value="((-m_egl2 + minf_egl2)/tm_egl2)/MSEC"/>
+      <TimeDerivative variable="m_kir" value="((-m_kir + minf_kir)/tm_kir)/MSEC"/>
+      <TimeDerivative variable="m_cca1" value="((-m_cca1 + minf_cca1)/tm_cca1)/MSEC"/>
+      <TimeDerivative variable="h_cca1" value="((-h_cca1 + hinf_cca1)/th_cca1)/MSEC"/>
+      <TimeDerivative variable="m_unc2" value="((-m_unc2 + minf_unc2)/tm_unc2)/MSEC"/>
+      <TimeDerivative variable="h_unc2" value="((-h_unc2 + hinf_unc2)/th_unc2)/MSEC"/>
+      <TimeDerivative variable="m_egl19" value="((-m_egl19 + minf_egl19)/tm_egl19)/MSEC"/>
+      <TimeDerivative variable="hs_egl19" value="((hinf_egl19 - hs_egl19)/ths_egl19)/MSEC"/>
+      <TimeDerivative variable="mbk" value="((-mbk + minf_bk)/tm_bkunc2)/MSEC"/>
+      <TimeDerivative variable="mslo1" value="((minf_slo1 - mslo1)/tm_slo1)/MSEC"/>
+      <TimeDerivative variable="mbk2" value="((-mbk2 + minf_bk2)/tm_bkegl19)/MSEC"/>
+      <TimeDerivative variable="mslo2" value="((minf_slo2 - mslo2)/tm_slo2)/MSEC"/>
+      <TimeDerivative variable="ca_intra1" value="(rs)/MSEC"/>
+      <TimeDerivative variable="m_sk" value="((-m_sk + minf_sk)/t_sk)/MSEC"/>
+      <TimeDerivative variable="v" value="((-I_tot + Istim)/c)/MSEC"/>
+      <OnStart>
+        <StateAssignment variable="m_shal" value="0.0"/>
+        <StateAssignment variable="hf_shal" value="1.0"/>
+        <StateAssignment variable="hs_shal" value="1.0"/>
+        <StateAssignment variable="h_kvs1" value="1.0"/>
+        <StateAssignment variable="m_kvs1" value="0.0"/>
+        <StateAssignment variable="m_shak" value="0.0"/>
+        <StateAssignment variable="h_shak" value="1.0"/>
+        <StateAssignment variable="mf_kqt3" value="0.0"/>
+        <StateAssignment variable="ms_kqt3" value="0.0"/>
+        <StateAssignment variable="m_egl2" value="0.0"/>
+        <StateAssignment variable="m_cca1" value="0.0"/>
+        <StateAssignment variable="h_cca1" value="1.0"/>
+        <StateAssignment variable="m_unc2" value="0.0"/>
+        <StateAssignment variable="h_unc2" value="1.0"/>
+        <StateAssignment variable="m_egl19" value="0.0"/>
+        <StateAssignment variable="hs_egl19" value="1.0"/>
+        <StateAssignment variable="mbk" value="0.0"/>
+        <StateAssignment variable="mslo1" value="0.0"/>
+        <StateAssignment variable="mbk2" value="0.0"/>
+        <StateAssignment variable="ca_intra1" value="5e-05"/>
+        <StateAssignment variable="m_sk" value="0.13563"/>
+        <StateAssignment variable="v" value="-70.0"/>
+      </OnStart>
+    </Dynamics>
+  </ComponentType>
+  <Component id="XPP_model_0" type="XPP_model" pi="3.14159265359" ek="-80.0" eca="60.0" eleak="-80.0" ena="30.0" gshal="2.9" shalsfhit="18.0" vashal="11.2" kashal="14.1" kishal="8.3" vishal="-33.1" ptmshal1="13.8" ptmshal2="-17.5165" ptmshal3="12.9213" ptmshal4="-3.7082" ptmshal5="6.4876" ptmshal6="1.8849" pthfshal1="539.1584" pthfshal2="-28.199" pthfshal3="4.9199" pthfshal4="27.2811" pthsshal1="8422.0" pthsshal2="-37.7391" pthsshal3="6.3785" pthsshal4="118.8983" cshal="0.1" gkvs1="0.8" skvs1="30.0" va_kvs1="57.1" ka_kvs1="25.0" p1tmkvs1="30.0" p2tmkvs1="18.1232" p3tmkvs1="-20.0" p4tmkvs1="1.0" vi_kvs1="47.3" ki_kvs1="11.1" p1thkvs1="88.4715" p2thkvs1="50.0" p3thkvs1="-15.0" p4thkvs1="53.406" cthkvs1="0.1" gshak="0.1" vashak="20.4" kashak="7.7" ptmshak1="26.571450568169027" ptmshak2="-33.74161180071613" ptmshak3="15.757936311607475" ptmshak4="15.364937728953288" ptmshak5="1.990037272604829" shiftV05="0.0" kishak="5.8" vishak="-6.95" pthshak="1400.0" gkqt3="0.55" va_kqt3="-12.6726" ka_kqt3="15.8008" ckqt3="0.1" p1tmskqt3="5503.0" p2tmskqt3="5345.4" p3tmskqt3="-0.02827" p4tmskqt3="-23.9" p5tmskqt3="4590.6" p6tmskqt3="-0.0357" p7tmskqt3="14.15" p1tmfkqt3="395.3" p2tmfkqt3="38.1" p3tmfkqt3="33.59" constkqt3="10.0" w1="0.49" w2="0.51" w3="1.084" w4="28.78" tw1="5.44" tw2="29.2" tw3="48.09" tw4="48.83" sq1="0.34" sq2="0.66" sq3="45.3" sq4="12.3" tsq1="5000.0" gegl2="0.85" va_egl2="-6.8594" ka_egl2="14.9131" stmegl2="0.0" cegl2="0.5" p1tmegl2="16.78" p2tmegl2="-122.5682" p3tmegl2="13.7976" p4tmegl2="8.0969" fegl2="1.0" gkir="0.65" va_kir="-52.0" ka_kir="13.0" p1tmkir="17.0752" p2tmkir="-17.8258" p3tmkir="20.3154" p4tmkir="-43.4414" p5tmkir="11.1691" p6tmkir="3.8329" gcca1="0.7" va_cca1="-42.65" ka_cca1="1.7" sscca1="15.0" stmcca1="30.0" sthcca1="15.0" sshcca1="15.0" constmcca1="0.5" fcca="1.4" f2cca1="1.15" f3ca="1.7" f4ca="1.1" p1tmcca1="40.0" p2tmcca1="-62.5393" p3tmcca1="-12.4758" p4tmcca1="0.6947" vi_cca1="-58.0" ki_cca1="7.0" consthcca1="0.08" p1thcca1="280.0" p2thcca1="-60.7312" p3thcca1="8.5224" p4thcca1="19.7456" gunc2="1.0" va_unc2="-12.17" ka_unc2="3.97" stm2="25.0" p1tmunc2="1.4969" p2tmunc2="-8.1761" p3tmunc2="9.0753" p4tmunc2="15.3456" p5tmunc2="0.1029" shiftmunc2="30.0" constmunc2="3.0" vi_unc2="-52.47" ki_unc2="5.6" sth2="25.0" p1thunc2="83.8037" p2thunc2="52.8997" p3thunc2="3.4557" p4thunc2="72.0995" p5thunc2="23.9009" p6thunc2="3.5903" consthunc2="1.7" shifthunc2="30.0" gegl19="1.55" va_egl19="5.6" ka_egl19="7.5" stm19="10.0" sth19="10.0" pdg1="2.3359" pdg2="2.9324" pdg3="5.2357" pdg4="6.0" pdg5="1.8739" pdg6="1.393" pdg7="30.0" stau19="10.0" p1hegl19="1.4314" p2hegl19="24.8573" p3hegl19="11.9541" p4hegl19="0.1427" p5hegl19="5.9589" p6hegl19="-10.5428" p7hegl19="8.0552" p8hegl19="0.6038" pds1="0.4" pds2="0.55" pds3="81.1179" pds4="-22.9723" pds5="5.0" pds6="43.0937" pds7="0.9" pds8="40.4885" pds9="28.7251" pds10="3.7125" pds11="0.0" shiftdps="10.0" r="1.3e-08" d="2.5e-10" F="96485.0" kb="500000000.0" b="3e-05" backgr="0.05" gsc="4e-11" wom="3.152961" wyx="0.012643" kyx="34.338784" nyx="0.0001" wop="0.156217" wxy="-0.027527" kxy="55.726816" nxy="1.299198" gbk="0.11" gslo1="0.11" wom1="0.896395" wyx1="0.019405" kyx1="3294.553404" nyx1="1e-05" wop1="0.026719" wxy1="-0.024123" kxy1="93.449423" nxy1="1.835067" gbk2="0.1" gslo2="0.1" fd="96.485" fca="0.001" t_ca="50.0" rcell="1.0" vol="31.16" gca="0.06" k_sk2="0.00033" gleak="0.27" gnca="0.055" ih="0.0" c="3.1" iclamp="10.0" ton="1000.0" toff="5000.0"/>
+</Lems>
