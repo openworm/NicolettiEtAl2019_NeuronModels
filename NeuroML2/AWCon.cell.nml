@@ -1,0 +1,30 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="AWCon">
+    <notes>A cell from Nicoletti et al. 2019</notes>
+    <include href="leak.channel.nml"/>
+    <cell id="AWCon">
+        <notes>AWCon cell from Nicoletti et al. 2019</notes>
+        <morphology id="morphology">
+            <segment id="0" name="soma">
+                <proximal x="0.0" y="0.0" z="0.0" diameter="10.0"/>
+                <distal x="0.0" y="0.0" z="0.0" diameter="10.0"/>
+            </segment>
+            <segmentGroup id="soma_group" neuroLexId="GO:0043025">
+                <notes>Default soma segment group for the cell</notes>
+                <member segment="0"/>
+            </segmentGroup>
+            <segmentGroup id="all">
+                <notes>Default segment group for all segments in the cell</notes>
+                <member segment="0"/>
+            </segmentGroup>
+        </morphology>
+        <biophysicalProperties id="biophys">
+            <membraneProperties>
+                <channelDensity id="leak_chans" ionChannel="leak" condDensity="3.0 S_per_m2" erev="-80mV" ion="non_specific"/>
+                <specificCapacitance value="1.2 uF_per_cm2"/>
+            </membraneProperties>
+            <intracellularProperties>
+                <resistivity value="0.1 kohm_cm"/>
+            </intracellularProperties>
+        </biophysicalProperties>
+    </cell>
+</neuroml>
