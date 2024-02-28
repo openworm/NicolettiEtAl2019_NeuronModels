@@ -10,6 +10,8 @@ eca=60
 eleak=-80
 ena=30
 
+colors = {'AWCon':'0 0 0.8', 'RMD':'0 0 0.8', 'GenericMuscleCell':'0.8 0 0'}
+
 def create_channel_file(chan_id):
 
     chan_doc = NeuroMLDocument(id=chan_id, notes="A channel from Nicoletti et al. 2019")
@@ -27,6 +29,57 @@ def create_channel_file(chan_id):
     )
 
     return chan_fn
+
+
+def generate_nmllite(cell, duration=700, config='IClamp',parameters = None):
+
+    from neuromllite import Cell, InputSource
+    #from neuromllite.NetworkGenerator import *
+    from neuromllite.utils import create_new_model
+    
+    reference = "%s_%s"%(config, cell)
+
+    cell_id = '%s'%cell
+    cell_nmll = Cell(id=cell_id, neuroml2_source_file='%s.cell.nml'%(cell))
+ 
+    ################################################################################
+    ###   Add some inputs
+    
+    if 'IClamp' in config:
+        
+        if not parameters:
+            parameters = {}
+            parameters['stim_amp'] = '10pA'
+        
+        input_source = InputSource(id='iclamp_0', 
+                                   neuroml2_input='PulseGenerator', 
+                                   parameters={'amplitude':'stim_amp', 'delay':'100ms', 'duration':'500ms'})
+      
+        
+    else:
+
+        if not parameters:
+            parameters = {}
+            parameters['average_rate'] = '100 Hz'
+            parameters['number_per_cell'] = '10'
+            
+        input_source = InputSource(id='pfs0', 
+                                   neuroml2_input='PoissonFiringSynapse', 
+                                   parameters={'average_rate':'average_rate', 
+                                               'synapse':syn_exc.id, 
+                                               'spike_target':"./%s"%syn_exc.id})
+                                               
+    sim, net = create_new_model(reference,
+                     duration, 
+                     dt=0.025, # ms 
+                     temperature=34, # degC
+                     default_region='Worm',
+                     parameters = parameters,
+                     cell_for_default_population=cell_nmll,
+                     color_for_default_population=colors[cell],
+                     input_for_default_population=input_source)
+
+    return sim, net
 
 
 
@@ -65,6 +118,9 @@ for cell_id in ['AWCon','RMD']:
 
     cell.set_specific_capacitance("%s uF_per_cm2"%c)
 
+    cell.add_membrane_property("SpikeThresh", value="0mV")
+    cell.set_init_memb_potential("-75mV")
+
     # This value is not really used as it's a single comp cell model
     cell.set_resistivity("0.1 kohm_cm")
 
@@ -74,3 +130,5 @@ for cell_id in ['AWCon','RMD']:
     pynml.write_neuroml2_file(
         nml2_doc=cell_doc, nml2_file_name=cell_fn, validate=True
     )
+
+    generate_nmllite(cell_id, duration=700, config='IClamp', parameters = None)

@@ -20,7 +20,9 @@
         <biophysicalProperties id="biophys">
             <membraneProperties>
                 <channelDensity id="leak_chans" ionChannel="leak" condDensity="3.0 S_per_m2" erev="-80mV" ion="non_specific"/>
+                <spikeThresh value="0mV"/>
                 <specificCapacitance value="1.2 uF_per_cm2"/>
+                <initMembPotential value="-75mV"/>
             </membraneProperties>
             <intracellularProperties>
                 <resistivity value="0.1 kohm_cm"/>

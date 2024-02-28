@@ -1,1 +1,10 @@
 /output.dat
+*.gen.c
+*.gen.so
+*.gv
+*gv.png
+*net.png
+*dat
+report.*.txt
+/NeuroML2/IClamp_AWCon.net.nml
+/NeuroML2/LEMS_Sim_IClamp_AWCon.xml
