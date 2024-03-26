@@ -1,0 +1,32 @@
+<Lems>
+
+    <!-- 
+
+        This LEMS file has been automatically generated using PyNeuroML v1.2.7 (libNeuroML v0.5.9)
+
+     -->
+
+    <!-- Specify which component to run -->
+    <Target component="Sim_IClamp_RMD" reportFile="report.Sim_IClamp_RMD.txt"/>
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml"/>
+    <Include file="Networks.xml"/>
+    <Include file="Simulation.xml"/>
+
+    <Include file="PyNN.xml"/>
+    <Include file="IClamp_RMD.net.nml"/>
+    <Include file="RMD.cell.nml"/>
+
+    <Simulation id="Sim_IClamp_RMD" length="700.0ms" step="0.025ms" target="IClamp_RMD" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
+        <Display id="pop_RMD_v" title="Plots of pop_RMD_v" timeScale="1ms" xmin="-70.0" xmax="770.0000000000001" ymin="-80" ymax="40">
+            <Line id="pop_RMD_0_RMD_v" quantity="pop_RMD/0/RMD/v" scale="1mV" color="#d54f33" timeScale="1ms"/>
+        </Display>
+
+        <OutputFile id="Sim_IClamp_RMD_pop_RMD_v_dat" fileName="Sim_IClamp_RMD.pop_RMD.v.dat">
+            <OutputColumn id="pop_RMD_0_RMD_v" quantity="pop_RMD/0/RMD/v"/>
+        </OutputFile>
+
+    </Simulation>
+
+</Lems>

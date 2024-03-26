@@ -35,7 +35,7 @@
                 "size": 1,
                 "component": "RMD",
                 "properties": {
-                    "color": "0 0 0.8"
+                    "color": "0 0.8 0"
                 },
                 "random_layout": {
                     "region": "Worm"

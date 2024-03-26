@@ -10,7 +10,7 @@ eca=60
 eleak=-80
 ena=30
 
-colors = {'AWCon':'0 0 0.8', 'RMD':'0 0 0.8', 'GenericMuscleCell':'0.8 0 0'}
+colors = {'AWCon':'0 0 0.8', 'RMD':'0 0.8 0', 'GenericMuscleCell':'0.8 0 0'}
 
 def create_channel_file(chan_id):
 
@@ -131,4 +131,12 @@ for cell_id in ['AWCon','RMD']:
         nml2_doc=cell_doc, nml2_file_name=cell_fn, validate=True
     )
 
-    generate_nmllite(cell_id, duration=700, config='IClamp', parameters = None)
+    sim, net = generate_nmllite(cell_id, duration=700, config='IClamp', parameters = None)
+
+    ################################################################################
+    ###   Run in some simulators
+
+    from neuromllite.NetworkGenerator import check_to_generate_or_run
+    import sys
+
+    check_to_generate_or_run(sys.argv, sim)
