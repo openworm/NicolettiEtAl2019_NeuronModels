@@ -1,6 +1,7 @@
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="AWCon">
     <notes>A cell from Nicoletti et al. 2019</notes>
     <include href="AWCon_leak.channel.nml"/>
+    <include href="AWCon_kir.channel.nml"/>
     <cell id="AWCon">
         <notes>AWCon cell from Nicoletti et al. 2019</notes>
         <morphology id="morphology">
@@ -19,7 +20,8 @@
         </morphology>
         <biophysicalProperties id="biophys">
             <membraneProperties>
-                <channelDensity id="leak_chans" ionChannel="AWCon_leak" condDensity="3.0 S_per_m2" erev="-80mV" ion="non_specific"/>
+                <channelDensity id="leak_chans" ionChannel="AWCon_leak" condDensity="0.27 S_per_m2" erev="-80.0mV" ion="non_specific"/>
+                <channelDensity id="kir_chans" ionChannel="AWCon_kir" condDensity="0.65 S_per_m2" erev="-80.0mV" ion="k"/>
                 <spikeThresh value="0mV"/>
                 <specificCapacitance value="1.2 uF_per_cm2"/>
                 <initMembPotential value="-75mV"/>
