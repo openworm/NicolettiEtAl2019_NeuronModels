@@ -4,6 +4,8 @@ from neuroml.utils import component_factory
 from pyneuroml import pynml
 from pyneuroml.xppaut import parse_script
 
+from neuroml import GateHHRates
+
 
 xpps = {"RMD": parse_script("../RMD.ode"), "AWCon": parse_script("../AWC.ode")}
 
@@ -13,7 +15,7 @@ c = 1.2
 colors = {"AWCon": "0 0 0.8", "RMD": "0 0.8 0", "GenericMuscleCell": "0.8 0 0"}
 
 
-def create_channel_file(chan_id_in_cell, cell_id, xpp):
+def create_channel_file(chan_id_in_cell, cell_id, xpp, gates={}, parameters={}):
     chan_id = "%s_%s" % (cell_id, chan_id_in_cell)
     chan_doc = NeuroMLDocument(
         id=chan_id,
@@ -29,8 +31,42 @@ def create_channel_file(chan_id_in_cell, cell_id, xpp):
         notes="%s channel from Nicoletti et al. 2019" % chan_id,
     )
 
+    for g in gates:
+
+        ss = component_factory("HHVariable", type="%s_%s_inf"%(chan_id_in_cell,g)) 
+        tc = component_factory("HHTime", type="%s_%s_tau"%(chan_id_in_cell,g)) 
+
+        gc = component_factory("GateHHTauInf", id=g, instances=gates[g][0], steady_state=ss, time_course=tc, validate=True) 
+        channel.add(gc)
+        
+        ssct = component_factory("ComponentType", name=ss.type, extends="baseVoltageDepVariable")
+        tcct = component_factory("ComponentType", name=tc.type, extends="baseVoltageDepTime")
+        chan_doc.add(ssct)
+        chan_doc.add(tcct)
+
+        for p in parameters:
+            const = component_factory(
+                "Constant", name=p, dimension="none", value=str(xpp["parameters"][p])
+            )
+            ssct.add(const)
+            tcct.add(const)
+        
+
+        d = component_factory("Dynamics")
+        ssct.add(d)
+        dv = component_factory("DerivedVariable", name="x", exposure="x", dimension="none", value=xpp["derived_variables"][gates[g][1]])
+        d.add(dv)
+        
+        d = component_factory("Dynamics")
+        tcct.add(d)
+        dv = component_factory("DerivedVariable", name="t", exposure="t", dimension="time", value=xpp["derived_variables"][gates[g][2]])
+        d.add(dv)
+        
+            
+
+
     chan_doc.add(channel)
-    chan_doc.validate(recursive=True)
+    #chan_doc.validate(recursive=True)
 
     pynml.write_neuroml2_file(nml2_doc=chan_doc, nml2_file_name=chan_fn, validate=True)
 
@@ -134,7 +170,23 @@ def create_cells():
             erev="%smV" % xpps[cell_id]["parameters"]["ek"],
             ion="k",
             ion_channel="%s_kir" % cell_id,
-            ion_chan_def_file=create_channel_file("kir", cell_id, xpps[cell_id]),
+            ion_chan_def_file=create_channel_file(
+                "kir",
+                cell_id,
+                xpps[cell_id],
+                gates={'m':[1,'minf_kir','tm_kir']},
+                parameters=[
+                    "va_kir",
+                    "ka_kir",
+                    "p1tmkir",
+                    "p2tmkir",
+                    "p3tmkir",
+                    "p4tmkir",
+                    "p5tmkir",
+                    "p6tmkir",
+                ],
+
+            ),
         )
 
         cell.set_specific_capacitance("%s uF_per_cm2" % c)

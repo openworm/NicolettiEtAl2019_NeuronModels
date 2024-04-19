@@ -2,5 +2,35 @@
     <notes>An ion channel from cell AWCon from Nicoletti et al. 2019</notes>
     <ionChannelHH id="AWCon_kir" conductance="10pS">
         <notes>AWCon_kir channel from Nicoletti et al. 2019</notes>
+        <gateHHtauInf id="m" instances="1">
+            <timeCourse type="kir_m_tau"/>
+            <steadyState type="kir_m_inf"/>
+        </gateHHtauInf>
     </ionChannelHH>
+    <ComponentType name="kir_m_inf" extends="baseVoltageDepVariable">
+        <Constant name="va_kir" dimension="none" value="-52.0"/>
+        <Constant name="ka_kir" dimension="none" value="13.0"/>
+        <Constant name="p1tmkir" dimension="none" value="17.0752"/>
+        <Constant name="p2tmkir" dimension="none" value="-17.8258"/>
+        <Constant name="p3tmkir" dimension="none" value="20.3154"/>
+        <Constant name="p4tmkir" dimension="none" value="-43.4414"/>
+        <Constant name="p5tmkir" dimension="none" value="11.1691"/>
+        <Constant name="p6tmkir" dimension="none" value="3.8329"/>
+        <Dynamics>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(1+exp((v-va_kir+30)/ka_kir))"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="kir_m_tau" extends="baseVoltageDepTime">
+        <Constant name="va_kir" dimension="none" value="-52.0"/>
+        <Constant name="ka_kir" dimension="none" value="13.0"/>
+        <Constant name="p1tmkir" dimension="none" value="17.0752"/>
+        <Constant name="p2tmkir" dimension="none" value="-17.8258"/>
+        <Constant name="p3tmkir" dimension="none" value="20.3154"/>
+        <Constant name="p4tmkir" dimension="none" value="-43.4414"/>
+        <Constant name="p5tmkir" dimension="none" value="11.1691"/>
+        <Constant name="p6tmkir" dimension="none" value="3.8329"/>
+        <Dynamics>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="p1tmkir/(exp(-(v-p2tmkir)/p3tmkir)+exp((v-p4tmkir)/p5tmkir))+p6tmkir"/>
+        </Dynamics>
+    </ComponentType>
 </neuroml>
