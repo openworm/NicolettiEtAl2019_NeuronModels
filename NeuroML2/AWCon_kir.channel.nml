@@ -24,7 +24,7 @@
     </ComponentType>
     <ComponentType name="kir_m_tau" extends="baseVoltageDepTime">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
-        <Constant name="TIME_SCALE" dimension="time" value="1 s"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="va_kir" dimension="none" value="-52.0"/>
         <Constant name="ka_kir" dimension="none" value="13.0"/>
         <Constant name="p1tmkir" dimension="none" value="17.0752"/>

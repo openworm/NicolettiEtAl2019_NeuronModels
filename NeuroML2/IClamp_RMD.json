@@ -14,7 +14,7 @@
             "iclamp_0": {
                 "parameters": {
                     "amplitude": "stim_amp",
-                    "delay": "100ms",
+                    "delay": "310ms",
                     "duration": "500ms"
                 },
                 "neuroml2_input": "PulseGenerator"

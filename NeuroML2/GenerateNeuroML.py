@@ -9,7 +9,6 @@ from neuroml import GateHHRates
 
 xpps = {"RMD": parse_script("../RMD.ode"), "AWCon": parse_script("../AWC.ode")}
 
-c = 1.2
 
 
 colors = {"AWCon": "0 0 0.8", "RMD": "0 0.8 0", "GenericMuscleCell": "0.8 0 0"}
@@ -48,7 +47,7 @@ def create_channel_file(chan_id_in_cell, cell_id, xpp, species, gates={}, parame
         vscale = component_factory("Constant", name='VOLT_SCALE',  dimension="voltage", value="1 mV")
         ssct.add(vscale)
         tcct.add(vscale)
-        tscale = component_factory("Constant", name='TIME_SCALE',  dimension="time", value="1 s")
+        tscale = component_factory("Constant", name='TIME_SCALE',  dimension="time", value="1 ms")
         tcct.add(tscale)
 
 
@@ -122,7 +121,7 @@ def generate_nmllite(cell, duration=700, config="IClamp", parameters=None):
         input_source = InputSource(
             id="iclamp_0",
             neuroml2_input="PulseGenerator",
-            parameters={"amplitude": "stim_amp", "delay": "100ms", "duration": "500ms"},
+            parameters={"amplitude": "stim_amp", "delay": "310ms", "duration": "500ms"},
         )
 
     else:
@@ -156,7 +155,7 @@ def generate_nmllite(cell, duration=700, config="IClamp", parameters=None):
     return sim, net
 
 
-def create_cells():
+def create_cells(channels_to_include):
     for cell_id in ["AWCon", "RMD"]:
         # Create the nml file and add the ion channels
         cell_doc = NeuroMLDocument(
@@ -168,7 +167,7 @@ def create_cells():
         cell = cell_doc.add(
             "Cell", id=cell_id, notes="%s cell from Nicoletti et al. 2019" % cell_id
         )
-        diam = 10
+        diam = 17.841242  # Gives a convenient surface area of 1000.0 um^2
         cell.add_segment(
             prox=[0, 0, 0, diam],
             dist=[0, 0, 0, diam],
@@ -178,49 +177,52 @@ def create_cells():
             seg_type="soma",
         )
 
-        # Leak channel
-        cell.add_channel_density(
-            cell_doc,
-            cd_id="leak_chans",
-            cond_density="%s S_per_m2" % xpps[cell_id]["parameters"]["gleak"],
-            erev="%smV" % xpps[cell_id]["parameters"]["eleak"],
-            ion="non_specific",
-            ion_channel="%s_leak" % cell_id,
-            ion_chan_def_file=create_channel_file("leak", cell_id, xpps[cell_id], species='non_specific'),
-        )
+        if 'leak' in channels_to_include:
+            # Leak channel
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="leak_chans",
+                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"]["gleak"],
+                erev="%smV" % xpps[cell_id]["parameters"]["eleak"],
+                ion="non_specific",
+                ion_channel="%s_leak" % cell_id,
+                ion_chan_def_file=create_channel_file("leak", cell_id, xpps[cell_id], species='non_specific'),
+            )
 
-        # IRK channel
-        cell.add_channel_density(
-            cell_doc,
-            cd_id="kir_chans",
-            cond_density="%s S_per_m2" % xpps[cell_id]["parameters"]["gkir"],
-            erev="%smV" % xpps[cell_id]["parameters"]["ek"],
-            ion="k",
-            ion_channel="%s_kir" % cell_id,
-            ion_chan_def_file=create_channel_file(
-                "kir",
-                cell_id,
-                xpps[cell_id],
-                species='k',
-                gates={'m':[1,'minf_kir','tm_kir']},
-                parameters=[
-                    "va_kir",
-                    "ka_kir",
-                    "p1tmkir",
-                    "p2tmkir",
-                    "p3tmkir",
-                    "p4tmkir",
-                    "p5tmkir",
-                    "p6tmkir",
-                ],
 
-            ),
-        )
+        if 'kir' in channels_to_include:
+            # IRK/Kir channel
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="kir_chans",
+                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"]["gkir"],
+                erev="%smV" % xpps[cell_id]["parameters"]["ek"],
+                ion="k",
+                ion_channel="%s_kir" % cell_id,
+                ion_chan_def_file=create_channel_file(
+                    "kir",
+                    cell_id,
+                    xpps[cell_id],
+                    species='k',
+                    gates={'m':[1,'minf_kir','tm_kir']},
+                    parameters=[
+                        "va_kir",
+                        "ka_kir",
+                        "p1tmkir",
+                        "p2tmkir",
+                        "p3tmkir",
+                        "p4tmkir",
+                        "p5tmkir",
+                        "p6tmkir",
+                    ],
 
-        cell.set_specific_capacitance("%s uF_per_cm2" % c)
+                ),
+            )
+
+        cell.set_specific_capacitance("%s F_per_m2" % (float(xpps[cell_id]["parameters"]["c"]) * 1e-3))
 
         cell.add_membrane_property("SpikeThresh", value="0mV")
-        cell.set_init_memb_potential("-75mV")
+        cell.set_init_memb_potential("-70mV")
 
         # This value is not really used as it's a single comp cell model
         cell.set_resistivity("0.1 kohm_cm")
@@ -233,7 +235,7 @@ def create_cells():
         )
 
         sim, net = generate_nmllite(
-            cell_id, duration=700, config="IClamp", parameters=None
+            cell_id, duration=400, config="IClamp", parameters=None
         )
 
         ################################################################################
@@ -246,4 +248,7 @@ def create_cells():
 
 
 if __name__ == "__main__":
-    create_cells()
+
+    channels_to_include = ['leak']
+    channels_to_include = ['leak','kir']
+    create_cells(channels_to_include)

@@ -6,8 +6,8 @@
         <notes>AWCon cell from Nicoletti et al. 2019</notes>
         <morphology id="morphology">
             <segment id="0" name="soma">
-                <proximal x="0.0" y="0.0" z="0.0" diameter="10.0"/>
-                <distal x="0.0" y="0.0" z="0.0" diameter="10.0"/>
+                <proximal x="0.0" y="0.0" z="0.0" diameter="17.841242"/>
+                <distal x="0.0" y="0.0" z="0.0" diameter="17.841242"/>
             </segment>
             <segmentGroup id="soma_group" neuroLexId="GO:0043025">
                 <notes>Default soma segment group for the cell</notes>
@@ -23,8 +23,8 @@
                 <channelDensity id="leak_chans" ionChannel="AWCon_leak" condDensity="0.27 S_per_m2" erev="-80.0mV" ion="non_specific"/>
                 <channelDensity id="kir_chans" ionChannel="AWCon_kir" condDensity="0.65 S_per_m2" erev="-80.0mV" ion="k"/>
                 <spikeThresh value="0mV"/>
-                <specificCapacitance value="1.2 uF_per_cm2"/>
-                <initMembPotential value="-75mV"/>
+                <specificCapacitance value="0.0031000000000000003 F_per_m2"/>
+                <initMembPotential value="-70mV"/>
             </membraneProperties>
             <intracellularProperties>
                 <resistivity value="0.1 kohm_cm"/>
