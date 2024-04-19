@@ -1,6 +1,6 @@
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="AWCon_kir">
     <notes>An ion channel from cell AWCon from Nicoletti et al. 2019</notes>
-    <ionChannelHH id="AWCon_kir" conductance="10pS">
+    <ionChannelHH id="AWCon_kir" species="k" conductance="10pS">
         <notes>AWCon_kir channel from Nicoletti et al. 2019</notes>
         <gateHHtauInf id="m" instances="1">
             <timeCourse type="kir_m_tau"/>
@@ -8,6 +8,7 @@
         </gateHHtauInf>
     </ionChannelHH>
     <ComponentType name="kir_m_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Constant name="va_kir" dimension="none" value="-52.0"/>
         <Constant name="ka_kir" dimension="none" value="13.0"/>
         <Constant name="p1tmkir" dimension="none" value="17.0752"/>
@@ -17,10 +18,13 @@
         <Constant name="p5tmkir" dimension="none" value="11.1691"/>
         <Constant name="p6tmkir" dimension="none" value="3.8329"/>
         <Dynamics>
-            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(1+exp((v-va_kir+30)/ka_kir))"/>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((V - va_kir + 30)/ka_kir) + 1)"/>
         </Dynamics>
     </ComponentType>
     <ComponentType name="kir_m_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 s"/>
         <Constant name="va_kir" dimension="none" value="-52.0"/>
         <Constant name="ka_kir" dimension="none" value="13.0"/>
         <Constant name="p1tmkir" dimension="none" value="17.0752"/>
@@ -30,7 +34,8 @@
         <Constant name="p5tmkir" dimension="none" value="11.1691"/>
         <Constant name="p6tmkir" dimension="none" value="3.8329"/>
         <Dynamics>
-            <DerivedVariable name="t" dimension="time" exposure="t" value="p1tmkir/(exp(-(v-p2tmkir)/p3tmkir)+exp((v-p4tmkir)/p5tmkir))+p6tmkir"/>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="p1tmkir/(exp((-V + p2tmkir)/p3tmkir) + exp((V - p4tmkir)/p5tmkir)) + p6tmkir"/>
         </Dynamics>
     </ComponentType>
 </neuroml>

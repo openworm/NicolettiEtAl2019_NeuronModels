@@ -15,7 +15,7 @@ c = 1.2
 colors = {"AWCon": "0 0 0.8", "RMD": "0 0.8 0", "GenericMuscleCell": "0.8 0 0"}
 
 
-def create_channel_file(chan_id_in_cell, cell_id, xpp, gates={}, parameters={}):
+def create_channel_file(chan_id_in_cell, cell_id, xpp, species, gates={}, parameters={}):
     chan_id = "%s_%s" % (cell_id, chan_id_in_cell)
     chan_doc = NeuroMLDocument(
         id=chan_id,
@@ -28,6 +28,7 @@ def create_channel_file(chan_id_in_cell, cell_id, xpp, gates={}, parameters={}):
         "IonChannelHH",
         id=chan_id,
         conductance="10pS",
+        species=species,
         notes="%s channel from Nicoletti et al. 2019" % chan_id,
     )
 
@@ -44,6 +45,14 @@ def create_channel_file(chan_id_in_cell, cell_id, xpp, gates={}, parameters={}):
         chan_doc.add(ssct)
         chan_doc.add(tcct)
 
+        vscale = component_factory("Constant", name='VOLT_SCALE',  dimension="voltage", value="1 mV")
+        ssct.add(vscale)
+        tcct.add(vscale)
+        tscale = component_factory("Constant", name='TIME_SCALE',  dimension="time", value="1 s")
+        tcct.add(tscale)
+
+
+
         for p in parameters:
             const = component_factory(
                 "Constant", name=p, dimension="none", value=str(xpp["parameters"][p])
@@ -54,12 +63,30 @@ def create_channel_file(chan_id_in_cell, cell_id, xpp, gates={}, parameters={}):
 
         d = component_factory("Dynamics")
         ssct.add(d)
-        dv = component_factory("DerivedVariable", name="x", exposure="x", dimension="none", value=xpp["derived_variables"][gates[g][1]])
+        dvv = component_factory("DerivedVariable", name="V", dimension="none", value="(v) / VOLT_SCALE")
+        d.add(dvv)
+        
+        expr = xpp["derived_variables"][gates[g][1]]
+
+        import sympy
+        from sympy.parsing.sympy_parser import parse_expr
+        v,V = sympy.symbols('v V')
+
+        s_expr = parse_expr(expr, evaluate=False)
+        s_expr = s_expr.subs(v,V)
+
+        dv = component_factory("DerivedVariable", name="x", exposure="x", dimension="none", value=s_expr)
         d.add(dv)
         
         d = component_factory("Dynamics")
         tcct.add(d)
-        dv = component_factory("DerivedVariable", name="t", exposure="t", dimension="time", value=xpp["derived_variables"][gates[g][2]])
+        d.add(dvv)
+
+        expr = xpp["derived_variables"][gates[g][2]]
+        s_expr = parse_expr(expr, evaluate=False)
+        s_expr = s_expr.subs(v,V)
+
+        dv = component_factory("DerivedVariable", name="t", exposure="t", dimension="time", value=s_expr)
         d.add(dv)
         
             
@@ -159,7 +186,7 @@ def create_cells():
             erev="%smV" % xpps[cell_id]["parameters"]["eleak"],
             ion="non_specific",
             ion_channel="%s_leak" % cell_id,
-            ion_chan_def_file=create_channel_file("leak", cell_id, xpps[cell_id]),
+            ion_chan_def_file=create_channel_file("leak", cell_id, xpps[cell_id], species='non_specific'),
         )
 
         # IRK channel
@@ -174,6 +201,7 @@ def create_cells():
                 "kir",
                 cell_id,
                 xpps[cell_id],
+                species='k',
                 gates={'m':[1,'minf_kir','tm_kir']},
                 parameters=[
                     "va_kir",
