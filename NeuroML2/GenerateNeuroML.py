@@ -2,6 +2,10 @@ from neuroml import NeuroMLDocument
 from neuroml.utils import component_factory
 
 from pyneuroml import pynml
+from pyneuroml.xppaut import parse_script
+
+
+xpps = {'RMD':parse_script('../RMD.ode'),'AWCon':parse_script('../AWC.ode')}
 
 c=1.2 
 
@@ -12,10 +16,14 @@ ena=30
 
 colors = {'AWCon':'0 0 0.8', 'RMD':'0 0.8 0', 'GenericMuscleCell':'0.8 0 0'}
 
-def create_channel_file(chan_id):
 
-    chan_doc = NeuroMLDocument(id=chan_id, notes="A channel from Nicoletti et al. 2019")
-    chan_fn = "%s.channel.nml"%chan_id
+
+def create_channel_file(chan_id_in_cell, cell_id, xpp):
+
+    chan_id = '%s_%s'%(cell_id, chan_id_in_cell)
+    chan_doc = NeuroMLDocument(id=chan_id, notes="An ion channel from cell %s from Nicoletti et al. 2019"%cell_id)
+
+    chan_fn = "%s.channel.nml"%(chan_id)
 
     channel = component_factory(
         "IonChannelHH", id=chan_id, conductance="10pS", notes="%s channel from Nicoletti et al. 2019"%chan_id
@@ -83,60 +91,67 @@ def generate_nmllite(cell, duration=700, config='IClamp',parameters = None):
 
 
 
+def create_cells():
 
-for cell_id in ['AWCon','RMD']:
+    for cell_id in ['AWCon','RMD']:
 
-    # Create the nml file and add the ion channels
-    cell_doc = NeuroMLDocument(id=cell_id, notes="A cell from Nicoletti et al. 2019")
-    cell_fn = "%s.cell.nml"%cell_id
+        # Create the nml file and add the ion channels
+        cell_doc = NeuroMLDocument(id=cell_id, notes="A cell from Nicoletti et al. 2019")
+        cell_fn = "%s.cell.nml"%cell_id
 
-    # Define a cell
-    cell = cell_doc.add(
-        "Cell", id=cell_id, notes="%s cell from Nicoletti et al. 2019"%cell_id
-    )  
-    diam = 10
-    cell.add_segment(
-        prox=[0, 0, 0, diam],
-        dist=[0, 0, 0, diam],
-        name="soma",
-        parent=None,
-        fraction_along=1.0,
-        seg_type='soma'
-    )
+        # Define a cell
+        cell = cell_doc.add(
+            "Cell", id=cell_id, notes="%s cell from Nicoletti et al. 2019"%cell_id
+        )  
+        diam = 10
+        cell.add_segment(
+            prox=[0, 0, 0, diam],
+            dist=[0, 0, 0, diam],
+            name="soma",
+            parent=None,
+            fraction_along=1.0,
+            seg_type='soma'
+        )
 
-    
-    # Leak channel
-    cell.add_channel_density(
-        cell_doc,
-        cd_id="leak_chans",
-        cond_density="3.0 S_per_m2",
-        erev="%smV"%eleak,
-        ion="non_specific",
-        ion_channel="leak",
-        ion_chan_def_file=create_channel_file('leak'),
-    )
+        
+        # Leak channel
+        cell.add_channel_density(
+            cell_doc,
+            cd_id="leak_chans",
+            cond_density="3.0 S_per_m2",
+            erev="%smV"%eleak,
+            ion="non_specific",
+            ion_channel="%s_leak"%cell_id,
+            ion_chan_def_file=create_channel_file('leak',cell_id,xpps[cell_id]),
+        )
 
-    cell.set_specific_capacitance("%s uF_per_cm2"%c)
+        cell.set_specific_capacitance("%s uF_per_cm2"%c)
 
-    cell.add_membrane_property("SpikeThresh", value="0mV")
-    cell.set_init_memb_potential("-75mV")
+        cell.add_membrane_property("SpikeThresh", value="0mV")
+        cell.set_init_memb_potential("-75mV")
 
-    # This value is not really used as it's a single comp cell model
-    cell.set_resistivity("0.1 kohm_cm")
+        # This value is not really used as it's a single comp cell model
+        cell.set_resistivity("0.1 kohm_cm")
 
-    cell.info(show_contents=True)
+        cell.info(show_contents=True)
 
-    cell_doc.validate(recursive=True)
-    pynml.write_neuroml2_file(
-        nml2_doc=cell_doc, nml2_file_name=cell_fn, validate=True
-    )
+        cell_doc.validate(recursive=True)
+        pynml.write_neuroml2_file(
+            nml2_doc=cell_doc, nml2_file_name=cell_fn, validate=True
+        )
 
-    sim, net = generate_nmllite(cell_id, duration=700, config='IClamp', parameters = None)
+        sim, net = generate_nmllite(cell_id, duration=700, config='IClamp', parameters = None)
 
-    ################################################################################
-    ###   Run in some simulators
+        ################################################################################
+        ###   Run in some simulators
 
-    from neuromllite.NetworkGenerator import check_to_generate_or_run
-    import sys
+        from neuromllite.NetworkGenerator import check_to_generate_or_run
+        import sys
 
-    check_to_generate_or_run(sys.argv, sim)
+        check_to_generate_or_run(sys.argv, sim)
+
+
+if __name__ == "__main__":
+
+
+    create_cells()

@@ -1,6 +1,6 @@
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="RMD">
     <notes>A cell from Nicoletti et al. 2019</notes>
-    <include href="leak.channel.nml"/>
+    <include href="RMD_leak.channel.nml"/>
     <cell id="RMD">
         <notes>RMD cell from Nicoletti et al. 2019</notes>
         <morphology id="morphology">
@@ -19,7 +19,7 @@
         </morphology>
         <biophysicalProperties id="biophys">
             <membraneProperties>
-                <channelDensity id="leak_chans" ionChannel="leak" condDensity="3.0 S_per_m2" erev="-80mV" ion="non_specific"/>
+                <channelDensity id="leak_chans" ionChannel="RMD_leak" condDensity="3.0 S_per_m2" erev="-80mV" ion="non_specific"/>
                 <spikeThresh value="0mV"/>
                 <specificCapacitance value="1.2 uF_per_cm2"/>
                 <initMembPotential value="-75mV"/>
