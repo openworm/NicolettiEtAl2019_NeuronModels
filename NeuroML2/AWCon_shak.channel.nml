@@ -1,0 +1,57 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="AWCon_shak">
+    <notes>An ion channel from cell AWCon from Nicoletti et al. 2019</notes>
+    <ionChannelHH id="AWCon_shak" species="k" conductance="10pS">
+        <notes>AWCon_shak channel from Nicoletti et al. 2019</notes>
+        <gateHHtauInf id="m" instances="1">
+            <timeCourse type="shak_m_tau"/>
+            <steadyState type="shak_m_inf"/>
+        </gateHHtauInf>
+        <gateHHtauInf id="h" instances="1">
+            <timeCourse type="shak_h_tau"/>
+            <steadyState type="shak_h_inf"/>
+        </gateHHtauInf>
+    </ionChannelHH>
+    <ComponentType name="shak_m_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="vashak" dimension="none" value="20.4"/>
+        <Constant name="kashak" dimension="none" value="7.7"/>
+        <Constant name="shiftV05" dimension="none" value="0.0"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((-V - shiftV05 + vashak)/kashak) + 1)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="shak_m_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="ptmshak1" dimension="none" value="26.571450568169027"/>
+        <Constant name="ptmshak2" dimension="none" value="-33.74161180071613"/>
+        <Constant name="ptmshak3" dimension="none" value="15.757936311607475"/>
+        <Constant name="ptmshak4" dimension="none" value="15.364937728953288"/>
+        <Constant name="ptmshak5" dimension="none" value="1.990037272604829"/>
+        <Constant name="shiftV05" dimension="none" value="0.0"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(ptmshak1/(exp((V - (ptmshak2 + shiftV05))/ptmshak3) + exp((-V + ptmshak2 + shiftV05)/ptmshak4)) + ptmshak5)/1000"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="shak_h_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="kishak" dimension="none" value="5.8"/>
+        <Constant name="vishak" dimension="none" value="-6.95"/>
+        <Constant name="shiftV05" dimension="none" value="0.0"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((V + shiftV05 - vishak)/kishak) + 1)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="shak_h_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="pthshak" dimension="none" value="1400.0"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(pthshak)/1000"/>
+        </Dynamics>
+    </ComponentType>
+</neuroml>

@@ -1,7 +1,9 @@
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="RMD">
     <notes>A cell from Nicoletti et al. 2019</notes>
     <include href="RMD_leak.channel.nml"/>
+    <include href="RMD_shak.channel.nml"/>
     <include href="RMD_kir.channel.nml"/>
+    <include href="RMD_cca.channel.nml"/>
     <cell id="RMD">
         <notes>RMD cell from Nicoletti et al. 2019</notes>
         <morphology id="morphology">
@@ -21,7 +23,9 @@
         <biophysicalProperties id="biophys">
             <membraneProperties>
                 <channelDensity id="leak_chans" ionChannel="RMD_leak" condDensity="0.4 S_per_m2" erev="-80.0mV" ion="non_specific"/>
+                <channelDensity id="shak_chans" ionChannel="RMD_shak" condDensity="1.1 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="kir_chans" ionChannel="RMD_kir" condDensity="0.2 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="cca_chans" ionChannel="RMD_cca" condDensity="3.1 S_per_m2" erev="60.0mV" ion="ca"/>
                 <spikeThresh value="0mV"/>
                 <specificCapacitance value="0.0012 F_per_m2"/>
                 <initMembPotential value="-70mV"/>

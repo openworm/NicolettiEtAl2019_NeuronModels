@@ -14,7 +14,7 @@ xpps = {"RMD": parse_script("../RMD.ode"), "AWCon": parse_script("../AWC.ode")}
 colors = {"AWCon": "0 0 0.8", "RMD": "0 0.8 0", "GenericMuscleCell": "0.8 0 0"}
 
 
-def create_channel_file(chan_id_in_cell, cell_id, xpp, species, gates={}, parameters={}):
+def create_channel_file(chan_id_in_cell, cell_id, xpp, species, gates={},extra_params=[]):
     chan_id = "%s_%s" % (cell_id, chan_id_in_cell)
     chan_doc = NeuroMLDocument(
         id=chan_id,
@@ -51,13 +51,22 @@ def create_channel_file(chan_id_in_cell, cell_id, xpp, species, gates={}, parame
         tcct.add(tscale)
 
 
+        inf_expr = xpp["derived_variables"][gates[g][1]]
+        tau_expr = xpp["derived_variables"][gates[g][2]]
 
-        for p in parameters:
+        potential_parameters = []
+        for p in xpp["parameters"]:
+            if chan_id_in_cell in p:
+                potential_parameters.append(p)
+
+        for p in potential_parameters+extra_params:
             const = component_factory(
                 "Constant", name=p, dimension="none", value=str(xpp["parameters"][p])
             )
-            ssct.add(const)
-            tcct.add(const)
+            if p in inf_expr:
+                ssct.add(const)
+            if p in tau_expr:
+                tcct.add(const)
         
 
         d = component_factory("Dynamics")
@@ -65,13 +74,12 @@ def create_channel_file(chan_id_in_cell, cell_id, xpp, species, gates={}, parame
         dvv = component_factory("DerivedVariable", name="V", dimension="none", value="(v) / VOLT_SCALE")
         d.add(dvv)
         
-        expr = xpp["derived_variables"][gates[g][1]]
 
         import sympy
         from sympy.parsing.sympy_parser import parse_expr
         v,V = sympy.symbols('v V')
 
-        s_expr = parse_expr(expr, evaluate=False)
+        s_expr = parse_expr(inf_expr, evaluate=False)
         s_expr = s_expr.subs(v,V)
 
         dv = component_factory("DerivedVariable", name="x", exposure="x", dimension="none", value=s_expr)
@@ -81,11 +89,10 @@ def create_channel_file(chan_id_in_cell, cell_id, xpp, species, gates={}, parame
         tcct.add(d)
         d.add(dvv)
 
-        expr = xpp["derived_variables"][gates[g][2]]
-        s_expr = parse_expr(expr, evaluate=False)
+        s_expr = parse_expr(tau_expr, evaluate=False)
         s_expr = s_expr.subs(v,V)
 
-        dv = component_factory("DerivedVariable", name="t", exposure="t", dimension="time", value=s_expr)
+        dv = component_factory("DerivedVariable", name="t", exposure="t", dimension="time", value='(%s)/1000'%s_expr)
         d.add(dv)
         
             
@@ -177,8 +184,8 @@ def create_cells(channels_to_include):
             seg_type="soma",
         )
 
+        # Leak channel
         if 'leak' in channels_to_include:
-            # Leak channel
             cell.add_channel_density(
                 cell_doc,
                 cd_id="leak_chans",
@@ -189,9 +196,33 @@ def create_cells(channels_to_include):
                 ion_chan_def_file=create_channel_file("leak", cell_id, xpps[cell_id], species='non_specific'),
             )
 
+        # SHK1 CHANNELS
+        if 'shak' in channels_to_include:
+            chan_id = 'shak'
+            ion = 'k'
+            g_param = 'gshak'
+            gates={'m':[1,'minf_shak','tm_shak'],'h':[1,'hinf_shak','th_shak']}
+            extra_params = ['shiftV05']
 
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="%s_chans"%chan_id,
+                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"][g_param],
+                erev="%smV" % xpps[cell_id]["parameters"]["e%s"%ion],
+                ion=ion,
+                ion_channel="%s_%s" % (cell_id,chan_id),
+                ion_chan_def_file=create_channel_file(
+                    chan_id,
+                    cell_id,
+                    xpps[cell_id],
+                    species=ion,
+                    gates=gates,
+                    extra_params = extra_params
+                ),
+            )
+
+        # IRK/Kir channel
         if 'kir' in channels_to_include:
-            # IRK/Kir channel
             cell.add_channel_density(
                 cell_doc,
                 cd_id="kir_chans",
@@ -205,17 +236,28 @@ def create_cells(channels_to_include):
                     xpps[cell_id],
                     species='k',
                     gates={'m':[1,'minf_kir','tm_kir']},
-                    parameters=[
-                        "va_kir",
-                        "ka_kir",
-                        "p1tmkir",
-                        "p2tmkir",
-                        "p3tmkir",
-                        "p4tmkir",
-                        "p5tmkir",
-                        "p6tmkir",
-                    ],
+                ),
+            )
 
+        # CCA-1 channels
+        if 'cca' in channels_to_include:
+            chan_id = 'cca'
+            ion = 'ca'
+
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="%s_chans"%chan_id,
+                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"]["gcca1"],
+                erev="%smV" % xpps[cell_id]["parameters"]["e%s"%ion],
+                ion=ion,
+                ion_channel="%s_%s" % (cell_id,chan_id),
+                ion_chan_def_file=create_channel_file(
+                    chan_id,
+                    cell_id,
+                    xpps[cell_id],
+                    species=ion,
+                    gates={'m':[2,'minf_cca1','tm_cca1'],'h':[1,'hinf_cca1','th_cca1']},
+                    extra_params = ['f3ca','f4ca']
                 ),
             )
 
@@ -235,7 +277,7 @@ def create_cells(channels_to_include):
         )
 
         sim, net = generate_nmllite(
-            cell_id, duration=400, config="IClamp", parameters=None
+            cell_id, duration=1400, config="IClamp", parameters=None
         )
 
         ################################################################################
@@ -251,4 +293,5 @@ if __name__ == "__main__":
 
     channels_to_include = ['leak']
     channels_to_include = ['leak','kir']
+    channels_to_include = ['leak','kir','shak','cca']
     create_cells(channels_to_include)

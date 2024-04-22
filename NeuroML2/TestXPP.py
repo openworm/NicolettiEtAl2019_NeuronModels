@@ -7,6 +7,7 @@ parsed_data = parse_script("../RMD.ode")
 all_g = ['gshal','gkir','gshak','gegl36','gunc2','gegl19','gcca1','gslo1','gbk','gbk2','gslo2','gca','gsc','gnca']
 
 all_g.remove('gkir')
+all_g.remove('gcca1')
 
 for p in all_g:
     parsed_data['parameters'][p] = 0

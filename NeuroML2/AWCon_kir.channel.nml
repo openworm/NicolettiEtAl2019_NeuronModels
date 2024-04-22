@@ -11,12 +11,6 @@
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Constant name="va_kir" dimension="none" value="-52.0"/>
         <Constant name="ka_kir" dimension="none" value="13.0"/>
-        <Constant name="p1tmkir" dimension="none" value="17.0752"/>
-        <Constant name="p2tmkir" dimension="none" value="-17.8258"/>
-        <Constant name="p3tmkir" dimension="none" value="20.3154"/>
-        <Constant name="p4tmkir" dimension="none" value="-43.4414"/>
-        <Constant name="p5tmkir" dimension="none" value="11.1691"/>
-        <Constant name="p6tmkir" dimension="none" value="3.8329"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
             <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((V - va_kir + 30)/ka_kir) + 1)"/>
@@ -25,8 +19,6 @@
     <ComponentType name="kir_m_tau" extends="baseVoltageDepTime">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
         <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
-        <Constant name="va_kir" dimension="none" value="-52.0"/>
-        <Constant name="ka_kir" dimension="none" value="13.0"/>
         <Constant name="p1tmkir" dimension="none" value="17.0752"/>
         <Constant name="p2tmkir" dimension="none" value="-17.8258"/>
         <Constant name="p3tmkir" dimension="none" value="20.3154"/>
@@ -35,7 +27,7 @@
         <Constant name="p6tmkir" dimension="none" value="3.8329"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
-            <DerivedVariable name="t" dimension="time" exposure="t" value="p1tmkir/(exp((-V + p2tmkir)/p3tmkir) + exp((V - p4tmkir)/p5tmkir)) + p6tmkir"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(p1tmkir/(exp((-V + p2tmkir)/p3tmkir) + exp((V - p4tmkir)/p5tmkir)) + p6tmkir)/1000"/>
         </Dynamics>
     </ComponentType>
 </neuroml>

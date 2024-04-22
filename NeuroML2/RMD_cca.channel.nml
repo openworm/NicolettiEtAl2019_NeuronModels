@@ -1,0 +1,66 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="RMD_cca">
+    <notes>An ion channel from cell RMD from Nicoletti et al. 2019</notes>
+    <ionChannelHH id="RMD_cca" species="ca" conductance="10pS">
+        <notes>RMD_cca channel from Nicoletti et al. 2019</notes>
+        <gateHHtauInf id="m" instances="2">
+            <timeCourse type="cca_m_tau"/>
+            <steadyState type="cca_m_inf"/>
+        </gateHHtauInf>
+        <gateHHtauInf id="h" instances="1">
+            <timeCourse type="cca_h_tau"/>
+            <steadyState type="cca_h_inf"/>
+        </gateHHtauInf>
+    </ionChannelHH>
+    <ComponentType name="cca_m_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="va_cca1" dimension="none" value="-42.65"/>
+        <Constant name="ka_cca1" dimension="none" value="1.7"/>
+        <Constant name="sscca1" dimension="none" value="15.0"/>
+        <Constant name="fcca" dimension="none" value="1.4"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((1/(fcca*ka_cca1))*(-V - sscca1 + va_cca1)) + 1)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="cca_m_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="stmcca1" dimension="none" value="30.0"/>
+        <Constant name="constmcca1" dimension="none" value="0.5"/>
+        <Constant name="p1tmcca1" dimension="none" value="40.0"/>
+        <Constant name="p2tmcca1" dimension="none" value="-62.5393"/>
+        <Constant name="p3tmcca1" dimension="none" value="-12.4758"/>
+        <Constant name="p4tmcca1" dimension="none" value="0.6947"/>
+        <Constant name="f3ca" dimension="none" value="1.7"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(constmcca1*(p1tmcca1/(exp((1/(f3ca*p3tmcca1))*(-V + p2tmcca1 - stmcca1)) + 1) + p4tmcca1))/1000"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="cca_h_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="sshcca1" dimension="none" value="15.0"/>
+        <Constant name="f2cca1" dimension="none" value="1.15"/>
+        <Constant name="vi_cca1" dimension="none" value="-58.0"/>
+        <Constant name="ki_cca1" dimension="none" value="7.0"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((1/(f2cca1*ki_cca1))*(V + sshcca1 - vi_cca1)) + 1)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="cca_h_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="sthcca1" dimension="none" value="15.0"/>
+        <Constant name="consthcca1" dimension="none" value="0.08"/>
+        <Constant name="p1thcca1" dimension="none" value="280.0"/>
+        <Constant name="p2thcca1" dimension="none" value="-60.7312"/>
+        <Constant name="p3thcca1" dimension="none" value="8.5224"/>
+        <Constant name="p4thcca1" dimension="none" value="19.7456"/>
+        <Constant name="f4ca" dimension="none" value="1.1"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(consthcca1*(p1thcca1/(exp((1/(f4ca*p3thcca1))*(V - p2thcca1 + sthcca1)) + 1) + p4thcca1))/1000"/>
+        </Dynamics>
+    </ComponentType>
+</neuroml>
