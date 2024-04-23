@@ -1,8 +1,10 @@
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="AWCon">
     <notes>A cell from Nicoletti et al. 2019</notes>
     <include href="AWCon_leak.channel.nml"/>
+    <include href="AWCon_shal.channel.nml"/>
     <include href="AWCon_shak.channel.nml"/>
     <include href="AWCon_kir.channel.nml"/>
+    <include href="AWCon_unc2.channel.nml"/>
     <include href="AWCon_cca.channel.nml"/>
     <cell id="AWCon">
         <notes>AWCon cell from Nicoletti et al. 2019</notes>
@@ -23,8 +25,10 @@
         <biophysicalProperties id="biophys">
             <membraneProperties>
                 <channelDensity id="leak_chans" ionChannel="AWCon_leak" condDensity="0.27 S_per_m2" erev="-80.0mV" ion="non_specific"/>
+                <channelDensity id="shal_chans" ionChannel="AWCon_shal" condDensity="2.9 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="shak_chans" ionChannel="AWCon_shak" condDensity="0.1 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="kir_chans" ionChannel="AWCon_kir" condDensity="0.65 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="unc2_chans" ionChannel="AWCon_unc2" condDensity="1.0 S_per_m2" erev="60.0mV" ion="ca"/>
                 <channelDensity id="cca_chans" ionChannel="AWCon_cca" condDensity="0.7 S_per_m2" erev="60.0mV" ion="ca"/>
                 <spikeThresh value="0mV"/>
                 <specificCapacitance value="0.0031000000000000003 F_per_m2"/>

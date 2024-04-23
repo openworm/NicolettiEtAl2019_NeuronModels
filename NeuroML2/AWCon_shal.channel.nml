@@ -1,0 +1,91 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="AWCon_shal">
+    <notes>An ion channel from cell AWCon from Nicoletti et al. 2019</notes>
+    <ionChannelHH id="AWCon_shal" species="k" conductance="10pS">
+        <notes>AWCon_shal channel from Nicoletti et al. 2019</notes>
+        <gateHHtauInf id="m" instances="3">
+            <timeCourse type="shal_m_tau"/>
+            <steadyState type="shal_m_inf"/>
+        </gateHHtauInf>
+        <gateFractional id="h" instances="1">
+            <subGate id="hf" fractionalConductance="0.7">
+                <steadyState type="shal_h_hf_inf"/>
+                <timeCourse type="shal_h_hf_tau"/>
+            </subGate>
+            <subGate id="hs" fractionalConductance="0.3">
+                <steadyState type="shal_h_hs_inf"/>
+                <timeCourse type="shal_h_hs_tau"/>
+            </subGate>
+        </gateFractional>
+    </ionChannelHH>
+    <ComponentType name="shal_m_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="shalsfhit" dimension="none" value="18.0"/>
+        <Constant name="vashal" dimension="none" value="11.2"/>
+        <Constant name="kashal" dimension="none" value="14.1"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((-V - shalsfhit + vashal)/kashal) + 1)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="shal_m_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="ptmshal1" dimension="none" value="13.8"/>
+        <Constant name="ptmshal2" dimension="none" value="-17.5165"/>
+        <Constant name="ptmshal3" dimension="none" value="12.9213"/>
+        <Constant name="ptmshal4" dimension="none" value="-3.7082"/>
+        <Constant name="ptmshal5" dimension="none" value="6.4876"/>
+        <Constant name="ptmshal6" dimension="none" value="1.8849"/>
+        <Constant name="cshal" dimension="none" value="0.1"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(cshal*(ptmshal1/(exp((-V + ptmshal2)/ptmshal3) + exp((V - ptmshal4)/ptmshal5)) + ptmshal6))/1000"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="shal_h_hf_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="shalsfhit" dimension="none" value="18.0"/>
+        <Constant name="kishal" dimension="none" value="8.3"/>
+        <Constant name="vishal" dimension="none" value="-33.1"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((V + shalsfhit - vishal)/kishal) + 1)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="shal_h_hf_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="pthfshal1" dimension="none" value="539.1584"/>
+        <Constant name="pthfshal2" dimension="none" value="-28.199"/>
+        <Constant name="pthfshal3" dimension="none" value="4.9199"/>
+        <Constant name="pthfshal4" dimension="none" value="27.2811"/>
+        <Constant name="cshal" dimension="none" value="0.1"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(cshal*(pthfshal1/(exp((V - pthfshal2)/pthfshal3) + 1) + pthfshal4))/1000"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="shal_h_hs_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="shalsfhit" dimension="none" value="18.0"/>
+        <Constant name="kishal" dimension="none" value="8.3"/>
+        <Constant name="vishal" dimension="none" value="-33.1"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((V + shalsfhit - vishal)/kishal) + 1)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="shal_h_hs_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="pthsshal1" dimension="none" value="8422.0"/>
+        <Constant name="pthsshal2" dimension="none" value="-37.7391"/>
+        <Constant name="pthsshal3" dimension="none" value="6.3785"/>
+        <Constant name="pthsshal4" dimension="none" value="118.8983"/>
+        <Constant name="cshal" dimension="none" value="0.1"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(cshal*(pthsshal1/(exp((V - pthsshal2)/pthsshal3) + 1) + pthsshal4))/1000"/>
+        </Dynamics>
+    </ComponentType>
+</neuroml>
