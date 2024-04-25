@@ -2,14 +2,14 @@
     <notes>An ion channel from cell RMD from Nicoletti et al. 2019</notes>
     <ionChannelHH id="RMD_unc2" species="ca" conductance="10pS">
         <notes>RMD_unc2 channel from Nicoletti et al. 2019</notes>
-        <gateHHtauInf id="m" instances="1">
+        <gate id="m" instances="1" type="gateHHtauInf">
             <timeCourse type="unc2_m_tau"/>
             <steadyState type="unc2_m_inf"/>
-        </gateHHtauInf>
-        <gateHHtauInf id="h" instances="1">
+        </gate>
+        <gate id="h" instances="1" type="gateHHtauInf">
             <timeCourse type="unc2_h_tau"/>
             <steadyState type="unc2_h_inf"/>
-        </gateHHtauInf>
+        </gate>
     </ionChannelHH>
     <ComponentType name="unc2_m_inf" extends="baseVoltageDepVariable">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>

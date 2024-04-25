@@ -34,6 +34,8 @@ def _add_tc_ss(chan_id_in_cell, gate_id, inf_expr_param, tau_expr_param, chan_do
     inf_expr = xpp["derived_variables"][inf_expr_param]
     tau_expr = xpp["derived_variables"][tau_expr_param]
 
+    print("For channel %s, gate %s, inf = [%s], tau = [%s]"%(chan_id_in_cell, gate_id, inf_expr, tau_expr))
+
     potential_parameters = []
     for p in xpp["parameters"]:
         if chan_id_in_cell in p:
@@ -101,12 +103,12 @@ def create_channel_file(chan_id_in_cell, cell_id, xpp, species, gates={}, extra_
         if type(gates[gate_id]) == list:
             ss, tc = _add_tc_ss(chan_id_in_cell, gate_id, gates[gate_id][1], gates[gate_id][2], chan_doc, xpp, extra_params)
 
-            gc = component_factory("GateHHTauInf", id=gate_id, instances=gates[gate_id][0], steady_state=ss, time_course=tc, validate=True) 
+            gc = component_factory("GateHHUndetermined", type="gateHHtauInf", id=gate_id, instances=gates[gate_id][0], steady_state=ss, time_course=tc, validate=True) 
             channel.add(gc)        
 
         elif type(gates[gate_id]) == dict:
 
-            gc = component_factory("GateFractional", id=gate_id, instances=1, validate=False) 
+            gc = component_factory("GateHHUndetermined", type="gateFractional", id=gate_id, instances=1, validate=False) 
 
             for sub_gate in gates[gate_id]:
                 # gates={'m':[3,'minf_shal','tm_shal'],'h':{'hf': [0.7,'hinf_shal','thf_shal'],'hs': [0.3,'hinf_shal','ths_shal']} } 
@@ -343,6 +345,31 @@ def create_cells(channels_to_include):
                 ),
             )
 
+        # EGL-19 CHANNELS
+        if 'egl19' in channels_to_include:
+            chan_id = 'egl19'
+            ion = 'ca'
+            g_param = 'gegl19'
+            gates={'m':[1,'minf_egl19','tm_egl19'],'h':[1,'hinf_egl19','th_egl19']}
+            extra_params = []
+
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="%s_chans"%chan_id,
+                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"][g_param],
+                erev="%smV" % xpps[cell_id]["parameters"]["e%s"%ion],
+                ion=ion,
+                ion_channel="%s_%s" % (cell_id,chan_id),
+                ion_chan_def_file=create_channel_file(
+                    chan_id,
+                    cell_id,
+                    xpps[cell_id],
+                    species=ion,
+                    gates=gates,
+                    extra_params = extra_params
+                ),
+            )
+
         # CCA-1 channels
         if 'cca' in channels_to_include:
             chan_id = 'cca'
@@ -400,5 +427,6 @@ if __name__ == "__main__":
     channels_to_include = ['leak','kir','shak','cca']
     channels_to_include = ['leak','shal','kir','shak','cca']
     channels_to_include = ['leak','shal','egl36','kir','shak','cca']
+    channels_to_include = ['leak','shal','egl36','kir','shak','cca','unc2','egl19']
     channels_to_include = ['leak','shal','egl36','kir','shak','cca','unc2']
     create_cells(channels_to_include)

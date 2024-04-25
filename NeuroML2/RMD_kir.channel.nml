@@ -2,10 +2,10 @@
     <notes>An ion channel from cell RMD from Nicoletti et al. 2019</notes>
     <ionChannelHH id="RMD_kir" species="k" conductance="10pS">
         <notes>RMD_kir channel from Nicoletti et al. 2019</notes>
-        <gateHHtauInf id="m" instances="1">
+        <gate id="m" instances="1" type="gateHHtauInf">
             <timeCourse type="kir_m_tau"/>
             <steadyState type="kir_m_inf"/>
-        </gateHHtauInf>
+        </gate>
     </ionChannelHH>
     <ComponentType name="kir_m_inf" extends="baseVoltageDepVariable">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>

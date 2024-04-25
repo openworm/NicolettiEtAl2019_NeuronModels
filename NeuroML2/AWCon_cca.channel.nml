@@ -2,14 +2,14 @@
     <notes>An ion channel from cell AWCon from Nicoletti et al. 2019</notes>
     <ionChannelHH id="AWCon_cca" species="ca" conductance="10pS">
         <notes>AWCon_cca channel from Nicoletti et al. 2019</notes>
-        <gateHHtauInf id="m" instances="2">
+        <gate id="m" instances="2" type="gateHHtauInf">
             <timeCourse type="cca_m_tau"/>
             <steadyState type="cca_m_inf"/>
-        </gateHHtauInf>
-        <gateHHtauInf id="h" instances="1">
+        </gate>
+        <gate id="h" instances="1" type="gateHHtauInf">
             <timeCourse type="cca_h_tau"/>
             <steadyState type="cca_h_inf"/>
-        </gateHHtauInf>
+        </gate>
     </ionChannelHH>
     <ComponentType name="cca_m_inf" extends="baseVoltageDepVariable">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
