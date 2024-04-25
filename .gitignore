@@ -9,3 +9,12 @@ report.*.txt
 /NeuroML2/IClamp_AWCon.net.nml
 /NeuroML2/LEMS_Sim_IClamp_AWCon.xml
 /NicollettiEtAl2019.pdf
+/NeuroML2/LEMS_Test_RMD_kir.xml
+/NeuroML2/LEMS_RMD.xml
+/NeuroML2/Test_RMD.ode
+/NeuroML2/report.txt
+/RMD.model.xml
+/NeuroML2/LEMS_Test_RMD_cca.xml
+/NeuroML2/LEMS_Test_RMD_shak.xml
+/NeuroML2/LEMS_Test_*.xml
+/RMD_2.ode

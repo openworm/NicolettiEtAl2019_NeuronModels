@@ -1,0 +1,65 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="RMD_unc2">
+    <notes>An ion channel from cell RMD from Nicoletti et al. 2019</notes>
+    <ionChannelHH id="RMD_unc2" species="ca" conductance="10pS">
+        <notes>RMD_unc2 channel from Nicoletti et al. 2019</notes>
+        <gate id="m" instances="1" type="gateHHtauInf">
+            <timeCourse type="unc2_m_tau"/>
+            <steadyState type="unc2_m_inf"/>
+        </gate>
+        <gate id="h" instances="1" type="gateHHtauInf">
+            <timeCourse type="unc2_h_tau"/>
+            <steadyState type="unc2_h_inf"/>
+        </gate>
+    </ionChannelHH>
+    <ComponentType name="unc2_m_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="va_unc2" dimension="none" value="-12.17"/>
+        <Constant name="ka_unc2" dimension="none" value="3.97"/>
+        <Constant name="stm2" dimension="none" value="25.0"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((-V - stm2 + va_unc2)/ka_unc2) + 1)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="unc2_m_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="p1tmunc2" dimension="none" value="1.4969"/>
+        <Constant name="p2tmunc2" dimension="none" value="-8.1761"/>
+        <Constant name="p3tmunc2" dimension="none" value="9.0753"/>
+        <Constant name="p4tmunc2" dimension="none" value="15.3456"/>
+        <Constant name="p5tmunc2" dimension="none" value="0.1029"/>
+        <Constant name="shiftmunc2" dimension="none" value="30.0"/>
+        <Constant name="constmunc2" dimension="none" value="3.0"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(constmunc2*(p1tmunc2/(exp((-V + p2tmunc2 - shiftmunc2)/p3tmunc2) + exp((V - p2tmunc2 + shiftmunc2)/p4tmunc2)) + p5tmunc2))/1000"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="unc2_h_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="vi_unc2" dimension="none" value="-52.47"/>
+        <Constant name="ki_unc2" dimension="none" value="5.6"/>
+        <Constant name="sth2" dimension="none" value="25.0"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((V + sth2 - vi_unc2)/ki_unc2) + 1)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="unc2_h_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="p1thunc2" dimension="none" value="83.8037"/>
+        <Constant name="p2thunc2" dimension="none" value="52.8997"/>
+        <Constant name="p3thunc2" dimension="none" value="3.4557"/>
+        <Constant name="p4thunc2" dimension="none" value="72.0995"/>
+        <Constant name="p5thunc2" dimension="none" value="23.9009"/>
+        <Constant name="p6thunc2" dimension="none" value="3.5903"/>
+        <Constant name="consthunc2" dimension="none" value="1.7"/>
+        <Constant name="shifthunc2" dimension="none" value="30.0"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(consthunc2*(p1thunc2/(exp((V - p2thunc2 + shifthunc2)/p3thunc2) + 1) + p4thunc2/(exp((-V + p5thunc2 - shifthunc2)/p6thunc2) + 1)))/1000"/>
+        </Dynamics>
+    </ComponentType>
+</neuroml>
