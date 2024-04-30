@@ -299,6 +299,20 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
                 ),
             )
 
+        # Nca channel
+        if "nca" in channels_to_include:
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="nca_chans",
+                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"]["gnca"],
+                erev="%smV" % xpps[cell_id]["parameters"]["ena"],
+                ion="non_specific",
+                ion_channel="%s_nca" % cell_id,
+                ion_chan_def_file=create_channel_file(
+                    "nca", cell_id, xpps[cell_id], species="non_specific"
+                ),
+            )
+
         # SHL-1 CHANNELS
         if "shal" in channels_to_include:
             chan_id = "shal"
@@ -558,6 +572,7 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
 
 if __name__ == "__main__":
     channels_to_include = ["leak"]
+    channels_to_include = ["leak", "nca"]
     channels_to_include = ["leak", "kir"]
     channels_to_include = ["leak", "kir", "shak", "cca"]
     channels_to_include = ["leak", "shal", "kir", "shak", "cca"]
@@ -567,6 +582,7 @@ if __name__ == "__main__":
     channels_to_include = ["leak", "shal", "egl36", "kir", "shak", "cca", "unc2"]
     channels_to_include = [
         "leak",
+        "nca",
         "shal",
         "egl36",
         "kir",

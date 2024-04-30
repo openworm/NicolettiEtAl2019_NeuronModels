@@ -24,9 +24,11 @@ all_g = [
 ]
 
 
+channels_to_include = ["leak", "nca"]
 channels_to_include = ["leak", "shal", "egl36", "kir", "shak", "cca", "unc2"]
 channels_to_include = ["leak", "unc2"]
 channels_to_include = ["leak", "shal", "egl36", "kir", "shak", "cca", "unc2", "egl19"]
+channels_to_include = ["leak", "nca", "shal", "egl36", "kir", "shak", "cca", "unc2", "egl19"]
 
 for c in channels_to_include:
     print("Including channel: %s" % c)

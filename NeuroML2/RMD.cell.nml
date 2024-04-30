@@ -1,6 +1,7 @@
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="RMD">
     <notes>A cell from Nicoletti et al. 2019</notes>
     <include href="RMD_leak.channel.nml"/>
+    <include href="RMD_nca.channel.nml"/>
     <include href="RMD_shal.channel.nml"/>
     <include href="RMD_shak.channel.nml"/>
     <include href="RMD_egl36.channel.nml"/>
@@ -27,6 +28,7 @@
         <biophysicalProperties id="biophys">
             <membraneProperties>
                 <channelDensity id="leak_chans" ionChannel="RMD_leak" condDensity="0.4 S_per_m2" erev="-80.0mV" ion="non_specific"/>
+                <channelDensity id="nca_chans" ionChannel="RMD_nca" condDensity="0.05 S_per_m2" erev="30.0mV" ion="non_specific"/>
                 <channelDensity id="shal_chans" ionChannel="RMD_shal" condDensity="2.48 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="shak_chans" ionChannel="RMD_shak" condDensity="1.1 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="egl36_chans" ionChannel="RMD_egl36" condDensity="1.3 S_per_m2" erev="-80.0mV" ion="k"/>
