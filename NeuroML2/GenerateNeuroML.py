@@ -74,13 +74,18 @@ def _add_tc_ss(chan_id_in_cell, gate_id, inf_expr_param, tau_expr_param, chan_do
     s_expr = parse_expr(tau_expr, evaluate=False)
     s_expr = s_expr.subs(v,V)
 
-    dv = component_factory("DerivedVariable", name="t", exposure="t", dimension="time", value='(%s)/1000'%s_expr)
+    dv = component_factory("DerivedVariable", name="t", exposure="t", dimension="time", value='(%s)* TIME_SCALE'%s_expr)
     d.add(dv)
 
     return ss, tc
     
 
-def create_channel_file(chan_id_in_cell, cell_id, xpp, species, gates={}, extra_params=[]):
+def create_channel_file(chan_id_in_cell, 
+                        cell_id, 
+                        xpp, 
+                        species, 
+                        gates={}, 
+                        extra_params=[]):
 
     chan_id = "%s_%s" % (cell_id, chan_id_in_cell)
     chan_doc = NeuroMLDocument(
@@ -130,7 +135,9 @@ def create_channel_file(chan_id_in_cell, cell_id, xpp, species, gates={}, extra_
     return chan_fn
 
 
-def generate_nmllite(cell, duration=700, config="IClamp", parameters=None):
+def generate_nmllite(cell, duration=700, config="IClamp", parameters=None,
+                        stim_delay=310,
+                        stim_duration=500):
     from neuromllite import Cell, InputSource
 
     # from neuromllite.NetworkGenerator import *
@@ -152,7 +159,7 @@ def generate_nmllite(cell, duration=700, config="IClamp", parameters=None):
         input_source = InputSource(
             id="iclamp_0",
             neuroml2_input="PulseGenerator",
-            parameters={"amplitude": "stim_amp", "delay": "310ms", "duration": "500ms"},
+            parameters={"amplitude": "stim_amp", "delay": "%sms"%stim_delay, "duration": "%sms"%stim_duration},
         )
 
     else:
@@ -186,7 +193,11 @@ def generate_nmllite(cell, duration=700, config="IClamp", parameters=None):
     return sim, net
 
 
-def create_cells(channels_to_include):
+def create_cells(channels_to_include,
+                 duration=700,
+                 stim_delay=310,
+                 stim_duration=500):
+
     for cell_id in xpps.keys():
         # Create the nml file and add the ion channels
         cell_doc = NeuroMLDocument(
@@ -271,7 +282,7 @@ def create_cells(channels_to_include):
             )
             
         # EGL-36 CHANNELS
-        if cell_id is not "AWCon" and 'egl36' in channels_to_include:
+        if cell_id != "AWCon" and 'egl36' in channels_to_include:
             chan_id = 'egl36'
             ion = 'k'
             g_param = 'gegl36'
@@ -408,7 +419,9 @@ def create_cells(channels_to_include):
         )
 
         sim, net = generate_nmllite(
-            cell_id, duration=1400, config="IClamp", parameters=None
+            cell_id, duration=duration, config="IClamp", parameters=None,
+                        stim_delay=stim_delay,
+                        stim_duration=stim_duration
         )
 
         ################################################################################
@@ -429,4 +442,7 @@ if __name__ == "__main__":
     channels_to_include = ['leak','shal','egl36','kir','shak','cca']
     channels_to_include = ['leak','shal','egl36','kir','shak','cca','unc2','egl19']
     channels_to_include = ['leak','shal','egl36','kir','shak','cca','unc2']
-    create_cells(channels_to_include)
+    channels_to_include = ['leak','unc2']
+    channels_to_include = ['leak','shal','egl36','kir','shak','cca','unc2']
+
+    create_cells(channels_to_include, duration=1800, stim_delay=1310, stim_duration=500)

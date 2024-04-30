@@ -32,7 +32,7 @@
         <Constant name="t1_egl36" dimension="none" value="355.0"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
-            <DerivedVariable name="t" dimension="time" exposure="t" value="(t1_egl36)/1000"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(t1_egl36)* TIME_SCALE"/>
         </Dynamics>
     </ComponentType>
     <ComponentType name="egl36_m_m2_inf" extends="baseVoltageDepVariable">
@@ -50,7 +50,7 @@
         <Constant name="t2_egl36" dimension="none" value="63.0"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
-            <DerivedVariable name="t" dimension="time" exposure="t" value="(t2_egl36)/1000"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(t2_egl36)* TIME_SCALE"/>
         </Dynamics>
     </ComponentType>
     <ComponentType name="egl36_m_m3_inf" extends="baseVoltageDepVariable">
@@ -68,7 +68,7 @@
         <Constant name="t3_egl36" dimension="none" value="13.0"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
-            <DerivedVariable name="t" dimension="time" exposure="t" value="(t3_egl36)/1000"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(t3_egl36)* TIME_SCALE"/>
         </Dynamics>
     </ComponentType>
 </neuroml>

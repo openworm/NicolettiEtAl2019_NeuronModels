@@ -27,7 +27,7 @@
         <Constant name="p6tmkir" dimension="none" value="3.8329"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
-            <DerivedVariable name="t" dimension="time" exposure="t" value="(p1tmkir/(exp((-V + p2tmkir)/p3tmkir) + exp((V - p4tmkir)/p5tmkir)) + p6tmkir)/1000"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(p1tmkir/(exp((-V + p2tmkir)/p3tmkir) + exp((V - p4tmkir)/p5tmkir)) + p6tmkir)* TIME_SCALE"/>
         </Dynamics>
     </ComponentType>
 </neuroml>

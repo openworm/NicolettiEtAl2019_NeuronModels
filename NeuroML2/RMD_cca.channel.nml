@@ -34,7 +34,7 @@
         <Constant name="f3ca" dimension="none" value="1.7"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
-            <DerivedVariable name="t" dimension="time" exposure="t" value="(constmcca1*(p1tmcca1/(exp((1/(f3ca*p3tmcca1))*(-V + p2tmcca1 - stmcca1)) + 1) + p4tmcca1))/1000"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(constmcca1*(p1tmcca1/(exp((1/(f3ca*p3tmcca1))*(-V + p2tmcca1 - stmcca1)) + 1) + p4tmcca1))* TIME_SCALE"/>
         </Dynamics>
     </ComponentType>
     <ComponentType name="cca_h_inf" extends="baseVoltageDepVariable">
@@ -60,7 +60,7 @@
         <Constant name="f4ca" dimension="none" value="1.1"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
-            <DerivedVariable name="t" dimension="time" exposure="t" value="(consthcca1*(p1thcca1/(exp((1/(f4ca*p3thcca1))*(V - p2thcca1 + sthcca1)) + 1) + p4thcca1))/1000"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(consthcca1*(p1thcca1/(exp((1/(f4ca*p3thcca1))*(V - p2thcca1 + sthcca1)) + 1) + p4thcca1))* TIME_SCALE"/>
         </Dynamics>
     </ComponentType>
 </neuroml>

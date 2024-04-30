@@ -2,7 +2,7 @@
 
     <!-- 
 
-        This LEMS file has been automatically generated using PyNeuroML v1.2.12 (libNeuroML v0.5.9)
+        This LEMS file has been automatically generated using PyNeuroML v1.2.13 (libNeuroML v0.5.9)
 
      -->
 
@@ -18,8 +18,8 @@
     <Include file="IClamp_RMD.net.nml"/>
     <Include file="RMD.cell.nml"/>
 
-    <Simulation id="Sim_IClamp_RMD" length="1400.0ms" step="0.025ms" target="IClamp_RMD" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
-        <Display id="pop_RMD_v" title="Plots of pop_RMD_v" timeScale="1ms" xmin="-140.0" xmax="1540.0000000000002" ymin="-80" ymax="40">
+    <Simulation id="Sim_IClamp_RMD" length="1800.0ms" step="0.025ms" target="IClamp_RMD" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
+        <Display id="pop_RMD_v" title="Plots of pop_RMD_v" timeScale="1ms" xmin="-180.0" xmax="1980.0000000000002" ymin="-80" ymax="40">
             <Line id="pop_RMD_0_RMD_v" quantity="pop_RMD/0/RMD/v" scale="1mV" color="#d54f33" timeScale="1ms"/>
         </Display>
 

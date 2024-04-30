@@ -33,7 +33,7 @@
         <Constant name="constmunc2" dimension="none" value="3.0"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
-            <DerivedVariable name="t" dimension="time" exposure="t" value="(constmunc2*(p1tmunc2/(exp((-V + p2tmunc2 - shiftmunc2)/p3tmunc2) + exp((V - p2tmunc2 + shiftmunc2)/p4tmunc2)) + p5tmunc2))/1000"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(constmunc2*(p1tmunc2/(exp((-V + p2tmunc2 - shiftmunc2)/p3tmunc2) + exp((V - p2tmunc2 + shiftmunc2)/p4tmunc2)) + p5tmunc2))* TIME_SCALE"/>
         </Dynamics>
     </ComponentType>
     <ComponentType name="unc2_h_inf" extends="baseVoltageDepVariable">
@@ -59,7 +59,7 @@
         <Constant name="shifthunc2" dimension="none" value="30.0"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
-            <DerivedVariable name="t" dimension="time" exposure="t" value="(consthunc2*(p1thunc2/(exp((V - p2thunc2 + shifthunc2)/p3thunc2) + 1) + p4thunc2/(exp((-V + p5thunc2 - shifthunc2)/p6thunc2) + 1)))/1000"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(consthunc2*(p1thunc2/(exp((V - p2thunc2 + shifthunc2)/p3thunc2) + 1) + p4thunc2/(exp((-V + p5thunc2 - shifthunc2)/p6thunc2) + 1)))* TIME_SCALE"/>
         </Dynamics>
     </ComponentType>
 </neuroml>
