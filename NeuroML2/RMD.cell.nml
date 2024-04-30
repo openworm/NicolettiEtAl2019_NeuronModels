@@ -6,6 +6,7 @@
     <include href="RMD_egl36.channel.nml"/>
     <include href="RMD_kir.channel.nml"/>
     <include href="RMD_unc2.channel.nml"/>
+    <include href="RMD_egl19.channel.nml"/>
     <include href="RMD_cca.channel.nml"/>
     <cell id="RMD">
         <notes>RMD cell from Nicoletti et al. 2019</notes>
@@ -31,6 +32,7 @@
                 <channelDensity id="egl36_chans" ionChannel="RMD_egl36" condDensity="1.3 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="kir_chans" ionChannel="RMD_kir" condDensity="0.2 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="unc2_chans" ionChannel="RMD_unc2" condDensity="0.9 S_per_m2" erev="60.0mV" ion="ca"/>
+                <channelDensity id="egl19_chans" ionChannel="RMD_egl19" condDensity="0.99 S_per_m2" erev="60.0mV" ion="ca"/>
                 <channelDensity id="cca_chans" ionChannel="RMD_cca" condDensity="3.1 S_per_m2" erev="60.0mV" ion="ca"/>
                 <spikeThresh value="0mV"/>
                 <specificCapacitance value="0.0012 F_per_m2"/>

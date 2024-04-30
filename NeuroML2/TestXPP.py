@@ -10,7 +10,7 @@ all_g = ['gleak','gshal','gkir','gshak','gegl36','gunc2','gegl19','gcca1','gslo1
 
 channels_to_include = ['leak','shal','egl36','kir','shak','cca','unc2']
 channels_to_include = ['leak','unc2']
-channels_to_include = ['leak','shal','egl36','kir','shak','cca','unc2']
+channels_to_include = ['leak','shal','egl36','kir','shak','cca','unc2','egl19']
 
 for c in channels_to_include:
     print('Including channel: %s'%c)

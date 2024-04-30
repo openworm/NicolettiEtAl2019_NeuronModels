@@ -16,6 +16,7 @@ colors = {"AWCon": "0 0 0.8", "RMD": "0 0.8 0", "GenericMuscleCell": "0.8 0 0"}
 
 def _add_tc_ss(chan_id_in_cell, gate_id, inf_expr_param, tau_expr_param, chan_doc, xpp, extra_params):
     
+    verbose = True
     ss = component_factory("HHVariable", type="%s_%s_inf"%(chan_id_in_cell,gate_id)) 
     tc = component_factory("HHTime", type="%s_%s_tau"%(chan_id_in_cell,gate_id)) 
 
@@ -34,7 +35,7 @@ def _add_tc_ss(chan_id_in_cell, gate_id, inf_expr_param, tau_expr_param, chan_do
     inf_expr = xpp["derived_variables"][inf_expr_param]
     tau_expr = xpp["derived_variables"][tau_expr_param]
 
-    print("For channel %s, gate %s, inf = [%s], tau = [%s]"%(chan_id_in_cell, gate_id, inf_expr, tau_expr))
+    if verbose: print("For channel %s, gate %s, inf = [%s], tau = [%s]"%(chan_id_in_cell, gate_id, inf_expr, tau_expr))
 
     potential_parameters = []
     for p in xpp["parameters"]:
@@ -71,8 +72,9 @@ def _add_tc_ss(chan_id_in_cell, gate_id, inf_expr_param, tau_expr_param, chan_do
     tcct.add(d)
     d.add(dvv)
 
-    s_expr = parse_expr(tau_expr, evaluate=False)
-    s_expr = s_expr.subs(v,V)
+    if verbose: print('Converting %s'%tau_expr)
+    s_expr = parse_expr(tau_expr.replace('^','**'), evaluate=False)
+    s_expr = str(s_expr.subs(v,V)).replace('**','^')
 
     dv = component_factory("DerivedVariable", name="t", exposure="t", dimension="time", value='(%s)* TIME_SCALE'%s_expr)
     d.add(dv)
@@ -361,8 +363,8 @@ def create_cells(channels_to_include,
             chan_id = 'egl19'
             ion = 'ca'
             g_param = 'gegl19'
-            gates={'m':[1,'minf_egl19','tm_egl19'],'h':[1,'hinf_egl19','th_egl19']}
-            extra_params = []
+            gates={'m':[1,'minf_egl19','tm_egl19'],'h':[1,'hinf_egl19','ths_egl19']}
+            extra_params = ['stm19','sth19','pdg1','pdg2','pdg3','pdg4','pdg5','pdg6','pdg7','stau19','pds1','pds2','pds3','pds4','pds5','pds6','pds7','pds8','pds9','pds10','pds11','shiftdps']
 
             cell.add_channel_density(
                 cell_doc,
@@ -440,9 +442,9 @@ if __name__ == "__main__":
     channels_to_include = ['leak','kir','shak','cca']
     channels_to_include = ['leak','shal','kir','shak','cca']
     channels_to_include = ['leak','shal','egl36','kir','shak','cca']
-    channels_to_include = ['leak','shal','egl36','kir','shak','cca','unc2','egl19']
     channels_to_include = ['leak','shal','egl36','kir','shak','cca','unc2']
     channels_to_include = ['leak','unc2']
     channels_to_include = ['leak','shal','egl36','kir','shak','cca','unc2']
+    channels_to_include = ['leak','shal','egl36','kir','shak','cca','unc2','egl19']
 
     create_cells(channels_to_include, duration=1800, stim_delay=1310, stim_duration=500)
