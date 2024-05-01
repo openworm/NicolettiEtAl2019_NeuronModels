@@ -6,6 +6,7 @@ from pyneuroml.xppaut import parse_script
 from pprint import pprint
 
 from neuroml import GateHHRates
+from neuroml import IncludeType
 
 
 xpps = {"RMD": parse_script("../RMD.ode"), "AWCon": parse_script("../AWC.ode")}
@@ -221,14 +222,16 @@ def generate_nmllite(
         if not parameters:
             parameters = {}
             parameters["stim_amp"] = "10pA"
+            parameters["stim_delay"] = "%sms" % stim_delay
+            parameters["stim_duration"] = "%sms" % stim_duration
 
         input_source = InputSource(
             id="iclamp_0",
             neuroml2_input="PulseGenerator",
             parameters={
                 "amplitude": "stim_amp",
-                "delay": "%sms" % stim_delay,
-                "duration": "%sms" % stim_duration,
+                "delay": "stim_delay",
+                "duration": "stim_duration",
             },
         )
 
@@ -259,6 +262,8 @@ def generate_nmllite(
         color_for_default_population=colors[cell],
         input_for_default_population=input_source,
     )
+    sim.record_variables = {"caConc": {"all": "*"}}
+    sim.to_json_file()
 
     return sim, net
 
@@ -275,22 +280,26 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
         cell = cell_doc.add(
             "Cell", id=cell_id, notes="%s cell from Nicoletti et al. 2019" % cell_id
         )
-        diam = 17.841242  # Gives a convenient surface area of 1000.0 um^2
+        diam = 1.7841242  # Gives a convenient surface area of ?? um^2
+        length = 2.26  # Gives a convenient surface area of ?? um^2
         cell.add_segment(
             prox=[0, 0, 0, diam],
-            dist=[0, 0, 0, diam],
+            dist=[0, length, 0, diam],
             name="soma",
             parent=None,
             fraction_along=1.0,
             seg_type="soma",
         )
 
+        density_factor = 1000 / 12.66728074437459
+
         # Leak channel
         if "leak" in channels_to_include:
             cell.add_channel_density(
                 cell_doc,
                 cd_id="leak_chans",
-                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"]["gleak"],
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"]["gleak"]) * density_factor),
                 erev="%smV" % xpps[cell_id]["parameters"]["eleak"],
                 ion="non_specific",
                 ion_channel="%s_leak" % cell_id,
@@ -304,7 +313,8 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             cell.add_channel_density(
                 cell_doc,
                 cd_id="nca_chans",
-                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"]["gnca"],
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"]["gnca"]) * density_factor),
                 erev="%smV" % xpps[cell_id]["parameters"]["ena"],
                 ion="non_specific",
                 ion_channel="%s_nca" % cell_id,
@@ -330,7 +340,8 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             cell.add_channel_density(
                 cell_doc,
                 cd_id="%s_chans" % chan_id,
-                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"][g_param],
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"][g_param]) * density_factor),
                 erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
                 ion=ion,
                 ion_channel="%s_%s" % (cell_id, chan_id),
@@ -355,7 +366,8 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             cell.add_channel_density(
                 cell_doc,
                 cd_id="%s_chans" % chan_id,
-                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"][g_param],
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"][g_param]) * density_factor),
                 erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
                 ion=ion,
                 ion_channel="%s_%s" % (cell_id, chan_id),
@@ -402,7 +414,8 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             cell.add_channel_density(
                 cell_doc,
                 cd_id="%s_chans" % chan_id,
-                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"][g_param],
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"][g_param]) * density_factor),
                 erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
                 ion=ion,
                 ion_channel="%s_%s" % (cell_id, chan_id),
@@ -421,7 +434,8 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             cell.add_channel_density(
                 cell_doc,
                 cd_id="kir_chans",
-                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"]["gkir"],
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"]["gkir"]) * density_factor),
                 erev="%smV" % xpps[cell_id]["parameters"]["ek"],
                 ion="k",
                 ion_channel="%s_kir" % cell_id,
@@ -445,7 +459,8 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             cell.add_channel_density(
                 cell_doc,
                 cd_id="%s_chans" % chan_id,
-                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"][g_param],
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"][g_param]) * density_factor),
                 erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
                 ion=ion,
                 ion_channel="%s_%s" % (cell_id, chan_id),
@@ -496,7 +511,8 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             cell.add_channel_density(
                 cell_doc,
                 cd_id="%s_chans" % chan_id,
-                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"][g_param],
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"][g_param]) * density_factor),
                 erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
                 ion=ion,
                 ion_channel="%s_%s" % (cell_id, chan_id),
@@ -518,7 +534,8 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             cell.add_channel_density(
                 cell_doc,
                 cd_id="%s_chans" % chan_id,
-                cond_density="%s S_per_m2" % xpps[cell_id]["parameters"]["gcca1"],
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"]["gcca1"]) * density_factor),
                 erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
                 ion=ion,
                 ion_channel="%s_%s" % (cell_id, chan_id),
@@ -536,7 +553,8 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             )
 
         cell.set_specific_capacitance(
-            "%s F_per_m2" % (float(xpps[cell_id]["parameters"]["c"]) * 1e-3)
+            "%s F_per_m2"
+            % (float(xpps[cell_id]["parameters"]["c"]) / 12.66728074437459)
         )
 
         cell.add_membrane_property("SpikeThresh", value="0mV")
@@ -544,6 +562,19 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
 
         # This value is not really used as it's a single comp cell model
         cell.set_resistivity("0.1 kohm_cm")
+
+        cell_doc.includes.append(IncludeType(href="CaDynamics.nml"))
+        # <species id="ca" ion="ca" concentrationModel="CaDynamics" initialConcentration="1e-4 mM" initialExtConcentration="2 mM"/>
+        species = component_factory(
+            "Species",
+            id="ca",
+            ion="ca",
+            concentration_model="CaDynamics",
+            initial_concentration="5e-5 mM",
+            initial_ext_concentration="2 mM",
+        )
+
+        cell.biophysical_properties.intracellular_properties.add(species)
 
         cell.info(show_contents=True)
 
@@ -580,6 +611,8 @@ if __name__ == "__main__":
     channels_to_include = ["leak", "shal", "egl36", "kir", "shak", "cca", "unc2"]
     channels_to_include = ["leak", "unc2"]
     channels_to_include = ["leak", "shal", "egl36", "kir", "shak", "cca", "unc2"]
+    channels_to_include = ["leak", "kir"]
+    channels_to_include = ["leak", "kir", "cca"]
     channels_to_include = [
         "leak",
         "nca",

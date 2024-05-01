@@ -19,12 +19,20 @@
     <Include file="RMD.cell.nml"/>
 
     <Simulation id="Sim_IClamp_RMD" length="1800.0ms" step="0.025ms" target="IClamp_RMD" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
+        <Display id="pop_RMD_0_caConc" title="Plots of pop_RMD_0_caConc" timeScale="1ms" xmin="-180.0" xmax="1980.0000000000002" ymin="-1" ymax="1">
+            <Line id="pop_RMD_0_RMD_caConc" quantity="pop_RMD/0/RMD/caConc" scale="1" color="#d54f33" timeScale="1ms"/>
+        </Display>
+
         <Display id="pop_RMD_v" title="Plots of pop_RMD_v" timeScale="1ms" xmin="-180.0" xmax="1980.0000000000002" ymin="-80" ymax="40">
-            <Line id="pop_RMD_0_RMD_v" quantity="pop_RMD/0/RMD/v" scale="1mV" color="#d54f33" timeScale="1ms"/>
+            <Line id="pop_RMD_0_RMD_v" quantity="pop_RMD/0/RMD/v" scale="1mV" color="#0534e4" timeScale="1ms"/>
         </Display>
 
         <OutputFile id="Sim_IClamp_RMD_pop_RMD_v_dat" fileName="Sim_IClamp_RMD.pop_RMD.v.dat">
             <OutputColumn id="pop_RMD_0_RMD_v" quantity="pop_RMD/0/RMD/v"/>
+        </OutputFile>
+
+        <OutputFile id="pop_RMD_0_caConc_dat" fileName="pop_RMD_0.caConc.dat">
+            <OutputColumn id="pop_RMD_0_RMD_caConc" quantity="pop_RMD/0/RMD/caConc"/>
         </OutputFile>
 
     </Simulation>

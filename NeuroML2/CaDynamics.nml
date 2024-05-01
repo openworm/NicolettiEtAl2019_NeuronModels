@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.githubusercontent.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta3.xsd" 
+         id="CaDynamics">
+
+    <notes>NeuroML 2 implementation of the Ca Pool mechanism</notes>
+
+    
+    <concentrationModel id="CaDynamics" type="concentrationModelNicolettiEtAl" backgr2="5e-5 mM" t_ca="50 ms" fca="0.001" ion="ca" vol="5.65 um3"/>
+
+    
+
+    <ComponentType name="concentrationModelNicolettiEtAl" extends="concentrationModel" description="Model of internal [Ca2+] specific to Nicoletti Et Al 2019">
+
+        <Parameter name="fca" dimension="none"/>
+        <Parameter name="backgr2" dimension="concentration"/>
+        <Parameter name="t_ca" dimension="time"/>
+        <Parameter name="vol" dimension="volume"/>
+       
+
+        <Constant name="Faraday" dimension="charge_per_mole" value="96485.3C_per_mol"/>
+
+        <Requirement name="iCa" dimension="current"/>
+
+        <Text name="ion"/>
+
+        <Dynamics>
+
+            <StateVariable name="concentration" exposure="concentration" dimension="concentration"/>
+            <StateVariable name="extConcentration" exposure="extConcentration" dimension="concentration"/>
+
+            <TimeDerivative variable="concentration" value="(iCa*fca/(2*Faraday*vol)) - ((concentration - backgr2) / t_ca)"/>
+
+
+            <OnStart>
+                <StateAssignment variable="concentration" value="initialConcentration"/>
+                <StateAssignment variable="extConcentration" value="initialExtConcentration"/>
+            </OnStart>
+
+        </Dynamics>
+
+    </ComponentType>
+
+
+</neuroml>
