@@ -2,7 +2,9 @@ from pyneuroml.xppaut import parse_script, to_lems, to_xpp, run_xpp_file
 
 from pprint import pprint
 
-parsed_data = parse_script("../RMD.ode")
+cell = "RMD"
+
+parsed_data = parse_script("../%s.ode" % cell)
 pprint(parsed_data)
 
 all_g = [
@@ -51,7 +53,7 @@ for c in channels_to_include:
 for p in all_g:
     parsed_data["parameters"][p] = 0
 
-new_ode_file = "Test_RMD.ode"
+new_ode_file = "Test_%s.ode" % cell
 parsed_data["settings"]["total"] = 1800
 parsed_data["parameters"]["ton"] = 1310
 new_ode = to_xpp(parsed_data, new_ode_file)
@@ -71,7 +73,7 @@ from matplotlib import pyplot as plt
 
 from pyneuroml.pynml import reload_standard_dat_file
 
-data, indices = reload_standard_dat_file("Sim_IClamp_RMD.pop_RMD.v.dat")
+data, indices = reload_standard_dat_file("Sim_IClamp_%s.pop_%s.v.dat" % (cell, cell))
 t_ms = [t * 1000 for t in data["t"]]
 v_mV = [v * 1000 for v in data[0]]
 
@@ -79,7 +81,7 @@ ax = axes[mp_fig]
 ax.plot(t_ms, v_mV, label="NeuroML - v", linewidth=0.5)
 ax.legend()
 
-data, indices = reload_standard_dat_file("pop_AWCon_0.caConc.dat")
+data, indices = reload_standard_dat_file("pop_%s_0.caConc.dat" % cell)
 t_ms = [t * 1000 for t in data["t"]]
 ca = [c * 1 for c in data[0]]
 

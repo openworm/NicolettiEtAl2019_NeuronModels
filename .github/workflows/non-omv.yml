@@ -1,0 +1,45 @@
+
+name: Testing non OMV scripts
+
+on:
+  push:
+    branches: [ master, development, experimental, test* ]
+  pull_request:
+    branches: [ master, development, experimental, test* ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ 3.8, 3.9, "3.10" ]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python  ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version:  ${{ matrix.python-version }}
+
+    - name: Install OMV
+      run: |
+        pip install git+https://github.com/OpenSourceBrain/osb-model-validation
+
+    - name: Run generate scripts
+      run: |
+        omv install pyneuroml
+        omv install xpp
+
+        cd NeuroML2
+        ./regenerateAndTest.sh
+
+
+
+    - name: Final version info
+      run: |
+        omv list -V # list installed engines
+        pip list
+        env
