@@ -11,6 +11,81 @@
         "record_variables": {
             "caConc": {
                 "all": "*"
+            },
+            "biophys/membraneProperties/leak_chans/gDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/leak_chans/iDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/nca_chans/gDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/nca_chans/iDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/shal_chans/gDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/shal_chans/iDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/shal_chans/RMD_shal/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/kir_chans/gDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/kir_chans/iDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/kir_chans/RMD_kir/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/shak_chans/gDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/shak_chans/iDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/shak_chans/RMD_shak/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/cca_chans/gDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/cca_chans/iDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/cca_chans/RMD_cca/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/unc2_chans/gDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/unc2_chans/iDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/unc2_chans/RMD_unc2/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/egl19_chans/gDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/egl19_chans/iDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/egl19_chans/RMD_egl19/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/sk_chans/gDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/sk_chans/iDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/sk_chans/RMD_sk/m/q": {
+                "all": "*"
             }
         }
     }

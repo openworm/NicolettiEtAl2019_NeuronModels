@@ -24,13 +24,18 @@ def _add_tc_ss(
     chan_doc,
     xpp,
     extra_params,
+    ca_conc_var=None,
 ):
     verbose = True
     ss = component_factory("HHVariable", type="%s_%s_inf" % (chan_id_in_cell, gate_id))
     tc = component_factory("HHTime", type="%s_%s_tau" % (chan_id_in_cell, gate_id))
 
     ssct = component_factory(
-        "ComponentType", name=ss.type, extends="baseVoltageDepVariable"
+        "ComponentType",
+        name=ss.type,
+        extends="baseVoltageDepVariable"
+        if not ca_conc_var
+        else "baseVoltageConcDepVariable",
     )
     tcct = component_factory(
         "ComponentType", name=tc.type, extends="baseVoltageDepTime"
@@ -43,6 +48,16 @@ def _add_tc_ss(
     )
     ssct.add(vscale)
     tcct.add(vscale)
+
+    if ca_conc_var:
+        cascale = component_factory(
+            "Constant",
+            name="CONC_SCALE",
+            dimension="concentration",
+            value="1 mM",
+        )
+        ssct.add(cascale)
+
     tscale = component_factory(
         "Constant", name="TIME_SCALE", dimension="time", value="1 ms"
     )
@@ -79,6 +94,15 @@ def _add_tc_ss(
     )
     d.add(dvv)
 
+    if ca_conc_var:
+        dvca = component_factory(
+            "DerivedVariable",
+            name=ca_conc_var,
+            dimension="none",
+            value="(caConc) / CONC_SCALE",
+        )
+        d.add(dvca)
+
     import sympy
     from sympy.parsing.sympy_parser import parse_expr
 
@@ -114,7 +138,7 @@ def _add_tc_ss(
 
 
 def create_channel_file(
-    chan_id_in_cell, cell_id, xpp, species, gates={}, extra_params=[]
+    chan_id_in_cell, cell_id, xpp, species, gates={}, extra_params=[], ca_conc_var=None
 ):
     chan_id = "%s_%s" % (cell_id, chan_id_in_cell)
     chan_doc = NeuroMLDocument(
@@ -142,6 +166,7 @@ def create_channel_file(
                 chan_doc,
                 xpp,
                 extra_params,
+                ca_conc_var,
             )
 
             gc = component_factory(
@@ -204,6 +229,7 @@ def generate_nmllite(
     parameters=None,
     stim_delay=310,
     stim_duration=500,
+    channels_to_include=[],
 ):
     from neuromllite import Cell, InputSource
 
@@ -263,6 +289,21 @@ def generate_nmllite(
         input_for_default_population=input_source,
     )
     sim.record_variables = {"caConc": {"all": "*"}}
+    for c in channels_to_include:
+        if c == "ca":
+            c = "sk"
+
+        if c is not "egl36" and cell is not "AWCon":
+            sim.record_variables["biophys/membraneProperties/%s_chans/gDensity" % c] = {
+                "all": "*"
+            }
+            sim.record_variables["biophys/membraneProperties/%s_chans/iDensity" % c] = {
+                "all": "*"
+            }
+            if c is not "leak" and c is not "nca":
+                sim.record_variables[
+                    "biophys/membraneProperties/%s_chans/%s_%s/m/q" % (c, cell, c)
+                ] = {"all": "*"}
     sim.to_json_file()
 
     return sim, net
@@ -552,6 +593,33 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
                 ),
             )
 
+        # KCNL CHANNELS
+        if "ca" in channels_to_include:
+            chan_id = "sk"
+            ion = "k"
+            g_param = "gca"
+            gates = {"m": [1, "minf_sk", "t_sk"]}
+            extra_params = ["k_sk2"]
+
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="%s_chans" % chan_id,
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"][g_param]) * density_factor),
+                erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
+                ion=ion,
+                ion_channel="%s_%s" % (cell_id, chan_id),
+                ion_chan_def_file=create_channel_file(
+                    chan_id,
+                    cell_id,
+                    xpps[cell_id],
+                    species=ion,
+                    gates=gates,
+                    extra_params=extra_params,
+                    ca_conc_var="ca_intra1",
+                ),
+            )
+
         cell.set_specific_capacitance(
             "%s F_per_m2"
             % (float(xpps[cell_id]["parameters"]["c"]) / 12.66728074437459)
@@ -590,6 +658,7 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             parameters=None,
             stim_delay=stim_delay,
             stim_duration=stim_duration,
+            channels_to_include=channels_to_include,
         )
 
         ################################################################################
@@ -613,6 +682,7 @@ if __name__ == "__main__":
     channels_to_include = ["leak", "shal", "egl36", "kir", "shak", "cca", "unc2"]
     channels_to_include = ["leak", "kir"]
     channels_to_include = ["leak", "kir", "cca"]
+    channels_to_include = ["leak", "kir", "cca", "ca"]
     channels_to_include = [
         "leak",
         "nca",
@@ -623,6 +693,7 @@ if __name__ == "__main__":
         "cca",
         "unc2",
         "egl19",
+        "ca",
     ]
 
     create_cells(channels_to_include, duration=1800, stim_delay=1310, stim_duration=500)

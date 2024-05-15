@@ -1,0 +1,28 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="RMD_sk">
+    <notes>An ion channel from cell RMD from Nicoletti et al. 2019</notes>
+    <ionChannelHH id="RMD_sk" species="k" conductance="10pS">
+        <notes>RMD_sk channel from Nicoletti et al. 2019</notes>
+        <gate id="m" instances="1" type="gateHHtauInf">
+            <timeCourse type="sk_m_tau"/>
+            <steadyState type="sk_m_inf"/>
+        </gate>
+    </ionChannelHH>
+    <ComponentType name="sk_m_inf" extends="baseVoltageConcDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="CONC_SCALE" dimension="concentration" value="1 mM"/>
+        <Constant name="k_sk2" dimension="none" value="0.00033"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="ca_intra1" dimension="none" value="(caConc) / CONC_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="ca_intra1/(ca_intra1 + k_sk2)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="sk_m_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(6.30000000000000)* TIME_SCALE"/>
+        </Dynamics>
+    </ComponentType>
+</neuroml>
