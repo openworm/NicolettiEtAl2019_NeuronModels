@@ -33,6 +33,8 @@ jobs:
         omv install pyneuroml
         omv install xpp
 
+        pip install black
+
         cd NeuroML2
         ./regenerateAndTest.sh
 
