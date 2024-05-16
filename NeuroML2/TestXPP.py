@@ -33,6 +33,21 @@ channels_to_include = ["leak", "shal", "egl36", "kir", "shak", "cca", "unc2", "e
 channels_to_include = ["leak", "kir"]
 channels_to_include = ["leak", "kir", "cca"]
 channels_to_include = ["leak", "kir", "cca", "ca"]
+channels_to_include = ["leak", "bk"]
+channels_to_include = ["leak", "unc2", "bk"]
+channels_to_include = [
+    "leak",
+    "nca",
+    "shal",
+    "egl36",
+    "kir",
+    "shak",
+    "cca",
+    "unc2",
+    "egl19",
+    "ca",
+    "bk",
+]
 channels_to_include = [
     "leak",
     "nca",
@@ -62,14 +77,21 @@ new_ode = to_xpp(parsed_data, new_ode_file)
 
 mp_fig = "Membrane potentials"
 ca_fig = "[Ca2+]"
-ca_extra = "Ca extra"
 
 print("Running XPP file for %s ms..." % parsed_data["settings"]["total"])
+
 axes = run_xpp_file(
     new_ode_file,
     plot=True,
     show_plot_already=False,
-    plot_separately={mp_fig: "v", ca_fig: "ca_intra1", ca_extra: "m_sk"},
+    plot_separately={
+        mp_fig: "v",
+        ca_fig: "ca_intra1",
+        "mbk2 var": "mbk2",
+        "mbk variable": "mbk",
+        "mslo1": "mslo1",
+        "mslo2": "mslo2",
+    },
 )
 
 from matplotlib import pyplot as plt

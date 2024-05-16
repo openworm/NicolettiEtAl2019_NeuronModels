@@ -7,6 +7,8 @@ from pprint import pprint
 
 from neuroml import GateHHRates
 from neuroml import IncludeType
+import sympy
+from sympy.parsing.sympy_parser import parse_expr
 
 
 xpps = {"RMD": parse_script("../RMD.ode"), "AWCon": parse_script("../AWC.ode")}
@@ -14,6 +16,18 @@ xpps = {"RMD": parse_script("../RMD.ode"), "AWCon": parse_script("../AWC.ode")}
 # pprint(xpps)
 
 colors = {"AWCon": "0 0 0.8", "RMD": "0 0.8 0", "GenericMuscleCell": "0.8 0 0"}
+local_sympy_dict = {"beta": sympy.Symbol("beta")}
+
+
+def replace_v(expr):
+    v, V = sympy.symbols("v V")
+    expr = expr.replace("^", "**")
+    expr = parse_expr(expr, evaluate=False, local_dict=local_sympy_dict)
+    expr = str(expr.subs(v, V))
+    expr = expr.replace("**", "^")
+    expr = expr.replace("Abs", "abs")
+
+    return expr
 
 
 def _add_tc_ss(
@@ -25,6 +39,7 @@ def _add_tc_ss(
     xpp,
     extra_params,
     ca_conc_var=None,
+    add_all=False,
 ):
     verbose = True
     ss = component_factory("HHVariable", type="%s_%s_inf" % (chan_id_in_cell, gate_id))
@@ -77,22 +92,76 @@ def _add_tc_ss(
         if chan_id_in_cell in p:
             potential_parameters.append(p)
 
-    for p in potential_parameters + extra_params:
-        const = component_factory(
-            "Constant", name=p, dimension="none", value=str(xpp["parameters"][p])
-        )
-        if p in inf_expr:
-            ssct.add(const)
-        if p in tau_expr:
-            tcct.add(const)
+    dss = component_factory("Dynamics")
+    ssct.add(dss)
 
-    d = component_factory("Dynamics")
-    ssct.add(d)
+    dtc = component_factory("Dynamics")
+    tcct.add(dtc)
 
     dvv = component_factory(
         "DerivedVariable", name="V", dimension="none", value="(v) / VOLT_SCALE"
     )
-    d.add(dvv)
+    dss.add(dvv)
+
+    inf_tau_exprs = {inf_expr: ssct, tau_expr: tcct}
+    inf_tau_all_deps = {inf_expr: inf_expr, tau_expr: tau_expr}
+
+    for p in potential_parameters + extra_params:
+        if p in xpp["parameters"]:
+            val = xpp["parameters"][p]
+            const = component_factory(
+                "Constant", name=p, dimension="none", value=str(val)
+            )
+            for e in inf_tau_exprs:
+                if p in inf_tau_all_deps[e] or add_all:
+                    inf_tau_exprs[e].add(const)
+                    inf_tau_all_deps[e] += "__%s" % p
+
+        elif p in xpp["time_derivatives"]:
+            val0 = replace_v(str(xpp["time_derivatives"][p]))
+
+            td = component_factory("TimeDerivative", variable=p, value=val0)
+            sv = component_factory("StateVariable", name=p, dimension="none")
+            for e in inf_tau_exprs:
+                if p in inf_tau_all_deps[e]:
+                    inf_tau_exprs[e].Dynamics[0].add(sv)
+                    inf_tau_exprs[e].Dynamics[0].add(td)
+                    inf_tau_all_deps[e] += "__%s" % p
+
+        elif p in xpp["derived_variables"]:
+            val = replace_v(str(xpp["derived_variables"][p]))
+            dv = component_factory(
+                "DerivedVariable", name=p, dimension="none", value=val
+            )
+            for e in inf_tau_exprs:
+                if p in inf_tau_all_deps[e]:
+                    inf_tau_exprs[e].Dynamics[0].add(dv)
+                    inf_tau_all_deps[e] += "__%s" % p
+
+            print("====  %s" % dv)
+            for pp in potential_parameters + extra_params:
+                print(pp)
+                if pp in dv.value:
+                    print("---  %s" % pp)
+                    if pp in xpp["parameters"]:
+                        print(">>>" + pp)
+                        val2 = str(xpp["parameters"][pp])
+                        const2 = component_factory(
+                            "Constant", name=pp, dimension="none", value=val2
+                        )
+                        for e in inf_tau_exprs:
+                            if pp in inf_tau_all_deps[e] or add_all:
+                                inf_tau_exprs[e].add(const2)
+
+                    if pp in xpp["derived_variables"]:
+                        print(".." + pp)
+                        val3 = replace_v(str(xpp["derived_variables"][pp]))
+                        dv3 = component_factory(
+                            "DerivedVariable", name=pp, dimension="none", value=val3
+                        )
+                        for e in inf_tau_exprs:
+                            if pp in inf_tau_all_deps[e] or add_all:
+                                inf_tau_exprs[e].Dynamics[0].add(dv3)
 
     if ca_conc_var:
         dvca = component_factory(
@@ -101,29 +170,21 @@ def _add_tc_ss(
             dimension="none",
             value="(caConc) / CONC_SCALE",
         )
-        d.add(dvca)
+        dss.add(dvca)
 
-    import sympy
-    from sympy.parsing.sympy_parser import parse_expr
-
-    v, V = sympy.symbols("v V")
-
-    s_expr = parse_expr(inf_expr, evaluate=False)
-    s_expr = s_expr.subs(v, V)
+    s_expr = replace_v(inf_expr)
 
     dv = component_factory(
         "DerivedVariable", name="x", exposure="x", dimension="none", value=s_expr
     )
-    d.add(dv)
+    dss.add(dv)
 
-    d = component_factory("Dynamics")
-    tcct.add(d)
-    d.add(dvv)
+    dtc.add(dvv)
 
     if verbose:
         print("Converting %s" % tau_expr)
-    s_expr = parse_expr(tau_expr.replace("^", "**"), evaluate=False)
-    s_expr = str(s_expr.subs(v, V)).replace("**", "^")
+
+    s_expr = replace_v(tau_expr)
 
     dv = component_factory(
         "DerivedVariable",
@@ -132,13 +193,20 @@ def _add_tc_ss(
         dimension="time",
         value="(%s)* TIME_SCALE" % s_expr,
     )
-    d.add(dv)
+    dtc.add(dv)
 
     return ss, tc
 
 
 def create_channel_file(
-    chan_id_in_cell, cell_id, xpp, species, gates={}, extra_params=[], ca_conc_var=None
+    chan_id_in_cell,
+    cell_id,
+    xpp,
+    species,
+    gates={},
+    extra_params=[],
+    ca_conc_var=None,
+    add_all=False,
 ):
     chan_id = "%s_%s" % (cell_id, chan_id_in_cell)
     chan_doc = NeuroMLDocument(
@@ -167,6 +235,7 @@ def create_channel_file(
                 xpp,
                 extra_params,
                 ca_conc_var,
+                add_all,
             )
 
             gc = component_factory(
@@ -293,14 +362,14 @@ def generate_nmllite(
         if c == "ca":
             c = "sk"
 
-        if c is not "egl36" and cell is not "AWCon":
+        if c != "egl36" and cell != "AWCon":
             sim.record_variables["biophys/membraneProperties/%s_chans/gDensity" % c] = {
                 "all": "*"
             }
             sim.record_variables["biophys/membraneProperties/%s_chans/iDensity" % c] = {
                 "all": "*"
             }
-            if c is not "leak" and c is not "nca":
+            if c != "leak" and c != "nca":
                 sim.record_variables[
                     "biophys/membraneProperties/%s_chans/%s_%s/m/q" % (c, cell, c)
                 ] = {"all": "*"}
@@ -593,6 +662,68 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
                 ),
             )
 
+        # SLO1-UNC2 COMPLEX
+        if "bk" in channels_to_include:
+            chan_id = "bk"
+            ion = "k"
+            g_param = "gbk"
+            gates = {"m": [1, "minf_bk", "tm_bkunc2"], "h": [1, "hinf_unc2", "th_unc2"]}
+            extra_params = [
+                "kcm",
+                "kom",
+                "kop",
+                "wom",
+                "wyx",
+                "kyx",
+                "nyx",
+                "wop",
+                "wxy",
+                "kxy",
+                "nxy",
+                "alpha",
+                "beta",
+                "sth2",
+                "tm_unc2",
+                "cac_nano",
+                "backgr",
+                "cao_nano",
+                "pi",
+                "r",
+                "d",
+                "F",
+                "kb",
+                "b",
+                "gsc",
+                "eca",
+                "minf_unc2",
+                "stm2",
+                "m_unc2",
+            ]
+            for p in xpps[cell_id]["parameters"]:
+                if "unc2" in p:
+                    extra_params.append(p)
+
+            xpps[cell_id]["parameters"]["pi"] = 3.14159265359
+
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="%s_chans" % chan_id,
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"][g_param]) * density_factor),
+                erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
+                ion=ion,
+                ion_channel="%s_%s" % (cell_id, chan_id),
+                ion_chan_def_file=create_channel_file(
+                    chan_id,
+                    cell_id,
+                    xpps[cell_id],
+                    species=ion,
+                    gates=gates,
+                    extra_params=extra_params,
+                    add_all=True,
+                ),
+            )
+
         # KCNL CHANNELS
         if "ca" in channels_to_include:
             chan_id = "sk"
@@ -683,6 +814,21 @@ if __name__ == "__main__":
     channels_to_include = ["leak", "kir"]
     channels_to_include = ["leak", "kir", "cca"]
     channels_to_include = ["leak", "kir", "cca", "ca"]
+    channels_to_include = ["leak", "bk"]
+    channels_to_include = ["leak", "unc2", "bk"]
+    channels_to_include = [
+        "leak",
+        "nca",
+        "shal",
+        "egl36",
+        "kir",
+        "shak",
+        "cca",
+        "unc2",
+        "egl19",
+        "ca",
+        "bk",
+    ]
     channels_to_include = [
         "leak",
         "nca",
