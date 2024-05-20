@@ -377,7 +377,7 @@ def generate_nmllite(
                 sim.record_variables[
                     "biophys/membraneProperties/%s_chans/%s_%s/m/q" % (c, cell, c)
                 ] = {"all": "*"}
-            if c != "leak" and c != "nca":
+            if c != "leak" and c not in ["nca", "kir", "sk"]:
                 sim.record_variables[
                     "biophys/membraneProperties/%s_chans/%s_%s/h/q" % (c, cell, c)
                 ] = {"all": "*"}
@@ -835,8 +835,9 @@ if __name__ == "__main__":
         "unc2",
         "egl19",
         "ca",
-        "bk",
     ]
+    channels_to_include = ["leak", "unc2"]
+    channels_to_include = ["leak", "unc2", "bk"]
     channels_to_include = [
         "leak",
         "nca",
@@ -848,8 +849,7 @@ if __name__ == "__main__":
         "unc2",
         "egl19",
         "ca",
+        "bk",
     ]
-    channels_to_include = ["leak", "unc2"]
-    channels_to_include = ["leak", "unc2", "bk"]
 
     create_cells(channels_to_include, duration=1800, stim_delay=1310, stim_duration=500)

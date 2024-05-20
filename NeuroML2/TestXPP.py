@@ -46,8 +46,9 @@ channels_to_include = [
     "unc2",
     "egl19",
     "ca",
-    "bk",
 ]
+channels_to_include = ["leak", "unc2"]
+channels_to_include = ["leak", "unc2", "bk"]
 channels_to_include = [
     "leak",
     "nca",
@@ -59,9 +60,8 @@ channels_to_include = [
     "unc2",
     "egl19",
     "ca",
+    "bk",
 ]
-channels_to_include = ["leak", "unc2"]
-channels_to_include = ["leak", "unc2", "bk"]
 
 for c in channels_to_include:
     print("Including channel: %s" % c)

@@ -9,6 +9,7 @@
     <include href="RMD_unc2.channel.nml"/>
     <include href="RMD_egl19.channel.nml"/>
     <include href="RMD_cca.channel.nml"/>
+    <include href="RMD_bk.channel.nml"/>
     <include href="RMD_sk.channel.nml"/>
     <include href="CaDynamics.nml"/>
     <cell id="RMD">
@@ -38,6 +39,7 @@
                 <channelDensity id="unc2_chans" ionChannel="RMD_unc2" condDensity="71.04918712721204 S_per_m2" erev="60.0mV" ion="ca"/>
                 <channelDensity id="egl19_chans" ionChannel="RMD_egl19" condDensity="78.15410583993324 S_per_m2" erev="60.0mV" ion="ca"/>
                 <channelDensity id="cca_chans" ionChannel="RMD_cca" condDensity="244.72497788261924 S_per_m2" erev="60.0mV" ion="ca"/>
+                <channelDensity id="bk_chans" ionChannel="RMD_bk" condDensity="23.683062375737347 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="sk_chans" ionChannel="RMD_sk" condDensity="4.736612475147469 S_per_m2" erev="-80.0mV" ion="k"/>
                 <spikeThresh value="0mV"/>
                 <specificCapacitance value="0.09473224950294937 F_per_m2"/>
