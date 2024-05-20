@@ -60,6 +60,8 @@ channels_to_include = [
     "egl19",
     "ca",
 ]
+channels_to_include = ["leak", "unc2"]
+channels_to_include = ["leak", "unc2", "bk"]
 
 for c in channels_to_include:
     print("Including channel: %s" % c)
@@ -80,23 +82,28 @@ ca_fig = "[Ca2+]"
 
 print("Running XPP file for %s ms..." % parsed_data["settings"]["total"])
 
+chans = [
+    ["unc2", "m", "m_unc2"],
+    ["unc2", "h", "h_unc2"],
+    ["bk", "m", "mbk"],
+    ["bk", "h", "h_unc2"],
+]
+
+plot_separately = {mp_fig: "v", ca_fig: "ca_intra1"}
+
+for c in chans:
+    print("Plotting %s" % c)
+    plot_separately["var %s_%s %s" % (c[0], c[1], c[2])] = c[2]
+
+
 axes = run_xpp_file(
-    new_ode_file,
-    plot=True,
-    show_plot_already=False,
-    plot_separately={
-        mp_fig: "v",
-        ca_fig: "ca_intra1",
-        "mbk2 var": "mbk2",
-        "mbk variable": "mbk",
-        "mslo1": "mslo1",
-        "mslo2": "mslo2",
-    },
+    new_ode_file, plot=True, show_plot_already=False, plot_separately=plot_separately
 )
 
 from matplotlib import pyplot as plt
 
 from pyneuroml.pynml import reload_standard_dat_file
+
 
 data, indices = reload_standard_dat_file("Sim_IClamp_%s.pop_%s.v.dat" % (cell, cell))
 t_ms = [t * 1000 for t in data["t"]]
@@ -106,12 +113,26 @@ ax = axes[mp_fig]
 ax.plot(t_ms, v_mV, label="NeuroML - v", linewidth=0.5)
 ax.legend()
 
+
 data, indices = reload_standard_dat_file("pop_%s_0.caConc.dat" % cell)
-t_ms = [t * 1000 for t in data["t"]]
 ca = [c * 1 for c in data[0]]
 
 ax = axes[ca_fig]
 ax.plot(t_ms, ca, label="NeuroML - [Ca2+]", linewidth=0.5)
 ax.legend()
+
+for c in chans:
+    print("Plotting %s" % c)
+    data, indices = reload_standard_dat_file(
+        "pop_%s_0.biophys_membraneProperties_%s_chans_%s_%s_%s_q.dat"
+        % (cell, c[0], cell, c[0], c[1])
+    )
+
+    vv = [v * 1 for v in data[0]]
+    fig_name = "var %s_%s %s" % (c[0], c[1], c[2])
+    ax = axes[fig_name]
+    ax.plot(t_ms, vv, label="NeuroML %s" % fig_name, linewidth=0.5)
+    ax.legend()
+
 
 plt.show()

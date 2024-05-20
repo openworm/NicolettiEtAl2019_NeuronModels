@@ -77,6 +77,8 @@ def _add_tc_ss(
         "Constant", name="TIME_SCALE", dimension="time", value="1 ms"
     )
     tcct.add(tscale)
+    if add_all:
+        ssct.add(tscale)
 
     inf_expr = xpp["derived_variables"][inf_expr_param]
     tau_expr = xpp["derived_variables"][tau_expr_param]
@@ -120,7 +122,9 @@ def _add_tc_ss(
         elif p in xpp["time_derivatives"]:
             val0 = replace_v(str(xpp["time_derivatives"][p]))
 
-            td = component_factory("TimeDerivative", variable=p, value=val0)
+            td = component_factory(
+                "TimeDerivative", variable=p, value="(%s) / TIME_SCALE" % val0
+            )
             sv = component_factory("StateVariable", name=p, dimension="none")
             for e in inf_tau_exprs:
                 if p in inf_tau_all_deps[e]:
@@ -373,6 +377,11 @@ def generate_nmllite(
                 sim.record_variables[
                     "biophys/membraneProperties/%s_chans/%s_%s/m/q" % (c, cell, c)
                 ] = {"all": "*"}
+            if c != "leak" and c != "nca":
+                sim.record_variables[
+                    "biophys/membraneProperties/%s_chans/%s_%s/h/q" % (c, cell, c)
+                ] = {"all": "*"}
+
     sim.to_json_file()
 
     return sim, net
@@ -669,9 +678,8 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             g_param = "gbk"
             gates = {"m": [1, "minf_bk", "tm_bkunc2"], "h": [1, "hinf_unc2", "th_unc2"]}
             extra_params = [
-                "kcm",
-                "kom",
-                "kop",
+                "backgr",
+                "cac_nano",
                 "wom",
                 "wyx",
                 "kyx",
@@ -680,13 +688,8 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
                 "wxy",
                 "kxy",
                 "nxy",
-                "alpha",
-                "beta",
                 "sth2",
                 "tm_unc2",
-                "cac_nano",
-                "backgr",
-                "cao_nano",
                 "pi",
                 "r",
                 "d",
@@ -695,7 +698,13 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
                 "b",
                 "gsc",
                 "eca",
+                "cao_nano",
+                "kcm",
+                "kom",
+                "kop",
                 "minf_unc2",
+                "alpha",
+                "beta",
                 "stm2",
                 "m_unc2",
             ]
@@ -815,7 +824,6 @@ if __name__ == "__main__":
     channels_to_include = ["leak", "kir", "cca"]
     channels_to_include = ["leak", "kir", "cca", "ca"]
     channels_to_include = ["leak", "bk"]
-    channels_to_include = ["leak", "unc2", "bk"]
     channels_to_include = [
         "leak",
         "nca",
@@ -841,5 +849,7 @@ if __name__ == "__main__":
         "egl19",
         "ca",
     ]
+    channels_to_include = ["leak", "unc2"]
+    channels_to_include = ["leak", "unc2", "bk"]
 
     create_cells(channels_to_include, duration=1800, stim_delay=1310, stim_duration=500)

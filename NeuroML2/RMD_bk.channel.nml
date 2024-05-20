@@ -13,8 +13,12 @@
     </ionChannelHH>
     <ComponentType name="bk_m_inf" extends="baseVoltageDepVariable">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="gbk" dimension="none" value="0.3"/>
         <Constant name="gbk2" dimension="none" value="0.3"/>
+        <Constant name="backgr" dimension="none" value="0.05"/>
+        <Constant name="r" dimension="none" value="1.3e-08"/>
+        <Constant name="b" dimension="none" value="3e-05"/>
         <Constant name="wom" dimension="none" value="3.152961"/>
         <Constant name="wyx" dimension="none" value="0.012643"/>
         <Constant name="kyx" dimension="none" value="34.338784"/>
@@ -31,9 +35,6 @@
         <Constant name="p5tmunc2" dimension="none" value="0.1029"/>
         <Constant name="shiftmunc2" dimension="none" value="30.0"/>
         <Constant name="constmunc2" dimension="none" value="3.0"/>
-        <Constant name="backgr" dimension="none" value="0.05"/>
-        <Constant name="r" dimension="none" value="1.3e-08"/>
-        <Constant name="b" dimension="none" value="3e-05"/>
         <Constant name="pi" dimension="none" value="3.14159265359"/>
         <Constant name="d" dimension="none" value="2.5e-10"/>
         <Constant name="F" dimension="none" value="96485.0"/>
@@ -67,7 +68,7 @@
             <DerivedVariable name="minf_unc2" dimension="none" value="1/(exp((-V - stm2 + va_unc2)/ka_unc2) + 1)"/>
             <DerivedVariable name="beta" dimension="none" value="-alpha + 1/tm_unc2"/>
             <DerivedVariable name="x" dimension="none" exposure="x" value="kop*m_unc2*(alpha + beta + kcm)/(beta*kcm + (alpha + kcm)*(kom + kop))"/>
-            <TimeDerivative variable="m_unc2" value="(-m_unc2 + minf_unc2)/tm_unc2"/>
+            <TimeDerivative variable="m_unc2" value="((-m_unc2 + minf_unc2)/tm_unc2) / TIME_SCALE"/>
         </Dynamics>
     </ComponentType>
     <ComponentType name="bk_m_tau" extends="baseVoltageDepTime">
@@ -75,6 +76,9 @@
         <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="gbk" dimension="none" value="0.3"/>
         <Constant name="gbk2" dimension="none" value="0.3"/>
+        <Constant name="backgr" dimension="none" value="0.05"/>
+        <Constant name="r" dimension="none" value="1.3e-08"/>
+        <Constant name="b" dimension="none" value="3e-05"/>
         <Constant name="wom" dimension="none" value="3.152961"/>
         <Constant name="wyx" dimension="none" value="0.012643"/>
         <Constant name="kyx" dimension="none" value="34.338784"/>
@@ -91,9 +95,6 @@
         <Constant name="p5tmunc2" dimension="none" value="0.1029"/>
         <Constant name="shiftmunc2" dimension="none" value="30.0"/>
         <Constant name="constmunc2" dimension="none" value="3.0"/>
-        <Constant name="backgr" dimension="none" value="0.05"/>
-        <Constant name="r" dimension="none" value="1.3e-08"/>
-        <Constant name="b" dimension="none" value="3e-05"/>
         <Constant name="pi" dimension="none" value="3.14159265359"/>
         <Constant name="d" dimension="none" value="2.5e-10"/>
         <Constant name="F" dimension="none" value="96485.0"/>
@@ -130,8 +131,12 @@
     </ComponentType>
     <ComponentType name="bk_h_inf" extends="baseVoltageDepVariable">
         <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="gbk" dimension="none" value="0.3"/>
         <Constant name="gbk2" dimension="none" value="0.3"/>
+        <Constant name="backgr" dimension="none" value="0.05"/>
+        <Constant name="r" dimension="none" value="1.3e-08"/>
+        <Constant name="b" dimension="none" value="3e-05"/>
         <Constant name="wom" dimension="none" value="3.152961"/>
         <Constant name="wyx" dimension="none" value="0.012643"/>
         <Constant name="kyx" dimension="none" value="34.338784"/>
@@ -148,9 +153,6 @@
         <Constant name="p5tmunc2" dimension="none" value="0.1029"/>
         <Constant name="shiftmunc2" dimension="none" value="30.0"/>
         <Constant name="constmunc2" dimension="none" value="3.0"/>
-        <Constant name="backgr" dimension="none" value="0.05"/>
-        <Constant name="r" dimension="none" value="1.3e-08"/>
-        <Constant name="b" dimension="none" value="3e-05"/>
         <Constant name="pi" dimension="none" value="3.14159265359"/>
         <Constant name="d" dimension="none" value="2.5e-10"/>
         <Constant name="F" dimension="none" value="96485.0"/>
@@ -186,6 +188,9 @@
         <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
         <Constant name="gbk" dimension="none" value="0.3"/>
         <Constant name="gbk2" dimension="none" value="0.3"/>
+        <Constant name="backgr" dimension="none" value="0.05"/>
+        <Constant name="r" dimension="none" value="1.3e-08"/>
+        <Constant name="b" dimension="none" value="3e-05"/>
         <Constant name="wom" dimension="none" value="3.152961"/>
         <Constant name="wyx" dimension="none" value="0.012643"/>
         <Constant name="kyx" dimension="none" value="34.338784"/>
@@ -202,9 +207,6 @@
         <Constant name="p5tmunc2" dimension="none" value="0.1029"/>
         <Constant name="shiftmunc2" dimension="none" value="30.0"/>
         <Constant name="constmunc2" dimension="none" value="3.0"/>
-        <Constant name="backgr" dimension="none" value="0.05"/>
-        <Constant name="r" dimension="none" value="1.3e-08"/>
-        <Constant name="b" dimension="none" value="3e-05"/>
         <Constant name="pi" dimension="none" value="3.14159265359"/>
         <Constant name="d" dimension="none" value="2.5e-10"/>
         <Constant name="F" dimension="none" value="96485.0"/>
