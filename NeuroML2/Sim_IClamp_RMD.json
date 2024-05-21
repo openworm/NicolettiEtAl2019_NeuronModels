@@ -2,7 +2,7 @@
     "Sim_IClamp_RMD": {
         "version": "NeuroMLlite v0.5.9",
         "network": "IClamp_RMD.json",
-        "duration": 1800.0,
+        "duration": 1400.0,
         "dt": 0.025,
         "seed": 12345,
         "record_traces": {

@@ -21,3 +21,5 @@ report.*.txt
 arm64
 /NeuroML2/LEMS_0.xml
 /NeuroML2/log
+/LEMS_RMD.xml
+/report.txt

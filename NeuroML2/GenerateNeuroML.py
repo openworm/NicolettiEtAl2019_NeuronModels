@@ -1098,4 +1098,4 @@ if __name__ == "__main__":
         "slo2",
     ]
 
-    create_cells(channels_to_include, duration=1800, stim_delay=1310, stim_duration=500)
+    create_cells(channels_to_include, duration=1400, stim_delay=1310, stim_duration=50)

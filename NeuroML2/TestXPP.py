@@ -78,9 +78,19 @@ for p in all_g:
     parsed_data["parameters"][p] = 0
 
 new_ode_file = "Test_%s.ode" % cell
-parsed_data["settings"]["total"] = 1800
-parsed_data["settings"]["dt"] = 0.1
-parsed_data["parameters"]["ton"] = 1310
+
+additional_transient_phase = 1000
+parsed_data["settings"]["total"] = (
+    float(parsed_data["settings"]["total"]) + additional_transient_phase
+)
+parsed_data["settings"]["trans"] = 0
+parsed_data["settings"]["dt"] = 0.01
+parsed_data["parameters"]["ton"] = (
+    float(parsed_data["parameters"]["ton"]) + additional_transient_phase
+)
+parsed_data["parameters"]["toff"] = (
+    float(parsed_data["parameters"]["toff"]) + additional_transient_phase
+)
 new_ode = to_xpp(parsed_data, new_ode_file)
 
 mp_fig = "Membrane potentials"

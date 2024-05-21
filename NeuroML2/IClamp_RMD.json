@@ -5,7 +5,7 @@
         "parameters": {
             "stim_amp": "10pA",
             "stim_delay": "1310ms",
-            "stim_duration": "500ms"
+            "stim_duration": "50ms"
         },
         "cells": {
             "RMD": {
