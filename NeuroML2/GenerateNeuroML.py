@@ -73,12 +73,17 @@ def _add_tc_ss(
         )
         ssct.add(cascale)
 
-    tscale = component_factory(
+    tscale_ms = component_factory(
         "Constant", name="TIME_SCALE", dimension="time", value="1 ms"
     )
-    tcct.add(tscale)
+    tscale_s = component_factory(
+        "Constant", name="TIME_SCALE_S", dimension="time", value="1 s"
+    )
+    tcct.add(tscale_ms)
     if add_all:
-        ssct.add(tscale)
+        ssct.add(tscale_ms)
+        # tcct.add(tscale_s)
+        # ssct.add(tscale_s)
 
     inf_expr = xpp["derived_variables"][inf_expr_param]
     tau_expr = xpp["derived_variables"][tau_expr_param]
@@ -123,7 +128,7 @@ def _add_tc_ss(
             val0 = replace_v(str(xpp["time_derivatives"][p]))
 
             td = component_factory(
-                "TimeDerivative", variable=p, value="(%s) / TIME_SCALE" % val0
+                "TimeDerivative", variable=p, value="(%s) / %s" % (val0, tscale_ms.name)
             )
             sv = component_factory("StateVariable", name=p, dimension="none")
             for e in inf_tau_exprs:
@@ -142,13 +147,13 @@ def _add_tc_ss(
                     inf_tau_exprs[e].Dynamics[0].add(dv)
                     inf_tau_all_deps[e] += "__%s" % p
 
-            print("====  %s" % dv)
+            # print("====  %s" % dv)
             for pp in potential_parameters + extra_params:
-                print(pp)
+                # print(pp)
                 if pp in dv.value:
-                    print("---  %s" % pp)
+                    # print("---  %s" % pp)
                     if pp in xpp["parameters"]:
-                        print(">>>" + pp)
+                        # print(">>>" + pp)
                         val2 = str(xpp["parameters"][pp])
                         const2 = component_factory(
                             "Constant", name=pp, dimension="none", value=val2
@@ -158,7 +163,7 @@ def _add_tc_ss(
                                 inf_tau_exprs[e].add(const2)
 
                     if pp in xpp["derived_variables"]:
-                        print(".." + pp)
+                        # print(".." + pp)
                         val3 = replace_v(str(xpp["derived_variables"][pp]))
                         dv3 = component_factory(
                             "DerivedVariable", name=pp, dimension="none", value=val3
@@ -195,7 +200,7 @@ def _add_tc_ss(
         name="t",
         exposure="t",
         dimension="time",
-        value="(%s)* TIME_SCALE" % s_expr,
+        value="(%s)* %s" % (s_expr, tscale_ms.name),
     )
     dtc.add(dv)
 
@@ -733,6 +738,68 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
                 ),
             )
 
+        # SLO2-UNC2 COMPLEX
+        if "slo2" in channels_to_include:
+            chan_id = "slo2"
+            ion = "k"
+            g_param = "gslo2"
+            gates = {"m": [1, "minf_slo2", "tm_slo2"], "h": [1, "hinf_unc2", "th_unc2"]}
+            extra_params = [
+                "backgr",
+                "cac_nano",
+                "wom1",
+                "wyx1",
+                "kyx1",
+                "nyx1",
+                "wop1",
+                "wxy1",
+                "kxy1",
+                "nxy1",
+                "sth2",
+                "tm_unc2",
+                "pi",
+                "r",
+                "d",
+                "F",
+                "kb",
+                "b",
+                "gsc",
+                "eca",
+                "cao_nano",
+                "kcm3",
+                "kom3",
+                "kop3",
+                "minf_unc2",
+                "alpha",
+                "beta",
+                "stm2",
+                "m_unc2",
+            ]
+            for p in xpps[cell_id]["parameters"]:
+                if "unc2" in p:
+                    extra_params.append(p)
+
+            xpps[cell_id]["parameters"]["pi"] = 3.14159265359
+
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="%s_chans" % chan_id,
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"][g_param]) * density_factor),
+                erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
+                ion=ion,
+                ion_channel="%s_%s" % (cell_id, chan_id),
+                ion_chan_def_file=create_channel_file(
+                    chan_id,
+                    cell_id,
+                    xpps[cell_id],
+                    species=ion,
+                    gates=gates,
+                    extra_params=extra_params,
+                    add_all=True,
+                ),
+            )
+
         # KCNL CHANNELS
         if "ca" in channels_to_include:
             chan_id = "sk"
@@ -837,6 +904,7 @@ if __name__ == "__main__":
         "ca",
     ]
     channels_to_include = ["leak", "unc2"]
+    channels_to_include = ["leak", "unc2", "slo2"]
     channels_to_include = ["leak", "unc2", "bk"]
     channels_to_include = [
         "leak",
@@ -850,6 +918,7 @@ if __name__ == "__main__":
         "egl19",
         "ca",
         "bk",
+        "slo2",
     ]
 
     create_cells(channels_to_include, duration=1800, stim_delay=1310, stim_duration=500)

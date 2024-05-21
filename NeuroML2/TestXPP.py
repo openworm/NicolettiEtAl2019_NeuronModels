@@ -21,7 +21,6 @@ all_g = [
     "gbk2",
     "gslo2",
     "gca",
-    "gsc",
     "gnca",
 ]
 
@@ -48,6 +47,7 @@ channels_to_include = [
     "ca",
 ]
 channels_to_include = ["leak", "unc2"]
+channels_to_include = ["leak", "unc2", "slo2"]
 channels_to_include = ["leak", "unc2", "bk"]
 channels_to_include = [
     "leak",
@@ -61,6 +61,7 @@ channels_to_include = [
     "egl19",
     "ca",
     "bk",
+    "slo2",
 ]
 
 for c in channels_to_include:
@@ -74,6 +75,7 @@ for p in all_g:
 
 new_ode_file = "Test_%s.ode" % cell
 parsed_data["settings"]["total"] = 1800
+parsed_data["settings"]["dt"] = 0.1
 parsed_data["parameters"]["ton"] = 1310
 new_ode = to_xpp(parsed_data, new_ode_file)
 
@@ -87,7 +89,10 @@ chans = [
     ["unc2", "h", "h_unc2"],
     ["bk", "m", "mbk"],
     ["bk", "h", "h_unc2"],
+    ["slo2", "m", "mslo2"],
+    ["slo2", "h", "h_unc2"],
 ]
+
 
 plot_separately = {mp_fig: "v", ca_fig: "ca_intra1"}
 
