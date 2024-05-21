@@ -49,6 +49,7 @@ channels_to_include = [
 channels_to_include = ["leak", "unc2"]
 channels_to_include = ["leak", "unc2", "slo2"]
 channels_to_include = ["leak", "unc2", "bk"]
+channels_to_include = ["leak", "egl19", "slo1"]
 channels_to_include = [
     "leak",
     "nca",
@@ -61,6 +62,7 @@ channels_to_include = [
     "egl19",
     "ca",
     "bk",
+    "slo1",
     "slo2",
 ]
 
@@ -85,14 +87,19 @@ ca_fig = "[Ca2+]"
 print("Running XPP file for %s ms..." % parsed_data["settings"]["total"])
 
 chans = [
+    ["egl19", "m", "m_egl19"],
+    ["egl19", "h", "h_egl19"],
+    ["slo1", "m", "mslo1"],
+    ["slo1", "h", "h_egl19"],
+]
+"""
     ["unc2", "m", "m_unc2"],
     ["unc2", "h", "h_unc2"],
     ["bk", "m", "mbk"],
     ["bk", "h", "h_unc2"],
     ["slo2", "m", "mslo2"],
     ["slo2", "h", "h_unc2"],
-]
-
+"""
 
 plot_separately = {mp_fig: "v", ca_fig: "ca_intra1"}
 

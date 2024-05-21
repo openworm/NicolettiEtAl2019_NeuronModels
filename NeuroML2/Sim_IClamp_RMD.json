@@ -114,6 +114,18 @@
             "biophys/membraneProperties/bk_chans/RMD_bk/h/q": {
                 "all": "*"
             },
+            "biophys/membraneProperties/slo1_chans/gDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/slo1_chans/iDensity": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/slo1_chans/RMD_slo1/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/slo1_chans/RMD_slo1/h/q": {
+                "all": "*"
+            },
             "biophys/membraneProperties/slo2_chans/gDensity": {
                 "all": "*"
             },

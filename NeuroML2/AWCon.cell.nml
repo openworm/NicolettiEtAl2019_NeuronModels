@@ -9,6 +9,7 @@
     <include href="AWCon_egl19.channel.nml"/>
     <include href="AWCon_cca.channel.nml"/>
     <include href="AWCon_bk.channel.nml"/>
+    <include href="AWCon_slo1.channel.nml"/>
     <include href="AWCon_slo2.channel.nml"/>
     <include href="AWCon_sk.channel.nml"/>
     <include href="CaDynamics.nml"/>
@@ -39,6 +40,7 @@
                 <channelDensity id="egl19_chans" ionChannel="AWCon_egl19" condDensity="122.36248894130962 S_per_m2" erev="60.0mV" ion="ca"/>
                 <channelDensity id="cca_chans" ionChannel="AWCon_cca" condDensity="55.26047887672047 S_per_m2" erev="60.0mV" ion="ca"/>
                 <channelDensity id="bk_chans" ionChannel="AWCon_bk" condDensity="8.68378953777036 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="slo1_chans" ionChannel="AWCon_slo1" condDensity="8.68378953777036 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="slo2_chans" ionChannel="AWCon_slo2" condDensity="7.8943541252457825 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="sk_chans" ionChannel="AWCon_sk" condDensity="4.736612475147469 S_per_m2" erev="-80.0mV" ion="k"/>
                 <spikeThresh value="0mV"/>
