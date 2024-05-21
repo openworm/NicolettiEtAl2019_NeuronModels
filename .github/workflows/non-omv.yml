@@ -30,7 +30,8 @@ jobs:
 
     - name: Run generate scripts
       run: |
-        omv install pyneuroml progressbar
+        pip progressbar
+        omv install pyneuroml
         omv install xpp
 
         pip install black
