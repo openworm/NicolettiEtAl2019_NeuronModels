@@ -11,6 +11,7 @@
     <include href="RMD_cca.channel.nml"/>
     <include href="RMD_bk.channel.nml"/>
     <include href="RMD_slo1.channel.nml"/>
+    <include href="RMD_bk2.channel.nml"/>
     <include href="RMD_slo2.channel.nml"/>
     <include href="RMD_sk.channel.nml"/>
     <include href="CaDynamics.nml"/>
@@ -43,6 +44,7 @@
                 <channelDensity id="cca_chans" ionChannel="RMD_cca" condDensity="244.72497788261924 S_per_m2" erev="60.0mV" ion="ca"/>
                 <channelDensity id="bk_chans" ionChannel="RMD_bk" condDensity="23.683062375737347 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="slo1_chans" ionChannel="RMD_slo1" condDensity="23.683062375737347 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="bk2_chans" ionChannel="RMD_bk2" condDensity="23.683062375737347 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="slo2_chans" ionChannel="RMD_slo2" condDensity="23.683062375737347 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="sk_chans" ionChannel="RMD_sk" condDensity="4.736612475147469 S_per_m2" erev="-80.0mV" ion="k"/>
                 <spikeThresh value="0mV"/>

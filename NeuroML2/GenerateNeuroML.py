@@ -825,6 +825,92 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
                 ),
             )
 
+        # SLO2-EGL19 COMPLEX
+        if "bk2" in channels_to_include:
+            chan_id = "bk2"
+            ion = "k"
+            g_param = "gbk2"
+            gates = {
+                "m": [1, "minf_bk2", "tm_bkegl19"],
+                "h": [1, "hinf_egl19", "ths_egl19"],
+            }
+            extra_params = [
+                "backgr",
+                "cac_nano",
+                "wom1",
+                "wyx1",
+                "kyx1",
+                "nyx1",
+                "wop1",
+                "wxy1",
+                "kxy1",
+                "nxy1",
+                "stm19",
+                "sth19",
+                "pdg1",
+                "pdg2",
+                "pdg3",
+                "pdg4",
+                "pdg5",
+                "pdg6",
+                "pdg7",
+                "stau19",
+                "pds1",
+                "pds2",
+                "pds3",
+                "pds4",
+                "pds5",
+                "pds6",
+                "pds7",
+                "pds8",
+                "pds9",
+                "pds10",
+                "pds11",
+                "shiftdps",
+                "tm_egl19",
+                "pi",
+                "r",
+                "d",
+                "F",
+                "kb",
+                "b",
+                "gsc",
+                "eca",
+                "cao_nano",
+                "kcm1",
+                "kom1",
+                "kop1",
+                "minf_egl19",
+                "alpha1",
+                "beta1",
+                "stm2",
+                "m_egl19",
+            ]
+            for p in xpps[cell_id]["parameters"]:
+                if "egl19" in p:
+                    extra_params.append(p)
+
+            xpps[cell_id]["parameters"]["pi"] = 3.14159265359
+
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="%s_chans" % chan_id,
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"][g_param]) * density_factor),
+                erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
+                ion=ion,
+                ion_channel="%s_%s" % (cell_id, chan_id),
+                ion_chan_def_file=create_channel_file(
+                    chan_id,
+                    cell_id,
+                    xpps[cell_id],
+                    species=ion,
+                    gates=gates,
+                    extra_params=extra_params,
+                    add_all=True,
+                ),
+            )
+
         # SLO2-UNC2 COMPLEX
         if "slo2" in channels_to_include:
             chan_id = "slo2"
@@ -994,6 +1080,7 @@ if __name__ == "__main__":
     channels_to_include = ["leak", "unc2", "slo2"]
     channels_to_include = ["leak", "unc2", "bk"]
     channels_to_include = ["leak", "egl19", "slo1"]
+    channels_to_include = ["leak", "egl19", "bk2"]
     channels_to_include = [
         "leak",
         "nca",
@@ -1007,6 +1094,7 @@ if __name__ == "__main__":
         "ca",
         "bk",
         "slo1",
+        "bk2",
         "slo2",
     ]
 
