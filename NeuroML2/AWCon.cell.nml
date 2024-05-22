@@ -3,7 +3,10 @@
     <include href="AWCon_leak.channel.nml"/>
     <include href="AWCon_nca.channel.nml"/>
     <include href="AWCon_shal.channel.nml"/>
+    <include href="AWCon_kvs1.channel.nml"/>
     <include href="AWCon_shak.channel.nml"/>
+    <include href="AWCon_kqt3.channel.nml"/>
+    <include href="AWCon_egl2.channel.nml"/>
     <include href="AWCon_kir.channel.nml"/>
     <include href="AWCon_unc2.channel.nml"/>
     <include href="AWCon_egl19.channel.nml"/>
@@ -35,7 +38,10 @@
                 <channelDensity id="leak_chans" ionChannel="AWCon_leak" condDensity="21.314756138163613 S_per_m2" erev="-80.0mV" ion="non_specific"/>
                 <channelDensity id="nca_chans" ionChannel="AWCon_nca" condDensity="4.34189476888518 S_per_m2" erev="30.0mV" ion="non_specific"/>
                 <channelDensity id="shal_chans" ionChannel="AWCon_shal" condDensity="228.93626963212768 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="kvs1_chans" ionChannel="AWCon_kvs1" condDensity="63.15483300196626 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="shak_chans" ionChannel="AWCon_shak" condDensity="7.8943541252457825 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="kqt3_chans" ionChannel="AWCon_kqt3" condDensity="43.4189476888518 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="egl2_chans" ionChannel="AWCon_egl2" condDensity="67.10201006458915 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="kir_chans" ionChannel="AWCon_kir" condDensity="51.313301814097585 S_per_m2" erev="-80.0mV" ion="k"/>
                 <channelDensity id="unc2_chans" ionChannel="AWCon_unc2" condDensity="78.94354125245782 S_per_m2" erev="60.0mV" ion="ca"/>
                 <channelDensity id="egl19_chans" ionChannel="AWCon_egl19" condDensity="122.36248894130962 S_per_m2" erev="60.0mV" ion="ca"/>

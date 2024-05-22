@@ -4,7 +4,7 @@
         "notes": "A network model: IClamp_RMD",
         "parameters": {
             "stim_amp": "10pA",
-            "stim_delay": "1310ms",
+            "stim_delay": "2310ms",
             "stim_duration": "50ms"
         },
         "cells": {

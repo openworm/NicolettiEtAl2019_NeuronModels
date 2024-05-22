@@ -2,7 +2,7 @@
     "Sim_IClamp_AWCon": {
         "version": "NeuroMLlite v0.5.9",
         "network": "IClamp_AWCon.json",
-        "duration": 1400.0,
+        "duration": 2400.0,
         "dt": 0.025,
         "seed": 12345,
         "record_traces": {
@@ -10,6 +10,84 @@
         },
         "record_variables": {
             "caConc": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/shal_chans/AWCon_shal/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/shal_chans/AWCon_shal/h/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/kir_chans/AWCon_kir/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/shak_chans/AWCon_shak/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/shak_chans/AWCon_shak/h/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/cca_chans/AWCon_cca/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/cca_chans/AWCon_cca/h/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/unc2_chans/AWCon_unc2/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/unc2_chans/AWCon_unc2/h/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/egl19_chans/AWCon_egl19/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/egl19_chans/AWCon_egl19/h/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/sk_chans/AWCon_sk/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/bk_chans/AWCon_bk/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/bk_chans/AWCon_bk/h/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/slo1_chans/AWCon_slo1/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/slo1_chans/AWCon_slo1/h/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/bk2_chans/AWCon_bk2/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/bk2_chans/AWCon_bk2/h/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/slo2_chans/AWCon_slo2/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/slo2_chans/AWCon_slo2/h/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/kvs1_chans/AWCon_kvs1/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/kvs1_chans/AWCon_kvs1/h/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/kqt3_chans/AWCon_kqt3/m/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/kqt3_chans/AWCon_kqt3/s/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/kqt3_chans/AWCon_kqt3/w/q": {
+                "all": "*"
+            },
+            "biophys/membraneProperties/egl2_chans/AWCon_egl2/m/q": {
                 "all": "*"
             }
         }

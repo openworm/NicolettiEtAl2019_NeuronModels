@@ -368,24 +368,42 @@ def generate_nmllite(
     )
     sim.record_variables = {"caConc": {"all": "*"}}
     for c in channels_to_include:
+        not_on_rmd = ["kvs1", "kqt3", "egl2"]
         if c == "ca":
             c = "sk"
 
-        if c != "egl36" and cell != "AWCon":
+        if c != "egl36" and cell != "AWCon" and not (c in not_on_rmd and cell == "RMD"):
             sim.record_variables["biophys/membraneProperties/%s_chans/gDensity" % c] = {
                 "all": "*"
             }
             sim.record_variables["biophys/membraneProperties/%s_chans/iDensity" % c] = {
                 "all": "*"
             }
-            if c != "leak" and c != "nca":
-                sim.record_variables[
-                    "biophys/membraneProperties/%s_chans/%s_%s/m/q" % (c, cell, c)
-                ] = {"all": "*"}
-            if c != "leak" and c not in ["nca", "kir", "sk"]:
-                sim.record_variables[
-                    "biophys/membraneProperties/%s_chans/%s_%s/h/q" % (c, cell, c)
-                ] = {"all": "*"}
+        if (
+            c != "leak"
+            and c != "nca"
+            and not (c == "egl36" and cell == "AWCon")
+            and not (c in not_on_rmd and cell == "RMD")
+        ):
+            sim.record_variables[
+                "biophys/membraneProperties/%s_chans/%s_%s/m/q" % (c, cell, c)
+            ] = {"all": "*"}
+        if (
+            c != "leak"
+            and c not in ["nca", "kir", "sk", "egl36", "kqt3", "egl2"]
+            and not (c in not_on_rmd and cell == "RMD")
+        ):
+            sim.record_variables[
+                "biophys/membraneProperties/%s_chans/%s_%s/h/q" % (c, cell, c)
+            ] = {"all": "*"}
+
+        if cell == "AWCon" and c in ["kqt3"]:
+            sim.record_variables[
+                "biophys/membraneProperties/%s_chans/%s_%s/s/q" % (c, cell, c)
+            ] = {"all": "*"}
+            sim.record_variables[
+                "biophys/membraneProperties/%s_chans/%s_%s/w/q" % (c, cell, c)
+            ] = {"all": "*"}
 
     sim.to_json_file()
 
@@ -479,6 +497,32 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
                 ),
             )
 
+        # KVS-1 CHANNELS - AWC only
+        if cell_id != "RMD" and "kvs1" in channels_to_include:
+            chan_id = "kvs1"
+            ion = "k"
+            g_param = "gkvs1"
+            gates = {"m": [1, "minf_kvs1", "tm_kvs1"], "h": [1, "hinf_kvs1", "th_kvs1"]}
+            extra_params = []
+
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="%s_chans" % chan_id,
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"][g_param]) * density_factor),
+                erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
+                ion=ion,
+                ion_channel="%s_%s" % (cell_id, chan_id),
+                ion_chan_def_file=create_channel_file(
+                    chan_id,
+                    cell_id,
+                    xpps[cell_id],
+                    species=ion,
+                    gates=gates,
+                    extra_params=extra_params,
+                ),
+            )
+
         # SHK1 CHANNELS
         if "shak" in channels_to_include:
             chan_id = "shak"
@@ -486,6 +530,79 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             g_param = "gshak"
             gates = {"m": [1, "minf_shak", "tm_shak"], "h": [1, "hinf_shak", "th_shak"]}
             extra_params = ["shiftV05"]
+
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="%s_chans" % chan_id,
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"][g_param]) * density_factor),
+                erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
+                ion=ion,
+                ion_channel="%s_%s" % (cell_id, chan_id),
+                ion_chan_def_file=create_channel_file(
+                    chan_id,
+                    cell_id,
+                    xpps[cell_id],
+                    species=ion,
+                    gates=gates,
+                    extra_params=extra_params,
+                ),
+            )
+
+        # KQT3 CHANNELS - AWC only
+        if cell_id != "RMD" and "kqt3" in channels_to_include:
+            chan_id = "kqt3"
+            ion = "k"
+            g_param = "gkqt3"
+            gates = {
+                "m": {
+                    "mf": [0.3, "minf_kqt3", "tmf_kqt3"],
+                    "ms": [0.7, "minf_kqt3", "tms_kqt3"],
+                },
+                "w": [1, "winf_kqt3", "tw_kqt3"],
+                "s": [1, "sinf_kqt3", "ts_kqt3"],
+            }
+            extra_params = [
+                "w1",
+                "w2",
+                "w3",
+                "w4",
+                "tw1",
+                "tw2",
+                "tw3",
+                "tw4",
+                "sq1",
+                "sq2",
+                "sq3",
+                "sq4",
+                "tsq1",
+            ]
+
+            cell.add_channel_density(
+                cell_doc,
+                cd_id="%s_chans" % chan_id,
+                cond_density="%s S_per_m2"
+                % (float(xpps[cell_id]["parameters"][g_param]) * density_factor),
+                erev="%smV" % xpps[cell_id]["parameters"]["e%s" % ion],
+                ion=ion,
+                ion_channel="%s_%s" % (cell_id, chan_id),
+                ion_chan_def_file=create_channel_file(
+                    chan_id,
+                    cell_id,
+                    xpps[cell_id],
+                    species=ion,
+                    gates=gates,
+                    extra_params=extra_params,
+                ),
+            )
+
+        # EGL-2 CHANNELS - AWC only
+        if cell_id != "RMD" and "egl2" in channels_to_include:
+            chan_id = "egl2"
+            ion = "k"
+            g_param = "gegl2"
+            gates = {"m": [1, "minf_egl2", "tm_egl2"]}
+            extra_params = []
 
             cell.add_channel_density(
                 cell_doc,
@@ -1062,7 +1179,6 @@ if __name__ == "__main__":
     channels_to_include = ["leak", "shal", "egl36", "kir", "shak", "cca", "unc2"]
     channels_to_include = ["leak", "kir"]
     channels_to_include = ["leak", "kir", "cca"]
-    channels_to_include = ["leak", "kir", "cca", "ca"]
     channels_to_include = ["leak", "bk"]
     channels_to_include = [
         "leak",
@@ -1097,5 +1213,36 @@ if __name__ == "__main__":
         "bk2",
         "slo2",
     ]
+    channels_to_include = ["leak", "kir", "cca", "ca"]
+    channels_to_include = ["leak", "kvs1"]
+    channels_to_include = ["leak", "kqt3"]
+    channels_to_include = ["leak", "egl2"]
+    channels_to_include = [
+        "leak",
+        "nca",
+        "shal",
+        "egl36",
+        "kir",
+        "shak",
+        "cca",
+        "unc2",
+        "egl19",
+        "ca",
+        "bk",
+        "slo1",
+        "bk2",
+        "slo2",
+        "kvs1",
+        "kqt3",
+        "egl2",
+    ]
 
-    create_cells(channels_to_include, duration=1400, stim_delay=1310, stim_duration=50)
+    # For testing, as some channel gates take quite some time to reach steady state, e.g. s on kqt3
+    additional_transient_phase = 2000
+
+    create_cells(
+        channels_to_include,
+        duration=400 + additional_transient_phase,
+        stim_delay=310 + additional_transient_phase,
+        stim_duration=50,
+    )
