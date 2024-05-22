@@ -424,7 +424,7 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             "Cell", id=cell_id, notes="%s cell from Nicoletti et al. 2019" % cell_id
         )
         volume_um3 = xpps[cell_id]["parameters"]["vol"]
-        diam = 1.7841242 
+        diam = 1.7841242
         end_area = math.pi * diam * diam / 4
         length = volume_um3 / end_area
         surface_area_curved = length * math.pi * diam

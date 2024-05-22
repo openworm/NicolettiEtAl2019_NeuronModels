@@ -113,7 +113,7 @@ additional_transient_phase = 2000
 
 parsed_data["settings"]["total"] = 400 + additional_transient_phase
 parsed_data["settings"]["trans"] = 0
-parsed_data["settings"]["dt"] = 0.1
+parsed_data["settings"]["dt"] = 0.01
 parsed_data["parameters"]["ton"] = 310 + additional_transient_phase
 parsed_data["parameters"]["toff"] = 360 + additional_transient_phase
 new_ode = to_xpp(parsed_data, new_ode_file)
@@ -159,11 +159,11 @@ if cell == "AWCon":
         ["kqt3", "s", "s_kqt3"],
         ["kqt3", "w", "w_kqt3"],
     ]
-'''
+"""
 chans = [
 ["kir", "m", "m_kir"],
 ["cca", "m", "m_cca1"],
-["cca", "h", "h_cca1"],]  '''
+["cca", "h", "h_cca1"],]  """
 
 
 plot_separately = {mp_fig: "v", ca_fig: "ca_intra1"}
