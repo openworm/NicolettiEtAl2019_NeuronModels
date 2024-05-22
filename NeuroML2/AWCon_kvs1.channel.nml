@@ -1,0 +1,59 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="AWCon_kvs1">
+    <notes>An ion channel from cell AWCon from Nicoletti et al. 2019</notes>
+    <ionChannelHH id="AWCon_kvs1" species="k" conductance="10pS">
+        <notes>AWCon_kvs1 channel from Nicoletti et al. 2019</notes>
+        <gate id="m" instances="1" type="gateHHtauInf">
+            <timeCourse type="kvs1_m_tau"/>
+            <steadyState type="kvs1_m_inf"/>
+        </gate>
+        <gate id="h" instances="1" type="gateHHtauInf">
+            <timeCourse type="kvs1_h_tau"/>
+            <steadyState type="kvs1_h_inf"/>
+        </gate>
+    </ionChannelHH>
+    <ComponentType name="kvs1_m_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="skvs1" dimension="none" value="30.0"/>
+        <Constant name="va_kvs1" dimension="none" value="57.1"/>
+        <Constant name="ka_kvs1" dimension="none" value="25.0"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((-V - skvs1 + va_kvs1)/ka_kvs1) + 1)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="kvs1_m_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="p1tmkvs1" dimension="none" value="30.0"/>
+        <Constant name="p2tmkvs1" dimension="none" value="18.1232"/>
+        <Constant name="p3tmkvs1" dimension="none" value="-20.0"/>
+        <Constant name="p4tmkvs1" dimension="none" value="1.0"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(p1tmkvs1/(10*(exp((-V + p2tmkvs1)/p3tmkvs1) + 1)) + p4tmkvs1/10)* TIME_SCALE"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="kvs1_h_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="skvs1" dimension="none" value="30.0"/>
+        <Constant name="vi_kvs1" dimension="none" value="47.3"/>
+        <Constant name="ki_kvs1" dimension="none" value="11.1"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((V + skvs1 - vi_kvs1)/ki_kvs1) + 1)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="kvs1_h_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="p1thkvs1" dimension="none" value="88.4715"/>
+        <Constant name="p2thkvs1" dimension="none" value="50.0"/>
+        <Constant name="p3thkvs1" dimension="none" value="-15.0"/>
+        <Constant name="p4thkvs1" dimension="none" value="53.406"/>
+        <Constant name="cthkvs1" dimension="none" value="0.1"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(cthkvs1*(p1thkvs1/(exp((-V + p2thkvs1)/p3thkvs1) + 1) + p4thkvs1))* TIME_SCALE"/>
+        </Dynamics>
+    </ComponentType>
+</neuroml>

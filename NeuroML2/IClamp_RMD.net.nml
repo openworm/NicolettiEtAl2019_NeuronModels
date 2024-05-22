@@ -4,14 +4,14 @@
     Generation seed: 1234
     NeuroMLlite parameters: 
         stim_amp = 10pA
-        stim_delay = 1310ms
+        stim_delay = 2310ms
         stim_duration = 50ms</notes>
     <include href="RMD.cell.nml"/>
-    <pulseGenerator id="iclamp_0" delay="1310ms" duration="50ms" amplitude="10pA"/>
+    <pulseGenerator id="iclamp_0" delay="2310ms" duration="50ms" amplitude="10pA"/>
     <network id="IClamp_RMD" type="networkWithTemperature" temperature="34.0degC">
         <notes>A network model: IClamp_RMD</notes>
         <property tag="recommended_dt_ms" value="0.025"/>
-        <property tag="recommended_duration_ms" value="1400.0"/>
+        <property tag="recommended_duration_ms" value="2400.0"/>
         <population id="pop_RMD" component="RMD" size="1" type="populationList">
             <property tag="color" value="0 0.8 0"/>
             <property tag="region" value="Worm"/>

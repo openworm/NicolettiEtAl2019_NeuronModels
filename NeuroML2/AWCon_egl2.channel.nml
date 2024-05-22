@@ -1,0 +1,35 @@
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 https://raw.github.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2.3.xsd" id="AWCon_egl2">
+    <notes>An ion channel from cell AWCon from Nicoletti et al. 2019</notes>
+    <ionChannelHH id="AWCon_egl2" species="k" conductance="10pS">
+        <notes>AWCon_egl2 channel from Nicoletti et al. 2019</notes>
+        <gate id="m" instances="1" type="gateHHtauInf">
+            <timeCourse type="egl2_m_tau"/>
+            <steadyState type="egl2_m_inf"/>
+        </gate>
+    </ionChannelHH>
+    <ComponentType name="egl2_m_inf" extends="baseVoltageDepVariable">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="va_egl2" dimension="none" value="-6.8594"/>
+        <Constant name="ka_egl2" dimension="none" value="14.9131"/>
+        <Constant name="stmegl2" dimension="none" value="0.0"/>
+        <Constant name="fegl2" dimension="none" value="1.0"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="x" dimension="none" exposure="x" value="1/(exp((1/(fegl2*ka_egl2))*(-V - stmegl2 + va_egl2)) + 1)"/>
+        </Dynamics>
+    </ComponentType>
+    <ComponentType name="egl2_m_tau" extends="baseVoltageDepTime">
+        <Constant name="VOLT_SCALE" dimension="voltage" value="1 mV"/>
+        <Constant name="TIME_SCALE" dimension="time" value="1 ms"/>
+        <Constant name="stmegl2" dimension="none" value="0.0"/>
+        <Constant name="cegl2" dimension="none" value="0.5"/>
+        <Constant name="p1tmegl2" dimension="none" value="16.78"/>
+        <Constant name="p2tmegl2" dimension="none" value="-122.5682"/>
+        <Constant name="p3tmegl2" dimension="none" value="13.7976"/>
+        <Constant name="p4tmegl2" dimension="none" value="8.0969"/>
+        <Dynamics>
+            <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(cegl2*(p1tmegl2/(exp((V - p2tmegl2 + stmegl2)/p3tmegl2) + 1) + p4tmegl2))* TIME_SCALE"/>
+        </Dynamics>
+    </ComponentType>
+</neuroml>
