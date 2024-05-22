@@ -2,8 +2,8 @@ from pyneuroml.xppaut import parse_script, to_lems, to_xpp, run_xpp_file
 
 from pprint import pprint
 
-cell = "RMD"
 cell = "AWCon"
+cell = "RMD"
 
 parsed_data = parse_script("../%s.ode" % cell.replace("on", ""))
 pprint(parsed_data)
@@ -76,6 +76,7 @@ channels_to_include = ["leak", "kvs1"]
 channels_to_include = ["leak"]
 channels_to_include = ["leak", "kqt3"]
 channels_to_include = ["leak", "egl2"]
+channels_to_include = ["leak", "kir", "cca", "ca"]
 channels_to_include = [
     "leak",
     "nca",
@@ -158,6 +159,12 @@ if cell == "AWCon":
         ["kqt3", "s", "s_kqt3"],
         ["kqt3", "w", "w_kqt3"],
     ]
+'''
+chans = [
+["kir", "m", "m_kir"],
+["cca", "m", "m_cca1"],
+["cca", "h", "h_cca1"],]  '''
+
 
 plot_separately = {mp_fig: "v", ca_fig: "ca_intra1"}
 

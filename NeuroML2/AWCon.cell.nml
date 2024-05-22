@@ -22,7 +22,7 @@
         <morphology id="morphology">
             <segment id="0" name="soma">
                 <proximal x="0.0" y="0.0" z="0.0" diameter="1.7841242"/>
-                <distal x="0.0" y="2.26" z="0.0" diameter="1.7841242"/>
+                <distal x="0.0" y="12.463998828476363" z="0.0" diameter="1.7841242"/>
             </segment>
             <segmentGroup id="soma_group" neuroLexId="GO:0043025">
                 <notes>Default soma segment group for the cell</notes>
@@ -35,28 +35,28 @@
         </morphology>
         <biophysicalProperties id="biophys">
             <membraneProperties>
-                <channelDensity id="leak_chans" ionChannel="AWCon_leak" condDensity="21.314756138163613 S_per_m2" erev="-80.0mV" ion="non_specific"/>
-                <channelDensity id="nca_chans" ionChannel="AWCon_nca" condDensity="4.34189476888518 S_per_m2" erev="30.0mV" ion="non_specific"/>
-                <channelDensity id="shal_chans" ionChannel="AWCon_shal" condDensity="228.93626963212768 S_per_m2" erev="-80.0mV" ion="k"/>
-                <channelDensity id="kvs1_chans" ionChannel="AWCon_kvs1" condDensity="63.15483300196626 S_per_m2" erev="-80.0mV" ion="k"/>
-                <channelDensity id="shak_chans" ionChannel="AWCon_shak" condDensity="7.8943541252457825 S_per_m2" erev="-80.0mV" ion="k"/>
-                <channelDensity id="kqt3_chans" ionChannel="AWCon_kqt3" condDensity="43.4189476888518 S_per_m2" erev="-80.0mV" ion="k"/>
-                <channelDensity id="egl2_chans" ionChannel="AWCon_egl2" condDensity="67.10201006458915 S_per_m2" erev="-80.0mV" ion="k"/>
-                <channelDensity id="kir_chans" ionChannel="AWCon_kir" condDensity="51.313301814097585 S_per_m2" erev="-80.0mV" ion="k"/>
-                <channelDensity id="unc2_chans" ionChannel="AWCon_unc2" condDensity="78.94354125245782 S_per_m2" erev="60.0mV" ion="ca"/>
-                <channelDensity id="egl19_chans" ionChannel="AWCon_egl19" condDensity="122.36248894130962 S_per_m2" erev="60.0mV" ion="ca"/>
-                <channelDensity id="cca_chans" ionChannel="AWCon_cca" condDensity="55.26047887672047 S_per_m2" erev="60.0mV" ion="ca"/>
-                <channelDensity id="bk_chans" ionChannel="AWCon_bk" condDensity="8.68378953777036 S_per_m2" erev="-80.0mV" ion="k"/>
-                <channelDensity id="slo1_chans" ionChannel="AWCon_slo1" condDensity="8.68378953777036 S_per_m2" erev="-80.0mV" ion="k"/>
-                <channelDensity id="bk2_chans" ionChannel="AWCon_bk2" condDensity="7.8943541252457825 S_per_m2" erev="-80.0mV" ion="k"/>
-                <channelDensity id="slo2_chans" ionChannel="AWCon_slo2" condDensity="7.8943541252457825 S_per_m2" erev="-80.0mV" ion="k"/>
-                <channelDensity id="sk_chans" ionChannel="AWCon_sk" condDensity="4.736612475147469 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="leak_chans" ionChannel="AWCon_leak" condDensity="3.8648390083440307 S_per_m2" erev="-80.0mV" ion="non_specific"/>
+                <channelDensity id="nca_chans" ionChannel="AWCon_nca" condDensity="0.7872820202182285 S_per_m2" erev="30.0mV" ion="non_specific"/>
+                <channelDensity id="shal_chans" ionChannel="AWCon_shal" condDensity="41.51123379332477 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="kvs1_chans" ionChannel="AWCon_kvs1" condDensity="11.45137483953787 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="shak_chans" ionChannel="AWCon_shak" condDensity="1.4314218549422337 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="kqt3_chans" ionChannel="AWCon_kqt3" condDensity="7.872820202182285 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="egl2_chans" ionChannel="AWCon_egl2" condDensity="12.167085767008984 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="kir_chans" ionChannel="AWCon_kir" condDensity="9.304242057124519 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="unc2_chans" ionChannel="AWCon_unc2" condDensity="14.314218549422336 S_per_m2" erev="60.0mV" ion="ca"/>
+                <channelDensity id="egl19_chans" ionChannel="AWCon_egl19" condDensity="22.18703875160462 S_per_m2" erev="60.0mV" ion="ca"/>
+                <channelDensity id="cca_chans" ionChannel="AWCon_cca" condDensity="10.019952984595633 S_per_m2" erev="60.0mV" ion="ca"/>
+                <channelDensity id="bk_chans" ionChannel="AWCon_bk" condDensity="1.574564040436457 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="slo1_chans" ionChannel="AWCon_slo1" condDensity="1.574564040436457 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="bk2_chans" ionChannel="AWCon_bk2" condDensity="1.4314218549422337 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="slo2_chans" ionChannel="AWCon_slo2" condDensity="1.4314218549422337 S_per_m2" erev="-80.0mV" ion="k"/>
+                <channelDensity id="sk_chans" ionChannel="AWCon_sk" condDensity="0.8588531129653401 S_per_m2" erev="-80.0mV" ion="k"/>
                 <spikeThresh value="0mV"/>
-                <specificCapacitance value="0.24472497788261924 F_per_m2"/>
+                <specificCapacitance value="0.04437407750320924 F_per_m2"/>
                 <initMembPotential value="-70mV"/>
             </membraneProperties>
             <intracellularProperties>
-                <species id="ca" concentrationModel="CaDynamics" ion="ca" initialConcentration="5e-5 mM" initialExtConcentration="2 mM"/>
+                <species id="ca" concentrationModel="CaDynamics_AWCon" ion="ca" initialConcentration="5e-5 mM" initialExtConcentration="2 mM"/>
                 <resistivity value="0.1 kohm_cm"/>
             </intracellularProperties>
         </biophysicalProperties>

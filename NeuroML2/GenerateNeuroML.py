@@ -9,6 +9,7 @@ from neuroml import GateHHRates
 from neuroml import IncludeType
 import sympy
 from sympy.parsing.sympy_parser import parse_expr
+import math
 
 
 xpps = {"RMD": parse_script("../RMD.ode"), "AWCon": parse_script("../AWC.ode")}
@@ -422,8 +423,11 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
         cell = cell_doc.add(
             "Cell", id=cell_id, notes="%s cell from Nicoletti et al. 2019" % cell_id
         )
-        diam = 1.7841242  # Gives a convenient surface area of ?? um^2
-        length = 2.26  # Gives a convenient surface area of ?? um^2
+        volume_um3 = xpps[cell_id]["parameters"]["vol"]
+        diam = 1.7841242 
+        end_area = math.pi * diam * diam / 4
+        length = volume_um3 / end_area
+        surface_area_curved = length * math.pi * diam
         cell.add_segment(
             prox=[0, 0, 0, diam],
             dist=[0, length, 0, diam],
@@ -433,7 +437,7 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             seg_type="soma",
         )
 
-        density_factor = 1000 / 12.66728074437459
+        density_factor = 1000 / surface_area_curved
 
         # Leak channel
         if "leak" in channels_to_include:
@@ -1119,7 +1123,7 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
 
         cell.set_specific_capacitance(
             "%s F_per_m2"
-            % (float(xpps[cell_id]["parameters"]["c"]) / 12.66728074437459)
+            % (float(xpps[cell_id]["parameters"]["c"]) / surface_area_curved)
         )
 
         cell.add_membrane_property("SpikeThresh", value="0mV")
@@ -1134,7 +1138,7 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             "Species",
             id="ca",
             ion="ca",
-            concentration_model="CaDynamics",
+            concentration_model="CaDynamics_%s" % cell_id,
             initial_concentration="5e-5 mM",
             initial_ext_concentration="2 mM",
         )
@@ -1217,6 +1221,7 @@ if __name__ == "__main__":
     channels_to_include = ["leak", "kvs1"]
     channels_to_include = ["leak", "kqt3"]
     channels_to_include = ["leak", "egl2"]
+    channels_to_include = ["leak", "kir", "cca", "ca"]
     channels_to_include = [
         "leak",
         "nca",

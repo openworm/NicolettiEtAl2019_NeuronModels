@@ -6,7 +6,9 @@
 
     <notes>NeuroML 2 implementation of the Ca Pool mechanism</notes>
     
-    <concentrationModel id="CaDynamics" type="concentrationModelNicolettiEtAl" backgr2="5e-5 mM" t_ca="50 ms" fca="0.001" ion="ca" vol="5.65 um3"/>
+    <concentrationModel id="CaDynamics_RMD" type="concentrationModelNicolettiEtAl" backgr2="5e-5 mM" t_ca="50 ms" fca="0.001" ion="ca" vol="5.65 um3"/>
+
+    <concentrationModel id="CaDynamics_AWCon" type="concentrationModelNicolettiEtAl" backgr2="5e-5 mM" t_ca="50 ms" fca="0.001" ion="ca" vol="31.16 um3"/>
 
     <ComponentType name="concentrationModelNicolettiEtAl" extends="concentrationModel" description="Model of internal [Ca2+] specific to Nicoletti Et Al 2019">
 
