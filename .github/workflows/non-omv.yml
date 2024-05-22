@@ -33,6 +33,7 @@ jobs:
         pip install progressbar
         omv install pyneuroml
         omv install xpp
+        export XPP_HOME=/home/runner/xppaut/bin/
 
         pip install black
 
