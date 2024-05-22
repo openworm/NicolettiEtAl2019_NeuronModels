@@ -1,9 +1,7 @@
 
-name: Continuous build using OMV
+name: Testing non OMV scripts
 
 on:
-  schedule:
-    - cron: "1 1 1 */2 *"
   push:
     branches: [ main, development, experimental, test* ]
   pull_request:
@@ -16,26 +14,36 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [ 3.9, "3.11" ]
-        engine: [ jNeuroML_validate, XPP ]
+        python-version: [ 3.8, 3.9, "3.10" ]
 
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Set up Python  ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
         python-version:  ${{ matrix.python-version }}
-        
+
     - name: Install OMV
       run: |
         pip install git+https://github.com/OpenSourceBrain/osb-model-validation
-        
-    - name: Run OMV tests on engine ${{ matrix.engine }}
+
+    - name: Run generate scripts
       run: |
-        omv all -V --engine=${{ matrix.engine }}
-        
-    - name: OMV final version info
+        pip install progressbar
+        omv install pyneuroml
+        omv install xpp
+        export XPP_HOME=/home/runner/xppaut/bin/
+
+        pip install black
+
+        cd NeuroML2
+        ./regenerateAndTest.sh
+
+
+
+    - name: Final version info
       run: |
         omv list -V # list installed engines
+        pip list
         env

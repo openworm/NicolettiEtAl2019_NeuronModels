@@ -7,6 +7,11 @@
         "seed": 12345,
         "record_traces": {
             "all": "*"
+        },
+        "record_variables": {
+            "caConc": {
+                "all": "*"
+            }
         }
     }
 }

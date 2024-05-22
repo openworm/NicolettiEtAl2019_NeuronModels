@@ -32,7 +32,7 @@
         <Constant name="shiftV05" dimension="none" value="0.0"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
-            <DerivedVariable name="t" dimension="time" exposure="t" value="(ptmshak1/(exp((V - (ptmshak2 + shiftV05))/ptmshak3) + exp((-V + ptmshak2 + shiftV05)/ptmshak4)) + ptmshak5)/1000"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(ptmshak1/(exp((V - (ptmshak2 + shiftV05))/ptmshak3) + exp((-V + ptmshak2 + shiftV05)/ptmshak4)) + ptmshak5)* TIME_SCALE"/>
         </Dynamics>
     </ComponentType>
     <ComponentType name="shak_h_inf" extends="baseVoltageDepVariable">
@@ -51,7 +51,7 @@
         <Constant name="pthshak" dimension="none" value="1400.0"/>
         <Dynamics>
             <DerivedVariable name="V" dimension="none" value="(v) / VOLT_SCALE"/>
-            <DerivedVariable name="t" dimension="time" exposure="t" value="(pthshak)/1000"/>
+            <DerivedVariable name="t" dimension="time" exposure="t" value="(pthshak)* TIME_SCALE"/>
         </Dynamics>
     </ComponentType>
 </neuroml>

@@ -3,7 +3,9 @@
         "version": "NeuroMLlite v0.5.9",
         "notes": "A network model: IClamp_RMD",
         "parameters": {
-            "stim_amp": "10pA"
+            "stim_amp": "10pA",
+            "stim_delay": "1310ms",
+            "stim_duration": "50ms"
         },
         "cells": {
             "RMD": {
@@ -14,8 +16,8 @@
             "iclamp_0": {
                 "parameters": {
                     "amplitude": "stim_amp",
-                    "delay": "310ms",
-                    "duration": "500ms"
+                    "delay": "stim_delay",
+                    "duration": "stim_duration"
                 },
                 "neuroml2_input": "PulseGenerator"
             }
