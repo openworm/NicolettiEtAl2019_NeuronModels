@@ -437,6 +437,18 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             seg_type="soma",
         )
 
+        cell.add_membrane_property("SpikeThresh", value="0mV")
+
+        cell.set_specific_capacitance(
+            "%s F_per_m2"
+            % (float(xpps[cell_id]["parameters"]["c"]) / surface_area_curved)
+        )
+
+        cell.set_init_memb_potential("-70mV")
+
+        # This value is not really used as it's a single comp cell model
+        cell.set_resistivity("0.1 kohm_cm")
+
         density_factor = 1000 / surface_area_curved
 
         # Leak channel
@@ -1120,17 +1132,6 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
                     ca_conc_var="ca_intra1",
                 ),
             )
-
-        cell.set_specific_capacitance(
-            "%s F_per_m2"
-            % (float(xpps[cell_id]["parameters"]["c"]) / surface_area_curved)
-        )
-
-        cell.add_membrane_property("SpikeThresh", value="0mV")
-        cell.set_init_memb_potential("-70mV")
-
-        # This value is not really used as it's a single comp cell model
-        cell.set_resistivity("0.1 kohm_cm")
 
         cell_doc.includes.append(IncludeType(href="CaDynamics.nml"))
         # <species id="ca" ion="ca" concentrationModel="CaDynamics" initialConcentration="1e-4 mM" initialExtConcentration="2 mM"/>

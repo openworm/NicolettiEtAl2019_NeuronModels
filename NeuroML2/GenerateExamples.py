@@ -83,11 +83,10 @@ def generate(cell, config, parameters=None):
 
 
 if __name__ == "__main__":
-
     sim, net = generate("AWCon", config="Fig4C")
 
     check_to_generate_or_run(sys.argv, sim)
-    
+
     sim, net = generate("RMD", config="Fig7B")
 
     check_to_generate_or_run(sys.argv, sim)
