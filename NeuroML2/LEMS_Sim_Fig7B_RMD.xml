@@ -1,0 +1,38 @@
+<Lems>
+
+    <!-- 
+
+        This LEMS file has been automatically generated using PyNeuroML v1.2.15 (libNeuroML v0.6.0)
+
+     -->
+
+    <!-- Specify which component to run -->
+    <Target component="Sim_Fig7B_RMD" reportFile="report.Sim_Fig7B_RMD.txt"/>
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml"/>
+    <Include file="Networks.xml"/>
+    <Include file="Simulation.xml"/>
+
+    <Include file="PyNN.xml"/>
+    <Include file="Fig7B_RMD.net.nml"/>
+    <Include file="RMD.cell.nml"/>
+
+    <Simulation id="Sim_Fig7B_RMD" length="250.0ms" step="0.025ms" target="Fig7B_RMD" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
+        <Display id="pop_RMD_v" title="Plots of pop_RMD_v" timeScale="1ms" xmin="-25.0" xmax="275.0" ymin="-80" ymax="40">
+            <Line id="pop_RMD_0_RMD_v" quantity="pop_RMD/0/RMD/v" scale="1mV" color="#d54f33" timeScale="1ms"/>
+            <Line id="pop_RMD_1_RMD_v" quantity="pop_RMD/1/RMD/v" scale="1mV" color="#0534e4" timeScale="1ms"/>
+            <Line id="pop_RMD_2_RMD_v" quantity="pop_RMD/2/RMD/v" scale="1mV" color="#98e752" timeScale="1ms"/>
+            <Line id="pop_RMD_3_RMD_v" quantity="pop_RMD/3/RMD/v" scale="1mV" color="#bca074" timeScale="1ms"/>
+        </Display>
+
+        <OutputFile id="Sim_Fig7B_RMD_pop_RMD_v_dat" fileName="Sim_Fig7B_RMD.pop_RMD.v.dat">
+            <OutputColumn id="pop_RMD_0_RMD_v" quantity="pop_RMD/0/RMD/v"/>
+            <OutputColumn id="pop_RMD_1_RMD_v" quantity="pop_RMD/1/RMD/v"/>
+            <OutputColumn id="pop_RMD_2_RMD_v" quantity="pop_RMD/2/RMD/v"/>
+            <OutputColumn id="pop_RMD_3_RMD_v" quantity="pop_RMD/3/RMD/v"/>
+        </OutputFile>
+
+    </Simulation>
+
+</Lems>

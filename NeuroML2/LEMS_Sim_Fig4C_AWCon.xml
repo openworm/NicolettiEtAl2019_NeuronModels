@@ -1,0 +1,44 @@
+<Lems>
+
+    <!-- 
+
+        This LEMS file has been automatically generated using PyNeuroML v1.2.15 (libNeuroML v0.6.0)
+
+     -->
+
+    <!-- Specify which component to run -->
+    <Target component="Sim_Fig4C_AWCon" reportFile="report.Sim_Fig4C_AWCon.txt"/>
+
+    <!-- Include core NeuroML2 ComponentType definitions -->
+    <Include file="Cells.xml"/>
+    <Include file="Networks.xml"/>
+    <Include file="Simulation.xml"/>
+
+    <Include file="PyNN.xml"/>
+    <Include file="Fig4C_AWCon.net.nml"/>
+    <Include file="AWCon.cell.nml"/>
+
+    <Simulation id="Sim_Fig4C_AWCon" length="800.0ms" step="0.025ms" target="Fig4C_AWCon" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
+        <Display id="pop_AWCon_v" title="Plots of pop_AWCon_v" timeScale="1ms" xmin="-80.0" xmax="880.0000000000001" ymin="-80" ymax="40">
+            <Line id="pop_AWCon_0_AWCon_v" quantity="pop_AWCon/0/AWCon/v" scale="1mV" color="#d54f33" timeScale="1ms"/>
+            <Line id="pop_AWCon_1_AWCon_v" quantity="pop_AWCon/1/AWCon/v" scale="1mV" color="#0534e4" timeScale="1ms"/>
+            <Line id="pop_AWCon_2_AWCon_v" quantity="pop_AWCon/2/AWCon/v" scale="1mV" color="#98e752" timeScale="1ms"/>
+            <Line id="pop_AWCon_3_AWCon_v" quantity="pop_AWCon/3/AWCon/v" scale="1mV" color="#bca074" timeScale="1ms"/>
+            <Line id="pop_AWCon_4_AWCon_v" quantity="pop_AWCon/4/AWCon/v" scale="1mV" color="#632794" timeScale="1ms"/>
+            <Line id="pop_AWCon_5_AWCon_v" quantity="pop_AWCon/5/AWCon/v" scale="1mV" color="#8a5d88" timeScale="1ms"/>
+            <Line id="pop_AWCon_6_AWCon_v" quantity="pop_AWCon/6/AWCon/v" scale="1mV" color="#df5954" timeScale="1ms"/>
+        </Display>
+
+        <OutputFile id="Sim_Fig4C_AWCon_pop_AWCon_v_dat" fileName="Sim_Fig4C_AWCon.pop_AWCon.v.dat">
+            <OutputColumn id="pop_AWCon_0_AWCon_v" quantity="pop_AWCon/0/AWCon/v"/>
+            <OutputColumn id="pop_AWCon_1_AWCon_v" quantity="pop_AWCon/1/AWCon/v"/>
+            <OutputColumn id="pop_AWCon_2_AWCon_v" quantity="pop_AWCon/2/AWCon/v"/>
+            <OutputColumn id="pop_AWCon_3_AWCon_v" quantity="pop_AWCon/3/AWCon/v"/>
+            <OutputColumn id="pop_AWCon_4_AWCon_v" quantity="pop_AWCon/4/AWCon/v"/>
+            <OutputColumn id="pop_AWCon_5_AWCon_v" quantity="pop_AWCon/5/AWCon/v"/>
+            <OutputColumn id="pop_AWCon_6_AWCon_v" quantity="pop_AWCon/6/AWCon/v"/>
+        </OutputFile>
+
+    </Simulation>
+
+</Lems>
