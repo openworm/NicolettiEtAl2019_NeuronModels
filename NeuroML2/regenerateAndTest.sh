@@ -7,5 +7,7 @@ python GenerateNeuroML.py -jnml
 
 python TestXPP.py
 
+python GenerateExamples.py -jnml
+
 omv all -V 
 

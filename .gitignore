@@ -24,3 +24,7 @@ arm64
 /LEMS_RMD.xml
 /report.txt
 /NeuroML2/Test_AWCon.ode
+/NeuroML2/Fig4C_AWCon.json
+/NeuroML2/Sim_Fig4C_AWCon.json
+/NeuroML2/Fig7B_RMD.json
+/NeuroML2/Sim_Fig7B_RMD.json
