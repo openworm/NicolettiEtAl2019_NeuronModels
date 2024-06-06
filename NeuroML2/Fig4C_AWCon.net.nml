@@ -3,17 +3,17 @@
     Generated network: Fig4C_AWCon
     Generation seed: 1234</notes>
     <include href="AWCon.cell.nml"/>
-    <pulseGenerator id="iclamp_stim_min4" delay="200ms" duration="500ms" amplitude="-4pA"/>
-    <pulseGenerator id="iclamp_stim_0" delay="200ms" duration="500ms" amplitude="0pA"/>
-    <pulseGenerator id="iclamp_stim_4" delay="200ms" duration="500ms" amplitude="4pA"/>
-    <pulseGenerator id="iclamp_stim_8" delay="200ms" duration="500ms" amplitude="8pA"/>
-    <pulseGenerator id="iclamp_stim_12" delay="200ms" duration="500ms" amplitude="12pA"/>
-    <pulseGenerator id="iclamp_stim_16" delay="200ms" duration="500ms" amplitude="16pA"/>
-    <pulseGenerator id="iclamp_stim_20" delay="200ms" duration="500ms" amplitude="20pA"/>
+    <pulseGenerator id="iclamp_stim_min4" delay="100ms" duration="500ms" amplitude="-4pA"/>
+    <pulseGenerator id="iclamp_stim_0" delay="100ms" duration="500ms" amplitude="0pA"/>
+    <pulseGenerator id="iclamp_stim_4" delay="100ms" duration="500ms" amplitude="4pA"/>
+    <pulseGenerator id="iclamp_stim_8" delay="100ms" duration="500ms" amplitude="8pA"/>
+    <pulseGenerator id="iclamp_stim_12" delay="100ms" duration="500ms" amplitude="12pA"/>
+    <pulseGenerator id="iclamp_stim_16" delay="100ms" duration="500ms" amplitude="16pA"/>
+    <pulseGenerator id="iclamp_stim_20" delay="100ms" duration="500ms" amplitude="20pA"/>
     <network id="Fig4C_AWCon" type="networkWithTemperature" temperature="34.0degC">
         <notes>A network model: Fig4C_AWCon</notes>
         <property tag="recommended_dt_ms" value="0.025"/>
-        <property tag="recommended_duration_ms" value="800.0"/>
+        <property tag="recommended_duration_ms" value="700.0"/>
         <population id="pop_AWCon" component="AWCon" size="7" type="populationList">
             <property tag="color" value="0.8 0 0"/>
             <property tag="region" value="Worm"/>
