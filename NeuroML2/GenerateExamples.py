@@ -14,14 +14,14 @@ def generate(cell, config, parameters=None):
     stim_delay = 100
     stim_dur = 500
     post_stim = 100
-    extra_init = 100
+    extra_init = 0
 
     if cell == "RMD":
         amps = [-2, 2, 6, 10]
         stim_delay = 10
         stim_dur = 50
         post_stim = 90
-        extra_init = 100
+        extra_init = 0
 
     sim, net = create_new_model(
         reference,

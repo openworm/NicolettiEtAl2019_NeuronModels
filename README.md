@@ -13,5 +13,17 @@ The XPP files for the 2 cells are:
 
 [NeuroML](http://www.neuroml.org) compliant versions of the cells and all the ion channels can be found in [this folder](NeuroML2):
 
-- [RMD.cell.nml](RMD.cell.nml)
-- [AWCon.cell.nml](AWC.cell.nml)
+- [RMD.cell.nml](NeuroML2/RMD.cell.nml)
+- [AWCon.cell.nml](NeuroML2/AWC.cell.nml)
+
+These cell models can be run with [pyNeuroML](https://docs.neuroml.org/Userdocs/Software/pyNeuroML.html):
+```
+    pynml LEMS_Sim_Fig4C_AWCon.xml
+
+    pynml Fig7B_RMD.net.nml
+```
+and will produce the following:
+
+![](NeuroML2/AWC_RMD_NeuroML.png)
+
+These cells have been tested against the original XPP versions, see [regenerateAndTest.sh](NeuroML2/regenerateAndTest.sh).

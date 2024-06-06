@@ -3,15 +3,15 @@
     Generated network: Fig7B_RMD
     Generation seed: 1234</notes>
     <include href="RMD.cell.nml"/>
-    <pulseGenerator id="iclamp_stim_min2" delay="110ms" duration="50ms" amplitude="-2pA"/>
-    <pulseGenerator id="iclamp_stim_2" delay="110ms" duration="50ms" amplitude="2pA"/>
-    <pulseGenerator id="iclamp_stim_6" delay="110ms" duration="50ms" amplitude="6pA"/>
-    <pulseGenerator id="iclamp_stim_10" delay="110ms" duration="50ms" amplitude="10pA"/>
-    <pulseGenerator id="iclamp_hyp" delay="210ms" duration="20ms" amplitude="-15pA"/>
+    <pulseGenerator id="iclamp_stim_min2" delay="10ms" duration="50ms" amplitude="-2pA"/>
+    <pulseGenerator id="iclamp_stim_2" delay="10ms" duration="50ms" amplitude="2pA"/>
+    <pulseGenerator id="iclamp_stim_6" delay="10ms" duration="50ms" amplitude="6pA"/>
+    <pulseGenerator id="iclamp_stim_10" delay="10ms" duration="50ms" amplitude="10pA"/>
+    <pulseGenerator id="iclamp_hyp" delay="110ms" duration="20ms" amplitude="-15pA"/>
     <network id="Fig7B_RMD" type="networkWithTemperature" temperature="34.0degC">
         <notes>A network model: Fig7B_RMD</notes>
         <property tag="recommended_dt_ms" value="0.025"/>
-        <property tag="recommended_duration_ms" value="250.0"/>
+        <property tag="recommended_duration_ms" value="150.0"/>
         <population id="pop_RMD" component="RMD" size="4" type="populationList">
             <property tag="color" value="0.8 0 0"/>
             <property tag="region" value="Worm"/>

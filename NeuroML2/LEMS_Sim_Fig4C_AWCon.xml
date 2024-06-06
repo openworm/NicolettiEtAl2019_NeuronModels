@@ -18,8 +18,8 @@
     <Include file="Fig4C_AWCon.net.nml"/>
     <Include file="AWCon.cell.nml"/>
 
-    <Simulation id="Sim_Fig4C_AWCon" length="800.0ms" step="0.025ms" target="Fig4C_AWCon" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
-        <Display id="pop_AWCon_v" title="Plots of pop_AWCon_v" timeScale="1ms" xmin="-80.0" xmax="880.0000000000001" ymin="-80" ymax="40">
+    <Simulation id="Sim_Fig4C_AWCon" length="700.0ms" step="0.025ms" target="Fig4C_AWCon" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
+        <Display id="pop_AWCon_v" title="Plots of pop_AWCon_v" timeScale="1ms" xmin="-70.0" xmax="770.0000000000001" ymin="-80" ymax="40">
             <Line id="pop_AWCon_0_AWCon_v" quantity="pop_AWCon/0/AWCon/v" scale="1mV" color="#d54f33" timeScale="1ms"/>
             <Line id="pop_AWCon_1_AWCon_v" quantity="pop_AWCon/1/AWCon/v" scale="1mV" color="#0534e4" timeScale="1ms"/>
             <Line id="pop_AWCon_2_AWCon_v" quantity="pop_AWCon/2/AWCon/v" scale="1mV" color="#98e752" timeScale="1ms"/>
