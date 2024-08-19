@@ -19,6 +19,12 @@
         <Constant name="backgr" dimension="none" value="0.05"/>
         <Constant name="r" dimension="none" value="1.3e-08"/>
         <Constant name="b" dimension="none" value="3e-05"/>
+        <Constant name="pi" dimension="none" value="3.14159265359"/>
+        <Constant name="d" dimension="none" value="2.5e-10"/>
+        <Constant name="F" dimension="none" value="96485.0"/>
+        <Constant name="kb" dimension="none" value="500000000.0"/>
+        <Constant name="gsc" dimension="none" value="4e-11"/>
+        <Constant name="eca" dimension="none" value="60.0"/>
         <Constant name="wom" dimension="none" value="3.152961"/>
         <Constant name="wyx" dimension="none" value="0.012643"/>
         <Constant name="kyx" dimension="none" value="34.338784"/>
@@ -35,12 +41,6 @@
         <Constant name="p5tmunc2" dimension="none" value="0.1029"/>
         <Constant name="shiftmunc2" dimension="none" value="30.0"/>
         <Constant name="constmunc2" dimension="none" value="3.0"/>
-        <Constant name="pi" dimension="none" value="3.14159265359"/>
-        <Constant name="d" dimension="none" value="2.5e-10"/>
-        <Constant name="F" dimension="none" value="96485.0"/>
-        <Constant name="kb" dimension="none" value="500000000.0"/>
-        <Constant name="gsc" dimension="none" value="4e-11"/>
-        <Constant name="eca" dimension="none" value="60.0"/>
         <Constant name="stm2" dimension="none" value="25.0"/>
         <Constant name="va_unc2" dimension="none" value="-12.17"/>
         <Constant name="ka_unc2" dimension="none" value="3.97"/>
@@ -79,6 +79,12 @@
         <Constant name="backgr" dimension="none" value="0.05"/>
         <Constant name="r" dimension="none" value="1.3e-08"/>
         <Constant name="b" dimension="none" value="3e-05"/>
+        <Constant name="pi" dimension="none" value="3.14159265359"/>
+        <Constant name="d" dimension="none" value="2.5e-10"/>
+        <Constant name="F" dimension="none" value="96485.0"/>
+        <Constant name="kb" dimension="none" value="500000000.0"/>
+        <Constant name="gsc" dimension="none" value="4e-11"/>
+        <Constant name="eca" dimension="none" value="60.0"/>
         <Constant name="wom" dimension="none" value="3.152961"/>
         <Constant name="wyx" dimension="none" value="0.012643"/>
         <Constant name="kyx" dimension="none" value="34.338784"/>
@@ -95,12 +101,6 @@
         <Constant name="p5tmunc2" dimension="none" value="0.1029"/>
         <Constant name="shiftmunc2" dimension="none" value="30.0"/>
         <Constant name="constmunc2" dimension="none" value="3.0"/>
-        <Constant name="pi" dimension="none" value="3.14159265359"/>
-        <Constant name="d" dimension="none" value="2.5e-10"/>
-        <Constant name="F" dimension="none" value="96485.0"/>
-        <Constant name="kb" dimension="none" value="500000000.0"/>
-        <Constant name="gsc" dimension="none" value="4e-11"/>
-        <Constant name="eca" dimension="none" value="60.0"/>
         <Constant name="stm2" dimension="none" value="25.0"/>
         <Constant name="va_unc2" dimension="none" value="-12.17"/>
         <Constant name="ka_unc2" dimension="none" value="3.97"/>
@@ -137,6 +137,12 @@
         <Constant name="backgr" dimension="none" value="0.05"/>
         <Constant name="r" dimension="none" value="1.3e-08"/>
         <Constant name="b" dimension="none" value="3e-05"/>
+        <Constant name="pi" dimension="none" value="3.14159265359"/>
+        <Constant name="d" dimension="none" value="2.5e-10"/>
+        <Constant name="F" dimension="none" value="96485.0"/>
+        <Constant name="kb" dimension="none" value="500000000.0"/>
+        <Constant name="gsc" dimension="none" value="4e-11"/>
+        <Constant name="eca" dimension="none" value="60.0"/>
         <Constant name="wom" dimension="none" value="3.152961"/>
         <Constant name="wyx" dimension="none" value="0.012643"/>
         <Constant name="kyx" dimension="none" value="34.338784"/>
@@ -153,12 +159,6 @@
         <Constant name="p5tmunc2" dimension="none" value="0.1029"/>
         <Constant name="shiftmunc2" dimension="none" value="30.0"/>
         <Constant name="constmunc2" dimension="none" value="3.0"/>
-        <Constant name="pi" dimension="none" value="3.14159265359"/>
-        <Constant name="d" dimension="none" value="2.5e-10"/>
-        <Constant name="F" dimension="none" value="96485.0"/>
-        <Constant name="kb" dimension="none" value="500000000.0"/>
-        <Constant name="gsc" dimension="none" value="4e-11"/>
-        <Constant name="eca" dimension="none" value="60.0"/>
         <Constant name="stm2" dimension="none" value="25.0"/>
         <Constant name="va_unc2" dimension="none" value="-12.17"/>
         <Constant name="ka_unc2" dimension="none" value="3.97"/>
@@ -191,6 +191,12 @@
         <Constant name="backgr" dimension="none" value="0.05"/>
         <Constant name="r" dimension="none" value="1.3e-08"/>
         <Constant name="b" dimension="none" value="3e-05"/>
+        <Constant name="pi" dimension="none" value="3.14159265359"/>
+        <Constant name="d" dimension="none" value="2.5e-10"/>
+        <Constant name="F" dimension="none" value="96485.0"/>
+        <Constant name="kb" dimension="none" value="500000000.0"/>
+        <Constant name="gsc" dimension="none" value="4e-11"/>
+        <Constant name="eca" dimension="none" value="60.0"/>
         <Constant name="wom" dimension="none" value="3.152961"/>
         <Constant name="wyx" dimension="none" value="0.012643"/>
         <Constant name="kyx" dimension="none" value="34.338784"/>
@@ -207,12 +213,6 @@
         <Constant name="p5tmunc2" dimension="none" value="0.1029"/>
         <Constant name="shiftmunc2" dimension="none" value="30.0"/>
         <Constant name="constmunc2" dimension="none" value="3.0"/>
-        <Constant name="pi" dimension="none" value="3.14159265359"/>
-        <Constant name="d" dimension="none" value="2.5e-10"/>
-        <Constant name="F" dimension="none" value="96485.0"/>
-        <Constant name="kb" dimension="none" value="500000000.0"/>
-        <Constant name="gsc" dimension="none" value="4e-11"/>
-        <Constant name="eca" dimension="none" value="60.0"/>
         <Constant name="stm2" dimension="none" value="25.0"/>
         <Constant name="va_unc2" dimension="none" value="-12.17"/>
         <Constant name="ka_unc2" dimension="none" value="3.97"/>
