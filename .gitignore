@@ -29,3 +29,6 @@ arm64
 /NeuroML2/Fig7B_RMD.json
 /NeuroML2/Sim_Fig7B_RMD.json
 /NeuroML2/.DS_Store
+/NeuroML2/*.hoc
+/NeuroML2/*.mod
+/NeuroML2/*_nrn.py
