@@ -501,15 +501,3 @@ aux prot=if(t>ton)then(if(t<toff)then(iclamp)else(if(t>t2)then(if(t<t3)then(icla
 @ xp=t,yp=v,xlo=-10,xhi=160,yhi=0,ylo=-100
 done
 
-# settings from the nml file? 
-# if cell == "RMD":
-#       amps = [-2, 2, 6, 10]
-#       stim_delay = 10
-#       stim_dur = 50
-#       post_stim = 90
-#      extra_init = 0
-
-#   if config == "Fig7B":
-#       iclamp_2 = -15
-#       hyp_delay = 50
-#       hyp_dur = 20

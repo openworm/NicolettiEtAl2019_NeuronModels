@@ -527,7 +527,7 @@ v'=(Istim-I_tot)/c
 # init v=-70
 
 Istim=if(t>ton)then(if(t<toff)then(iclamp)else(ih))else(ih)
-par iclamp=10,ton=100,toff=500
+par iclamp=10,ton=100,toff=600
 # amps = [-4, 0, 4, 8, 12, 16, 20]
 
 ### XPP SETTINGS
@@ -535,7 +535,7 @@ par iclamp=10,ton=100,toff=500
 @ meth=stiff,trans=0,total=700,dt=0.01,maxstor=1000000,bound=100000000000000,atol=1e-8,tol=1e-8
 # @ xp=t,yp=v,xlo=0,xhi=700,yhi=-10,ylo=-80
 
-# @ SAVE t v
+
 
 @ gr = 0 
 
