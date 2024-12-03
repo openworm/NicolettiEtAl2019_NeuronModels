@@ -359,7 +359,7 @@ def generate_nmllite(
     sim, net = create_new_model(
         reference,
         duration,
-        dt=0.025,  # ms
+        dt=0.005,  # ms
         temperature=34,  # degC
         default_region="Worm",
         parameters=parameters,
@@ -1246,9 +1246,18 @@ if __name__ == "__main__":
     # For testing, as some channel gates take quite some time to reach steady state, e.g. s on kqt3
     additional_transient_phase = 2000
 
+    duration = 400 + additional_transient_phase
+    stim_delay = 310 + additional_transient_phase
+
+    import sys
+
+    if "-short" in sys.argv:
+        duration = 70
+        stim_delay = 10
+
     create_cells(
         channels_to_include,
-        duration=400 + additional_transient_phase,
-        stim_delay=310 + additional_transient_phase,
+        duration=duration,
+        stim_delay=stim_delay,
         stim_duration=50,
     )

@@ -18,7 +18,7 @@
     <Include file="IClamp_RMD.net.nml"/>
     <Include file="RMD.cell.nml"/>
 
-    <Simulation id="Sim_IClamp_RMD" length="2400.0ms" step="0.025ms" target="IClamp_RMD" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
+    <Simulation id="Sim_IClamp_RMD" length="2400.0ms" step="0.005ms" target="IClamp_RMD" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
         <Display id="pop_RMD_0_biophys/membraneProperties/bk2_chans/RMD_bk2/h/q" title="Plots of pop_RMD_0_biophys/membraneProperties/bk2_chans/RMD_bk2/h/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_bk2_chans_RMD_bk2_h_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/bk2_chans/RMD_bk2/h/q" scale="1" color="#d54f33" timeScale="1ms"/>
         </Display>

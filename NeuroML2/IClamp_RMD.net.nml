@@ -10,7 +10,7 @@
     <pulseGenerator id="iclamp_0" delay="2310ms" duration="50ms" amplitude="10pA"/>
     <network id="IClamp_RMD" type="networkWithTemperature" temperature="34.0degC">
         <notes>A network model: IClamp_RMD</notes>
-        <property tag="recommended_dt_ms" value="0.025"/>
+        <property tag="recommended_dt_ms" value="0.005"/>
         <property tag="recommended_duration_ms" value="2400.0"/>
         <population id="pop_RMD" component="RMD" size="1" type="populationList">
             <property tag="color" value="0 0.8 0"/>
