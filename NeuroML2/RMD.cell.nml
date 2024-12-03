@@ -49,7 +49,7 @@
                 <channelDensity id="sk_chans" ionChannel="RMD_sk" condDensity="4.736612920353981 S_per_m2" erev="-80.0mV" ion="k"/>
                 <spikeThresh value="0mV"/>
                 <specificCapacitance value="0.09473225840707962 F_per_m2"/>
-                <initMembPotential value="-70mV"/>
+                <initMembPotential value="-69.445mV"/>
             </membraneProperties>
             <intracellularProperties>
                 <species id="ca" concentrationModel="CaDynamics_RMD" ion="ca" initialConcentration="5e-5 mM" initialExtConcentration="2 mM"/>
