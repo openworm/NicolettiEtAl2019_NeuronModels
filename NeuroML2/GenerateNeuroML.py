@@ -444,7 +444,7 @@ def create_cells(channels_to_include, duration=700, stim_delay=310, stim_duratio
             % (float(xpps[cell_id]["parameters"]["c"]) / surface_area_curved)
         )
 
-        cell.set_init_memb_potential("-70mV")
+        cell.set_init_memb_potential("-69.445mV")
 
         # This value is not really used as it's a single comp cell model
         cell.set_resistivity("0.1 kohm_cm")

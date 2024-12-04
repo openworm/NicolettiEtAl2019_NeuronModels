@@ -53,7 +53,7 @@
                 <channelDensity id="sk_chans" ionChannel="AWCon_sk" condDensity="0.8588531129653401 S_per_m2" erev="-80.0mV" ion="k"/>
                 <spikeThresh value="0mV"/>
                 <specificCapacitance value="0.04437407750320924 F_per_m2"/>
-                <initMembPotential value="-70mV"/>
+                <initMembPotential value="-69.445mV"/>
             </membraneProperties>
             <intracellularProperties>
                 <species id="ca" concentrationModel="CaDynamics_AWCon" ion="ca" initialConcentration="5e-5 mM" initialExtConcentration="2 mM"/>
