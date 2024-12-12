@@ -492,7 +492,7 @@ v'=(Istim-I_tot)/c
 
 #current clamp protocol
 Istim=if(t>ton)then(if(t<toff)then(iclamp)else(if(t>t2)then(if(t<t3)then(iclamp2)else(ih))else(ih)))else(ih)
-par iclamp=10,ton=10,toff=60,t2=110,iclamp2=-15,t3=130
+par iclamp= 2,ton=10,toff=60,t2=110,iclamp2=-15,t3=130
 aux prot=if(t>ton)then(if(t<toff)then(iclamp)else(if(t>t2)then(if(t<t3)then(iclamp2)else(ih))else(ih)))else(ih)
 
 

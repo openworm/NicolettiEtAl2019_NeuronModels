@@ -480,38 +480,38 @@ I_nca=gnca*(v-ena)
 #====================================================================================================================================
 
 # new updated values 
-init m_shal=0.01188502
-init hf_shal=0.8976547
-init hs_shal=0.9214649
-init m_kvs1=0.020534
+init m_shal=0.01184274
+init hf_shal=0.8982871
+init hs_shal=0.8976905
+init m_kvs1=0.02081173
 init h_kvs1=0.9995848
-init m_shak=8.920621e-06
-init h_shak=0.9999869
-init mf_kqt3=0.05021066
-init ms_kqt3=0.05021631
-init w_kqt3=0.9561735
-init s_kqt3=0.8331929
-init m_egl2=0.01513498
-init m_kir=0.2708952
-init m_cca1=0.007978005
-init h_cca1=0.382032
+init m_shak=8.861462e-06
+init h_shak=0.9999646
+init mf_kqt3=0.05005085
+init ms_kqt3=0.05005085
+init w_kqt3=0.9562445
+init s_kqt3=0.9171754
+init m_egl2=0.0150839
+init m_kir=0.2716752
+init m_cca1=0.007809187
+init h_cca1=0.383549
 
-init m_unc2=0.0003189335
-init h_unc2=0.1836455
-init m_egl19=0.0001785334
-init hs_egl19=0.9427853
-init mbk=1.872535e-06
-init mslo1=1.046706e-06
-init mbk2=5.068208e-07
-init mslo2=9.06309e-07
-init ca_intra1=5.036163e-05
-init m_sk=0.1324047
-init v=-69.12935
+init m_unc2=0.0003148755
+init h_unc2=0.1853784
+init m_egl19=0.0001773235
+init hs_egl19=0.9427605
+init mbk=1.844991e-06
+init mslo1=1.037522e-06
+init mbk2=5.022837e-07
+init mslo2=8.92816e-07
+init ca_intra1=5.035863e-05
+init m_sk=0.1323978
+init v=-69.18018
 
 # Total current
 
 I_tot=I_egl2+I_leak+I_kvs1+I_bk+I_kqt3+Ishal+I_egl19+I_unc2+I_bk2+I_sk+I_slo1+I_slo2+I_nca+I_kir+I_cca1+I_shak
-#I_egl2+I_leak+I_kvs1+I_bk+I_kqt3+Ishal+I_egl19+I_unc2+I_bk2+I_sk+I_slo1+I_slo2+I_nca+I_kir+I_cca1+I_shak
+
 aux Itot=I_tot
 																
 
@@ -524,7 +524,7 @@ par ih=0
 par c=3.1
 
 v'=(Istim-I_tot)/c
-# init v=-70
+
 
 Istim=if(t>ton)then(if(t<toff)then(iclamp)else(ih))else(ih)
 par iclamp=10,ton=100,toff=600
