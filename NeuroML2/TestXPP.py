@@ -6,6 +6,13 @@ cell = "AWCon"
 cell = "RMD"
 
 parsed_data = parse_script("../%s.ode" % cell.replace("on", ""))
+
+import sys
+
+short_simulation = "-short" in sys.argv
+if short_simulation:
+    parsed_data = parse_script("../XPP_tests/%s_edited.ode" % cell.replace("on", ""))
+
 pprint(parsed_data)
 
 all_g = [
@@ -113,9 +120,15 @@ additional_transient_phase = 2000
 
 parsed_data["settings"]["total"] = 400 + additional_transient_phase
 parsed_data["settings"]["trans"] = 0
-parsed_data["settings"]["dt"] = 0.01
+parsed_data["settings"]["dt"] = 0.005
 parsed_data["parameters"]["ton"] = 310 + additional_transient_phase
 parsed_data["parameters"]["toff"] = 360 + additional_transient_phase
+
+if short_simulation:
+    parsed_data["settings"]["total"] = 70
+    parsed_data["parameters"]["ton"] = 10
+    parsed_data["parameters"]["toff"] = 60
+
 new_ode = to_xpp(parsed_data, new_ode_file)
 
 mp_fig = "Membrane potentials"
