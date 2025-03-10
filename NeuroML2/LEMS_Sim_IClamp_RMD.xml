@@ -2,7 +2,7 @@
 
     <!-- 
 
-        This LEMS file has been automatically generated using PyNeuroML v1.3.12 (libNeuroML v0.6.6)
+        This LEMS file has been automatically generated using PyNeuroML v1.3.15 (libNeuroML v0.6.6)
 
      -->
 
@@ -19,191 +19,191 @@
     <Include file="RMD.cell.nml"/>
 
     <Simulation id="Sim_IClamp_RMD" length="2400.0ms" step="0.005ms" target="IClamp_RMD" seed="12345">  <!-- Note seed: ensures same random numbers used every run -->
-        <Display id="pop_RMD_0_biophys/membraneProperties/bk2_chans/RMD_bk2/h/q" title="Plots of pop_RMD_0_biophys/membraneProperties/bk2_chans/RMD_bk2/h/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_bk2_chans_RMD_bk2_h_q" title="Plots of pop_RMD_0_biophys_membraneProperties_bk2_chans_RMD_bk2_h_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_bk2_chans_RMD_bk2_h_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/bk2_chans/RMD_bk2/h/q" scale="1" color="#d54f33" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/bk2_chans/RMD_bk2/m/q" title="Plots of pop_RMD_0_biophys/membraneProperties/bk2_chans/RMD_bk2/m/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_bk2_chans_RMD_bk2_m_q" title="Plots of pop_RMD_0_biophys_membraneProperties_bk2_chans_RMD_bk2_m_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_bk2_chans_RMD_bk2_m_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/bk2_chans/RMD_bk2/m/q" scale="1" color="#0534e4" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/bk2_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/bk2_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_bk2_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_bk2_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_bk2_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/bk2_chans/gDensity" scale="1" color="#98e752" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/bk2_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/bk2_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_bk2_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_bk2_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_bk2_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/bk2_chans/iDensity" scale="1" color="#bca074" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/bk_chans/RMD_bk/h/q" title="Plots of pop_RMD_0_biophys/membraneProperties/bk_chans/RMD_bk/h/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_bk_chans_RMD_bk_h_q" title="Plots of pop_RMD_0_biophys_membraneProperties_bk_chans_RMD_bk_h_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_bk_chans_RMD_bk_h_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/bk_chans/RMD_bk/h/q" scale="1" color="#632794" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/bk_chans/RMD_bk/m/q" title="Plots of pop_RMD_0_biophys/membraneProperties/bk_chans/RMD_bk/m/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_bk_chans_RMD_bk_m_q" title="Plots of pop_RMD_0_biophys_membraneProperties_bk_chans_RMD_bk_m_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_bk_chans_RMD_bk_m_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/bk_chans/RMD_bk/m/q" scale="1" color="#8a5d88" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/bk_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/bk_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_bk_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_bk_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_bk_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/bk_chans/gDensity" scale="1" color="#df5954" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/bk_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/bk_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_bk_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_bk_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_bk_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/bk_chans/iDensity" scale="1" color="#52c8bf" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/cca_chans/RMD_cca/h/q" title="Plots of pop_RMD_0_biophys/membraneProperties/cca_chans/RMD_cca/h/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_cca_chans_RMD_cca_h_q" title="Plots of pop_RMD_0_biophys_membraneProperties_cca_chans_RMD_cca_h_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_cca_chans_RMD_cca_h_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/cca_chans/RMD_cca/h/q" scale="1" color="#bf0239" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/cca_chans/RMD_cca/m/q" title="Plots of pop_RMD_0_biophys/membraneProperties/cca_chans/RMD_cca/m/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_cca_chans_RMD_cca_m_q" title="Plots of pop_RMD_0_biophys_membraneProperties_cca_chans_RMD_cca_m_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_cca_chans_RMD_cca_m_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/cca_chans/RMD_cca/m/q" scale="1" color="#3f9fe8" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/cca_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/cca_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_cca_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_cca_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_cca_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/cca_chans/gDensity" scale="1" color="#dda9d2" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/cca_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/cca_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_cca_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_cca_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_cca_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/cca_chans/iDensity" scale="1" color="#85ad96" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/egl19_chans/RMD_egl19/h/q" title="Plots of pop_RMD_0_biophys/membraneProperties/egl19_chans/RMD_egl19/h/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_egl19_chans_RMD_egl19_h_q" title="Plots of pop_RMD_0_biophys_membraneProperties_egl19_chans_RMD_egl19_h_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_egl19_chans_RMD_egl19_h_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/egl19_chans/RMD_egl19/h/q" scale="1" color="#59438f" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/egl19_chans/RMD_egl19/m/q" title="Plots of pop_RMD_0_biophys/membraneProperties/egl19_chans/RMD_egl19/m/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_egl19_chans_RMD_egl19_m_q" title="Plots of pop_RMD_0_biophys_membraneProperties_egl19_chans_RMD_egl19_m_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_egl19_chans_RMD_egl19_m_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/egl19_chans/RMD_egl19/m/q" scale="1" color="#5fa56f" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/egl19_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/egl19_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_egl19_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_egl19_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_egl19_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/egl19_chans/gDensity" scale="1" color="#b5b5a2" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/egl19_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/egl19_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_egl19_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_egl19_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_egl19_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/egl19_chans/iDensity" scale="1" color="#2ebe19" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/egl36_chans/RMD_egl36/m/q" title="Plots of pop_RMD_0_biophys/membraneProperties/egl36_chans/RMD_egl36/m/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_egl36_chans_RMD_egl36_m_q" title="Plots of pop_RMD_0_biophys_membraneProperties_egl36_chans_RMD_egl36_m_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_egl36_chans_RMD_egl36_m_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/egl36_chans/RMD_egl36/m/q" scale="1" color="#d30150" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/kir_chans/RMD_kir/m/q" title="Plots of pop_RMD_0_biophys/membraneProperties/kir_chans/RMD_kir/m/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_kir_chans_RMD_kir_m_q" title="Plots of pop_RMD_0_biophys_membraneProperties_kir_chans_RMD_kir_m_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_kir_chans_RMD_kir_m_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/kir_chans/RMD_kir/m/q" scale="1" color="#55490a" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/kir_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/kir_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_kir_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_kir_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_kir_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/kir_chans/gDensity" scale="1" color="#4bd9d0" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/kir_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/kir_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_kir_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_kir_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_kir_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/kir_chans/iDensity" scale="1" color="#69535e" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/leak_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/leak_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_leak_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_leak_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_leak_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/leak_chans/gDensity" scale="1" color="#27dae9" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/leak_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/leak_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_leak_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_leak_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_leak_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/leak_chans/iDensity" scale="1" color="#6143ed" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/nca_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/nca_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_nca_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_nca_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_nca_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/nca_chans/gDensity" scale="1" color="#aee102" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/nca_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/nca_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_nca_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_nca_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_nca_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/nca_chans/iDensity" scale="1" color="#a4e245" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/shak_chans/RMD_shak/h/q" title="Plots of pop_RMD_0_biophys/membraneProperties/shak_chans/RMD_shak/h/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_shak_chans_RMD_shak_h_q" title="Plots of pop_RMD_0_biophys_membraneProperties_shak_chans_RMD_shak_h_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_shak_chans_RMD_shak_h_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/shak_chans/RMD_shak/h/q" scale="1" color="#0c0af9" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/shak_chans/RMD_shak/m/q" title="Plots of pop_RMD_0_biophys/membraneProperties/shak_chans/RMD_shak/m/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_shak_chans_RMD_shak_m_q" title="Plots of pop_RMD_0_biophys_membraneProperties_shak_chans_RMD_shak_m_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_shak_chans_RMD_shak_m_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/shak_chans/RMD_shak/m/q" scale="1" color="#eaece2" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/shak_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/shak_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_shak_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_shak_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_shak_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/shak_chans/gDensity" scale="1" color="#add546" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/shak_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/shak_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_shak_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_shak_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_shak_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/shak_chans/iDensity" scale="1" color="#0dc1e8" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/shal_chans/RMD_shal/h/q" title="Plots of pop_RMD_0_biophys/membraneProperties/shal_chans/RMD_shal/h/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_shal_chans_RMD_shal_h_q" title="Plots of pop_RMD_0_biophys_membraneProperties_shal_chans_RMD_shal_h_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_shal_chans_RMD_shal_h_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/shal_chans/RMD_shal/h/q" scale="1" color="#d4b998" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/shal_chans/RMD_shal/m/q" title="Plots of pop_RMD_0_biophys/membraneProperties/shal_chans/RMD_shal/m/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_shal_chans_RMD_shal_m_q" title="Plots of pop_RMD_0_biophys_membraneProperties_shal_chans_RMD_shal_m_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_shal_chans_RMD_shal_m_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/shal_chans/RMD_shal/m/q" scale="1" color="#01c4cd" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/shal_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/shal_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_shal_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_shal_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_shal_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/shal_chans/gDensity" scale="1" color="#036aae" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/shal_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/shal_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_shal_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_shal_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_shal_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/shal_chans/iDensity" scale="1" color="#53de83" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/sk_chans/RMD_sk/m/q" title="Plots of pop_RMD_0_biophys/membraneProperties/sk_chans/RMD_sk/m/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_sk_chans_RMD_sk_m_q" title="Plots of pop_RMD_0_biophys_membraneProperties_sk_chans_RMD_sk_m_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_sk_chans_RMD_sk_m_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/sk_chans/RMD_sk/m/q" scale="1" color="#5b9557" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/sk_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/sk_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_sk_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_sk_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_sk_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/sk_chans/gDensity" scale="1" color="#92b9f4" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/sk_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/sk_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_sk_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_sk_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_sk_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/sk_chans/iDensity" scale="1" color="#32f19d" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/slo1_chans/RMD_slo1/h/q" title="Plots of pop_RMD_0_biophys/membraneProperties/slo1_chans/RMD_slo1/h/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_slo1_chans_RMD_slo1_h_q" title="Plots of pop_RMD_0_biophys_membraneProperties_slo1_chans_RMD_slo1_h_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_slo1_chans_RMD_slo1_h_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/slo1_chans/RMD_slo1/h/q" scale="1" color="#d43d99" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/slo1_chans/RMD_slo1/m/q" title="Plots of pop_RMD_0_biophys/membraneProperties/slo1_chans/RMD_slo1/m/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_slo1_chans_RMD_slo1_m_q" title="Plots of pop_RMD_0_biophys_membraneProperties_slo1_chans_RMD_slo1_m_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_slo1_chans_RMD_slo1_m_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/slo1_chans/RMD_slo1/m/q" scale="1" color="#36379e" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/slo1_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/slo1_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_slo1_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_slo1_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_slo1_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/slo1_chans/gDensity" scale="1" color="#5d01b7" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/slo1_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/slo1_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_slo1_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_slo1_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_slo1_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/slo1_chans/iDensity" scale="1" color="#c0004f" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/slo2_chans/RMD_slo2/h/q" title="Plots of pop_RMD_0_biophys/membraneProperties/slo2_chans/RMD_slo2/h/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_slo2_chans_RMD_slo2_h_q" title="Plots of pop_RMD_0_biophys_membraneProperties_slo2_chans_RMD_slo2_h_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_slo2_chans_RMD_slo2_h_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/slo2_chans/RMD_slo2/h/q" scale="1" color="#771a1c" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/slo2_chans/RMD_slo2/m/q" title="Plots of pop_RMD_0_biophys/membraneProperties/slo2_chans/RMD_slo2/m/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_slo2_chans_RMD_slo2_m_q" title="Plots of pop_RMD_0_biophys_membraneProperties_slo2_chans_RMD_slo2_m_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_slo2_chans_RMD_slo2_m_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/slo2_chans/RMD_slo2/m/q" scale="1" color="#a8e7b4" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/slo2_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/slo2_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_slo2_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_slo2_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_slo2_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/slo2_chans/gDensity" scale="1" color="#149bc7" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/slo2_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/slo2_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_slo2_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_slo2_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_slo2_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/slo2_chans/iDensity" scale="1" color="#76f116" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/unc2_chans/RMD_unc2/h/q" title="Plots of pop_RMD_0_biophys/membraneProperties/unc2_chans/RMD_unc2/h/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_unc2_chans_RMD_unc2_h_q" title="Plots of pop_RMD_0_biophys_membraneProperties_unc2_chans_RMD_unc2_h_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_unc2_chans_RMD_unc2_h_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/unc2_chans/RMD_unc2/h/q" scale="1" color="#3d56b9" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/unc2_chans/RMD_unc2/m/q" title="Plots of pop_RMD_0_biophys/membraneProperties/unc2_chans/RMD_unc2/m/q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_unc2_chans_RMD_unc2_m_q" title="Plots of pop_RMD_0_biophys_membraneProperties_unc2_chans_RMD_unc2_m_q" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_unc2_chans_RMD_unc2_m_q" quantity="pop_RMD/0/RMD/biophys/membraneProperties/unc2_chans/RMD_unc2/m/q" scale="1" color="#ff9a67" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/unc2_chans/gDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/unc2_chans/gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_unc2_chans_gDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_unc2_chans_gDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_unc2_chans_gDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/unc2_chans/gDensity" scale="1" color="#6ec96a" timeScale="1ms"/>
         </Display>
 
-        <Display id="pop_RMD_0_biophys/membraneProperties/unc2_chans/iDensity" title="Plots of pop_RMD_0_biophys/membraneProperties/unc2_chans/iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
+        <Display id="pop_RMD_0_biophys_membraneProperties_unc2_chans_iDensity" title="Plots of pop_RMD_0_biophys_membraneProperties_unc2_chans_iDensity" timeScale="1ms" xmin="-240.0" xmax="2640.0" ymin="-1" ymax="1">
             <Line id="pop_RMD_0_RMD_biophys_membraneProperties_unc2_chans_iDensity" quantity="pop_RMD/0/RMD/biophys/membraneProperties/unc2_chans/iDensity" scale="1" color="#5f24e5" timeScale="1ms"/>
         </Display>
 
