@@ -1,6 +1,6 @@
 {
     "Sim_IClamp_AWCon": {
-        "version": "NeuroMLlite v0.6.0",
+        "version": "NeuroMLlite v0.6.1",
         "network": "IClamp_AWCon.json",
         "duration": 2400.0,
         "dt": 0.005,
