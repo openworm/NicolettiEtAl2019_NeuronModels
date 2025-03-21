@@ -1,0 +1,17 @@
+# Script for running automated tests on OSB, see https://github.com/OpenSourceBrain/osb-model-validation
+
+target: LEMS_Sim_Fig7B_RMD.xml
+engine: jNeuroML
+mep: .test.rmd.mep
+experiments:
+  Current clamp:
+    observables:
+      spike times:
+        file: 
+          path: Sim_Fig7B_RMD.pop_RMD.v.dat
+          columns: [0,4]
+          scaling: [1000, 1000]
+        spike detection: 
+          method: threshold
+          threshold: -20
+        tolerance: 0.00
