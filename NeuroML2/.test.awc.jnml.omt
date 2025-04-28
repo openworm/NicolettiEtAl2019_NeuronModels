@@ -1,0 +1,17 @@
+# Script for running automated tests on OSB, see https://github.com/OpenSourceBrain/osb-model-validation
+
+target: LEMS_Sim_Fig4C_AWCon.xml 
+engine: jNeuroML
+mep: .test.awc.mep
+experiments:
+  Current clamp:
+    observables:
+      spike times:
+        file: 
+          path: Sim_Fig4C_AWCon.pop_AWCon.v.dat
+          columns: [0,7]
+          scaling: [1000, 1000]
+        spike detection: 
+          method: threshold
+          threshold: -20
+        tolerance: 0.00
