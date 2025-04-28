@@ -1,0 +1,6 @@
+system: Testing a cell
+
+experiments:
+  Current clamp:
+    expected:
+      spike times: [114.775]
