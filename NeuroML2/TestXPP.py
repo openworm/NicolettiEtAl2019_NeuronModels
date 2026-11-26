@@ -194,7 +194,6 @@ from matplotlib import pyplot as plt
 
 from pyneuroml.pynml import reload_standard_dat_file
 
-
 data, indices = reload_standard_dat_file("Sim_IClamp_%s.pop_%s.v.dat" % (cell, cell))
 t_ms = [t * 1000 for t in data["t"]]
 v_mV = [v * 1000 for v in data[0]]

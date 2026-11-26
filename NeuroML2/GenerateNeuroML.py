@@ -11,7 +11,6 @@ import sympy
 from sympy.parsing.sympy_parser import parse_expr
 import math
 
-
 xpps = {"RMD": parse_script("../RMD.ode"), "AWCon": parse_script("../AWC.ode")}
 # xpps = {"RMD": parse_script("../RMD.ode")}
 # pprint(xpps)
@@ -49,9 +48,11 @@ def _add_tc_ss(
     ssct = component_factory(
         "ComponentType",
         name=ss.type,
-        extends="baseVoltageDepVariable"
-        if not ca_conc_var
-        else "baseVoltageConcDepVariable",
+        extends=(
+            "baseVoltageDepVariable"
+            if not ca_conc_var
+            else "baseVoltageConcDepVariable"
+        ),
     )
     tcct = component_factory(
         "ComponentType", name=tc.type, extends="baseVoltageDepTime"
