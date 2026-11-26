@@ -1,13 +1,14 @@
-from pyneuroml.xppaut import parse_script, to_lems, to_xpp, run_xpp_file
+from pyneuroml.xppaut import parse_script, to_xpp, run_xpp_file
+from pyneuroml.pynml import reload_standard_dat_file
+from matplotlib import pyplot as plt
 
 from pprint import pprint
+import sys
 
 cell = "AWCon"
 cell = "RMD"
 
 parsed_data = parse_script("../%s.ode" % cell.replace("on", ""))
-
-import sys
 
 short_simulation = "-short" in sys.argv
 if short_simulation:
@@ -189,10 +190,6 @@ for c in chans:
 axes = run_xpp_file(
     new_ode_file, plot=True, show_plot_already=False, plot_separately=plot_separately
 )
-
-from matplotlib import pyplot as plt
-
-from pyneuroml.pynml import reload_standard_dat_file
 
 data, indices = reload_standard_dat_file("Sim_IClamp_%s.pop_%s.v.dat" % (cell, cell))
 t_ms = [t * 1000 for t in data["t"]]

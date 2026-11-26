@@ -3,9 +3,7 @@ from neuroml.utils import component_factory
 
 from pyneuroml import pynml
 from pyneuroml.xppaut import parse_script
-from pprint import pprint
 
-from neuroml import GateHHRates
 from neuroml import IncludeType
 import sympy
 from sympy.parsing.sympy_parser import parse_expr
@@ -78,14 +76,9 @@ def _add_tc_ss(
     tscale_ms = component_factory(
         "Constant", name="TIME_SCALE", dimension="time", value="1 ms"
     )
-    tscale_s = component_factory(
-        "Constant", name="TIME_SCALE_S", dimension="time", value="1 s"
-    )
     tcct.add(tscale_ms)
     if add_all:
         ssct.add(tscale_ms)
-        # tcct.add(tscale_s)
-        # ssct.add(tscale_s)
 
     inf_expr = xpp["derived_variables"][inf_expr_param]
     tau_expr = xpp["derived_variables"][tau_expr_param]
@@ -236,7 +229,7 @@ def create_channel_file(
     )
 
     for gate_id in gates:
-        if type(gates[gate_id]) == list:
+        if isinstance(gates[gate_id], list):
             ss, tc = _add_tc_ss(
                 chan_id_in_cell,
                 gate_id,
@@ -260,7 +253,7 @@ def create_channel_file(
             )
             channel.add(gc)
 
-        elif type(gates[gate_id]) == dict:
+        elif isinstance(gates[gate_id], dict):
             gc = component_factory(
                 "GateHHUndetermined",
                 type="gateFractional",
@@ -352,8 +345,8 @@ def generate_nmllite(
             neuroml2_input="PoissonFiringSynapse",
             parameters={
                 "average_rate": "average_rate",
-                "synapse": syn_exc.id,
-                "spike_target": "./%s" % syn_exc.id,
+                "synapse": "???",
+                "spike_target": "./%s" % "???",
             },
         )
 

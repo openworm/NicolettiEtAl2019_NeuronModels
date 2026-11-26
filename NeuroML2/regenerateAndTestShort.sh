@@ -2,7 +2,8 @@
 set -ex
 
 # Format the code
-black *.py
+ruff format *.py
+ruff check *.py
 
 # This script loads in the XPP using the parser in pyNeuroML, and converts the channels to NeuroML
 # It will also run a test simulation of the cells and save the results

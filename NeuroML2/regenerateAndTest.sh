@@ -2,7 +2,8 @@
 set -ex
 
 # Format the code
-black *.py
+ruff format *.py
+ruff check *.py
 
 # This script loads in the XPP using the parser in pyNeuroML, and converts the channels to NeuroML
 # It will also run a test simulation of the cells and save the results
@@ -10,7 +11,7 @@ black *.py
 python GenerateNeuroML.py -jnml
 
 # This will use the generated NeuroML cells and create networks with a number of (unconnected cells) and 
-# inject current steps into them to replicate the currnt clamp protocols in Figs 4C and 7B in the paper
+# inject current steps into them to replicate the current clamp protocols in Figs 4C and 7B in the paper
 python GenerateExamples.py -jnml
 
 # This will load the original XPP using pyNeuroML, run it, save the results and plot them against the 

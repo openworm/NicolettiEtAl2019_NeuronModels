@@ -1,5 +1,5 @@
-from neuromllite import *
-from neuromllite.NetworkGenerator import *
+from neuromllite import Cell, Input, InputSource
+from neuromllite.NetworkGenerator import check_to_generate_or_run
 from neuromllite.utils import create_new_model
 import sys
 
