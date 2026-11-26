@@ -16,14 +16,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [ 3.9, "3.11" ]
+        python-version: [ "3.11", "3.13" ]
         engine: [ jNeuroML_validate, XPP, JNeuroML ]
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     
     - name: Set up Python  ${{ matrix.python-version }}
-      uses: actions/setup-python@v6
+      uses: actions/setup-python@v7
       with:
         python-version:  ${{ matrix.python-version }}
         
