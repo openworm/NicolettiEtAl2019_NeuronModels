@@ -35,7 +35,7 @@ jobs:
         omv install xpp
         export XPP_HOME=/home/runner/xppaut/bin/
 
-        pip install black
+        pip install ruff
 
         cd NeuroML2
         ./regenerateAndTest.sh
